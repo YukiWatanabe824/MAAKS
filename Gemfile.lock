@@ -209,6 +209,12 @@ GEM
     slim_lint (0.24.0)
       rubocop (>= 1.0, < 2.0)
       slim (>= 3.0, < 6.0)
+    slim (5.1.1)
+      temple (~> 0.10.0)
+      tilt (>= 2.1.0)
+    slim_lint (0.24.0)
+      rubocop (>= 1.0, < 2.0)
+      slim (>= 3.0, < 6.0)
     sprockets (4.2.0)
       concurrent-ruby (~> 1.0)
       rack (>= 2.2.4, < 4)
@@ -222,7 +228,9 @@ GEM
     tailwindcss-rails (2.0.29-x86_64-darwin)
       railties (>= 6.0.0)
     temple (0.10.2)
+    temple (0.10.2)
     thor (1.2.2)
+    tilt (2.2.0)
     tilt (2.2.0)
     timeout (0.4.0)
     turbo-rails (1.4.0)
@@ -252,6 +260,7 @@ GEM
 PLATFORMS
   x86_64-darwin-19
   x86_64-darwin-21
+  x86_64-darwin-22
 
 DEPENDENCIES
   bootsnap
@@ -265,6 +274,7 @@ DEPENDENCIES
   rubocop-rails
   selenium-webdriver
   slim_lint
+  slim_lint
   sprockets-rails
   sqlite3 (~> 1.4)
   stimulus-rails
@@ -275,7 +285,7 @@ DEPENDENCIES
   webdrivers
 
 RUBY VERSION
-   ruby 3.1.2p20
+   ruby 3.2.2p53
 
 BUNDLED WITH
-   2.3.26
+   2.4.10
