@@ -1,0 +1,13 @@
+{
+  "name": "MAAKS",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/YukiWatanabe824/MAAKS.git",
+  "author": "YukiWatanabe824 <gyggg950@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^8.43.0",
+    "eslint-config-prettier": "^8.8.0",
+    "prettier": "2.8.8"
+  }
+}
