@@ -91,6 +91,9 @@ GEM
     erubi (1.12.0)
     globalid (1.1.0)
       activesupport (>= 5.0)
+    hpricot (0.8.6)
+    html2slim (0.2.0)
+      hpricot
     i18n (1.14.1)
       concurrent-ruby (~> 1.0)
     importmap-rails (1.2.1)
@@ -206,12 +209,10 @@ GEM
     slim (5.1.1)
       temple (~> 0.10.0)
       tilt (>= 2.1.0)
-    slim_lint (0.24.0)
-      rubocop (>= 1.0, < 2.0)
-      slim (>= 3.0, < 6.0)
-    slim (5.1.1)
-      temple (~> 0.10.0)
-      tilt (>= 2.1.0)
+    slim-rails (3.6.2)
+      actionpack (>= 3.1)
+      railties (>= 3.1)
+      slim (>= 3.0, < 6.0, != 5.0.0)
     slim_lint (0.24.0)
       rubocop (>= 1.0, < 2.0)
       slim (>= 3.0, < 6.0)
@@ -228,9 +229,7 @@ GEM
     tailwindcss-rails (2.0.29-x86_64-darwin)
       railties (>= 6.0.0)
     temple (0.10.2)
-    temple (0.10.2)
     thor (1.2.2)
-    tilt (2.2.0)
     tilt (2.2.0)
     timeout (0.4.0)
     turbo-rails (1.4.0)
@@ -266,6 +265,7 @@ DEPENDENCIES
   bootsnap
   capybara
   debug
+  html2slim
   importmap-rails
   jbuilder
   puma (~> 5.0)
@@ -273,7 +273,7 @@ DEPENDENCIES
   rubocop-fjord
   rubocop-rails
   selenium-webdriver
-  slim_lint
+  slim-rails
   slim_lint
   sprockets-rails
   sqlite3 (~> 1.4)
