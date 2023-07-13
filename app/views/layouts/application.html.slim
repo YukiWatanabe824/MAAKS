@@ -9,6 +9,9 @@ html
     = stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload"
     = stylesheet_link_tag "application", "data-turbo-track": "reload"
     = javascript_importmap_tags
+    / link href='https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css' rel='stylesheet'
+
   body
-    main.container.mx-auto.mt-28.px-5.flex
+  h1 MAAKS
+  main.container.h-screen.w-full.flex
       = yield
