@@ -17,18 +17,16 @@ const mapboxClient = mapboxSdk({ accessToken: mapboxgl.accessToken });
 
 fetch("/spots.json")
   .then((response) => response.json())
-  .then((spot) => {
+  .then((spots) => {
     // データの取得後の処理
-    console.log(spot);
 
     // マップを表示
     const map = new mapboxgl.Map({
       container: "map", // container ID
       style: "mapbox://styles/yukiwatanabe/cljqcpwss004501oc6qhs4rek", // style URL
-      center: [spot[0].longitude, spot[0].latitude], // starting position [lng, lat]
+      center: [139.791003, 35.777343], // starting position [lng, lat]
       zoom: 14, // starting zoom
     });
-
     // create geocoder
     map.addControl(
       new MapboxGeocoder({
@@ -37,20 +35,37 @@ fetch("/spots.json")
       })
     );
 
-    // create the popup
-    const popup = new mapboxgl.Popup({ offset: 25 }).setHTML(
-      `<div><h2>${spot[0].title}</h2><ul><li>${spot[0].accident_date}</li><li>${spot[0].accident_type}</li><li>${spot[0].contents}</li></ul></div>`
-    );
+    // DBから取得したスポットの描画
+    for (const spot of spots) {
+      // create the popup
+      const popup = new mapboxgl.Popup({ offset: 25 }).setHTML(
+        `<div><h2>${spot.title}</h2><ul><li>${spot.accident_date}</li><li>${spot.accident_type}</li><li>${spot.contents}</li></ul></div>`
+      );
 
-    // create DOM element for the marker
-    const el = document.createElement("div");
-    el.id = "marker";
+      // create DOM element for the marker
+      const el = document.createElement("div");
+      el.id = "marker";
 
-    // create the marker with popup
-    new mapboxgl.Marker()
-      .setLngLat([spot[0].longitude, spot[0].latitude])
-      .setPopup(popup)
-      .addTo(map);
+      // create the marker with popup
+      new mapboxgl.Marker()
+        .setLngLat([spot.longitude, spot.latitude])
+        .setPopup(popup)
+        .addTo(map);
+    }
+    let newMarker = ""
+    map.on("click", (e) => {
+      console.log(`座標は ${e.lngLat}`);
+      if (newMarker) {
+        newMarker.remove();
+        newMarker = new mapboxgl.Marker()
+          .setLngLat([e.lngLat.lng, e.lngLat.lat])
+          .addTo(map);
+      } else {
+        newMarker = new mapboxgl.Marker()
+          .setLngLat([e.lngLat.lng, e.lngLat.lat])
+          .addTo(map);
+      }
+    });
   })
   .catch((error) => {
     // エラーハンドリング
