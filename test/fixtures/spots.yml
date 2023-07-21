@@ -8,3 +8,14 @@ spot1:
   latitude: 35.77541
   created_at: "2014-01-01 00:00:01"
   updated_at: "2014-01-01 00:00:01"
+
+spot2:
+  user: watanabe
+  title: "自動車との接触"
+  accident_type: "人身"
+  contents: "testtesttest"
+  accident_date: "2014-01-01 00:00:01"
+  longitude: 139.791003
+  latitude: 35.777343
+  created_at: "2014-01-01 00:00:01"
+  updated_at: "2014-01-01 00:00:01"
