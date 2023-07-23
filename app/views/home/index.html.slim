@@ -22,17 +22,9 @@
         = f.label :accident_date
         = f.date_field :accident_date, value: "2022-12-22"
 
-      .form_menu.flex.flex-col
-        = f.label :longitude
-        = f.text_field :longitude, value: "139.788333"
-
-      .form_menu.flex.flex-col
-        = f.label :latitude
-        = f.text_field :latitude, value: "35.77541"
-
-      .form_menu.flex.flex-col
-        = f.label :user_id
-        = f.text_field :user_id, value: @user.id
+        = f.hidden_field :longitude, value: ""
+        = f.hidden_field :latitude, value: ""
+        = f.hidden_field :user_id, value: @user.id
 
     .btn
       = f.submit "保存する"

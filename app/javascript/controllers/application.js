@@ -65,6 +65,10 @@ fetch("/spots.json")
           .setLngLat([e.lngLat.lng, e.lngLat.lat])
           .addTo(map);
       }
+      let formLatitude = document.querySelector("#latitude")
+      formLatitude.value = e.lngLat.lat
+      let formLongitude = document.querySelector("#longitude")
+      formLongitude.value = e.lngLat.lng
     });
   })
   .catch((error) => {
