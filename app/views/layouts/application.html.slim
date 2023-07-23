@@ -15,6 +15,13 @@ html
     script src="https://unpkg.com/@mapbox/mapbox-sdk/umd/mapbox-sdk.min.js"
 
   body
+
+  p.notice
+    = notice
+
+  p.alert
+    = alert
+
   h1 MAAKS
   main.container.h-screen.w-full.flex
       = yield
