@@ -11,6 +11,9 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.0].define(version: 2023_07_01_024328) do
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "maps", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -18,11 +21,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_01_024328) do
 
   create_table "spots", force: :cascade do |t|
     t.string "title", null: false
-    t.string "type", null: false
+    t.string "accident_type", null: false
     t.text "contents", null: false
-    t.date "date", null: false
-    t.string "longitude", null: false
-    t.string "latitude", null: false
+    t.date "accident_date", null: false
+    t.float "longitude", null: false
+    t.float "latitude", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id", null: false

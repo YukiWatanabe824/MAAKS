@@ -1,0 +1,33 @@
+.menu.w-1/5.h-ful.bg-cyan-50.mr-0.5
+  ul
+    li メニュー01
+    li メニュー02
+    li メニュー03
+
+  = form_with url: spots_path do |f|
+    .form_content.flex.flex-col
+      .form_menu.flex.flex-col
+        = f.label :title
+        = f.text_field :title
+
+      .form_menu.flex.flex-col
+        = f.label :accident_type
+        = f.text_field :accident_type
+
+      .form_menu.flex.flex-col
+        = f.label :contents
+        = f.text_field :contents
+
+      .form_menu.flex.flex-col
+        = f.label :accident_date
+        = f.date_field :accident_date, value: "2022-12-22"
+
+        = f.hidden_field :longitude, value: ""
+        = f.hidden_field :latitude, value: ""
+        = f.hidden_field :user_id, value: @user.id
+
+    .btn
+      = f.submit "保存する"
+
+
+#map.w-4/5.h-ful

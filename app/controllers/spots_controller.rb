@@ -4,6 +4,7 @@ class SpotsController < ApplicationController
   # GET /spots or /spots.json
   def index
     @spots = Spot.all
+    render json: @spots
   end
 
   # GET /spots/1 or /spots/1.json
@@ -22,16 +23,12 @@ class SpotsController < ApplicationController
   # POST /spots or /spots.json
   def create
     @spot = Spot.new(spot_params)
-
-    respond_to do |format|
       if @spot.save
-        format.html { redirect_to spot_url(@spot), notice: "Spot was successfully created." }
-        format.json { render :show, status: :created, location: @spot }
+        redirect_to root_path
       else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @spot.errors, status: :unprocessable_entity }
+        Rails.logger.error @spot.errors.full_messages
+        redirect_to root_path
       end
-    end
   end
 
   # PATCH/PUT /spots/1 or /spots/1.json
@@ -63,8 +60,10 @@ class SpotsController < ApplicationController
       @spot = Spot.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
     def spot_params
-      params.fetch(:spot, {})
+      params.permit(
+        :title, :accident_type, :contents,
+        :accident_date, :longitude, :latitude, :user_id
+      )
     end
 end

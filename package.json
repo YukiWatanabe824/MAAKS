@@ -6,8 +6,10 @@
   "author": "YukiWatanabe824 <gyggg950@gmail.com>",
   "license": "MIT",
   "devDependencies": {
+    "daisyui": "^3.2.1",
     "eslint": "^8.43.0",
     "eslint-config-prettier": "^8.8.0",
+    "mapbox-gl": "^2.15.0",
     "prettier": "2.8.8"
   }
 }

@@ -1,11 +1,21 @@
-# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+spot1:
+  user: watanabe
+  title: "西新井での単独落車事故"
+  accident_type: "自損"
+  contents: "走行中に左折レーンに入ってしまい直進しようとした際に、後方車列を振り向いて確認した際にふらついて落車"
+  accident_date: "2014-01-01 00:00:01"
+  longitude: 139.788541
+  latitude: 35.77541
+  created_at: "2014-01-01 00:00:01"
+  updated_at: "2014-01-01 00:00:01"
 
-# This model initially had no columns defined. If you add columns to the
-# model remove the "{}" from the fixture names and add the columns immediately
-# below each fixture, per the syntax in the comments below
-#
-one: {}
-# column: value
-#
-two: {}
-# column: value
+spot2:
+  user: watanabe
+  title: "自動車との接触"
+  accident_type: "人身"
+  contents: "testtesttest"
+  accident_date: "2014-01-01 00:00:01"
+  longitude: 139.791003
+  latitude: 35.777343
+  created_at: "2014-01-01 00:00:01"
+  updated_at: "2014-01-01 00:00:01"
