@@ -6,6 +6,9 @@ h2
     = f.label :name, "名前"
     = f.text_field :name, autocomplete: "name"
   .field
+    = f.label :avatar, "プロフ画像"
+    = f.file_field :avatar
+  .field
     = f.label :email, "メールアドレス"
     = f.email_field :email, autofocus: true, autocomplete: "email"
   .field

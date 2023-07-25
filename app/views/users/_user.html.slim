@@ -1,4 +1,9 @@
-div id=user.id class="flex justify-around"
+div id=user.id class="flex justify-around items-center m-3"
+  .avatar
+    - if user.avatar.attached?
+      = image_tag user.avatar.variant(:thumb)
+    - else
+      .w-24.h-24.bg-green-200
   ul.flex.flex-col
     li
       = user.name
