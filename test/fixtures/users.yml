@@ -3,6 +3,6 @@ watanabe:
   name: "yuki"
   email: "xxx@example.jp"
   password: "7654"
-  avatar_url: ""
+  avatar: ""
   updated_at: "2014-01-01 00:00:01"
   created_at: "2014-01-01 00:00:01"
