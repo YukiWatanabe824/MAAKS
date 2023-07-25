@@ -1,23 +1,25 @@
 h2
   | Sign up
-= form_with(model: user, class: "contents") do |f|
+= form_with(model: @user, class: "contents") do |f|
   = render "devise/shared/error_messages", resource: resource
   .field
-    = f.label :email
+    = f.label :name, "名前"
+    = f.text_field :name, autocomplete: "name"
+  .field
+    = f.label :email, "メールアドレス"
     = f.email_field :email, autofocus: true, autocomplete: "email"
   .field
-    = f.label :password
+    = f.label :password, "パスワード"
     - if @minimum_password_length
-      em
-        | (
+      | (
+      span
         = @minimum_password_length
-        |  characters minimum)
-  br
-  = f.password_field :password, autocomplete: "new-password"
+      | 文字以上)
+    = f.password_field :password, autocomplete: "new-password"
   .field
-    = f.label :password_confirmation
-  br
-  = f.password_field :password_confirmation, autocomplete: "new-password"
+    = f.label :password_confirmation, "パスワード確認用再入力"
+    = f.password_field :password_confirmation, autocomplete: "new-password"
   .actions
     = f.submit "Sign up"
+
 = render "devise/shared/links"
