@@ -4,6 +4,12 @@ h2
 = form_with(model: @user, class: "contents" ) do |f|
   = render "devise/shared/error_messages", resource: resource
   .field
+    = f.label :name, "名前"
+    = f.text_field :name, autocomplete: "name"
+  .field
+    = f.label :avatar, "プロフ画像"
+    = f.file_field :avatar
+  .field
     = f.label :email
     = f.email_field :email, autofocus: true, autocomplete: "email"
   - if devise_mapping.confirmable? && resource.pending_reconfirmation?

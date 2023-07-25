@@ -26,6 +26,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
     end
   end
 
+  protected
+
+  def after_update_path_for(resource)
+    user_path(current_user)
+  end
+
   private
   def set_user
     @user = User.find(params[:id])
@@ -40,6 +46,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def configure_account_update_params
-    devise_parameter_sanitizer.permit(:account_update, keys: [])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:name, :avatar])
   end
 end
