@@ -16,4 +16,9 @@ class User < ApplicationRecord
       user.password = Devise.friendly_token
     end
   end
+
+  def self.create_unique_string
+    SecureRandom.uuid
+  end
+
 end
