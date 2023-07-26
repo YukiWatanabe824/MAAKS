@@ -9,6 +9,8 @@ class User < ApplicationRecord
     attachable.variant :thumb, resize_to_limit: [100, 100]
   end
 
+  validates :uid, presence: true, uniqueness: { scope: :provider }, if: -> { uid.present? }
+
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.name = auth.info.name
