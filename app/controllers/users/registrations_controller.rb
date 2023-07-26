@@ -12,6 +12,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def edit
   end
 
+  def update_resource(resource, params)
+    return super if params['password'].present?
+
+    resource.update_without_password(params.except('current_password'))
+  end
+
   def create
     @user = User.new(sign_up_params)
 
