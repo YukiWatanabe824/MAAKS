@@ -15,13 +15,19 @@ html
     = javascript_include_tag "https://unpkg.com/@mapbox/mapbox-sdk/umd/mapbox-sdk.min.js", "data-turbo-track": "reload"
 
   body
+    p.notice
+      = notice
+    p.alert
+      = alert
 
-  p.notice
-    = notice
-
-  p.alert
-    = alert
-
-  h1 MAAKS
-  main.container.h-screen.w-full
-      = yield
+    .flex.justify-between
+      h1 
+        = link_to "MAAKS", root_path
+      = if user_signed_in?
+        p
+          | 「
+          span
+            = current_user.name
+          | 」としてログイン中
+    main.container.h-screen.w-full
+        = yield

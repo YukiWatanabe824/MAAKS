@@ -1,10 +1,12 @@
 .main.flex.m-0.h-screen.w-screen
   .menu.w-2/5.h-ful.bg-cyan-50.mr-0.5
-    ul
+    ul.mb-3
       li
-      = link_to "ユーザーページ", users_path
-      li メニュー02
-      li メニュー03
+        = link_to "ユーザーページ", users_path
+      li
+        = link_to 'ログイン', new_user_session_path
+      li
+        | メニュー03
 
     = form_with url: spots_path do |f|
       .form_content.flex.flex-col
