@@ -7,7 +7,9 @@ Rails.application.routes.draw do
   devise_scope :user do
     get '/users/:id/edit', to: 'users/registrations#edit'
     patch '/users/:id', to: 'users/registrations#update'
+    delete '/users/:id/avatar', to: 'users/registrations#avatar_destroy'
   end
+
   resources :maps
   resources :spots
   resources :users

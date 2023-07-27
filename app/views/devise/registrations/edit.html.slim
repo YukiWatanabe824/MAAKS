@@ -9,6 +9,9 @@ h2
   .field
     = f.label :avatar, "プロフ画像"
     = f.file_field :avatar
+    br
+    - if current_user.avatar.attached?
+      = link_to "プロフ画像を削除する", "/users/#{@user.id}/avatar", action: 'users/registrations#avatar_destroy', data: { turbo_method: :delete }
   .field
     = f.label :email
     = f.email_field :email, autofocus: true, autocomplete: "email"
