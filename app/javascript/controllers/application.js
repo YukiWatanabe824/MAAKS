@@ -26,7 +26,7 @@ document.addEventListener("turbo:load", function () {
         container: "map", // container ID
         style: "mapbox://styles/yukiwatanabe/cljqcpwss004501oc6qhs4rek", // style URL
         center: [139.791003, 35.777343], // starting position [lng, lat]
-        zoom: 14, // starting zoom
+        zoom: 12, // starting zoom
       });
       // create geocoder
       map.addControl(
