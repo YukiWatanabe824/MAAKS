@@ -5,6 +5,10 @@
   .flex.justify-between.items-center
     h1.font-bold.text-4xl
       | Users
-    = link_to 'New user', new_user_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium"
-  #users.min-w-full
+    = link_to 'New user', new_user_registration_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium"
+  #users.min-w-full.h-auto.flex.flex-col
     = render @users
+  - if user_signed_in?
+    = link_to 'ログアウト', destroy_user_session_path, data: { turbo_method: :delete}
+  - else
+    = link_to 'ログイン', new_user_session_path

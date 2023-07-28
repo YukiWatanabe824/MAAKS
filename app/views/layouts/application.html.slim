@@ -11,10 +11,23 @@ html
     = javascript_importmap_tags
     = stylesheet_link_tag  "https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css", "data-turbo-track": "reload"
     = stylesheet_link_tag  "https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.2/mapbox-gl-geocoder.css", "data-turbo-track": "reload"
-    script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.2/mapbox-gl-geocoder.min.js"
-    script src="https://unpkg.com/@mapbox/mapbox-sdk/umd/mapbox-sdk.min.js"
+    script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.2/mapbox-gl-geocoder.min.js", "data-turbo-track": "reload"
+    script src="https://unpkg.com/@mapbox/mapbox-sdk/umd/mapbox-sdk.min.js", "data-turbo-track": "reload"
 
   body
-  h1 MAAKS
-  main.container.h-screen.w-full.flex
-      = yield
+    p.notice
+      = notice
+    p.alert
+      = alert
+
+    .flex.justify-between
+      h1 
+        = link_to "MAAKS", root_path
+      = if user_signed_in?
+        p
+          | 「
+          span
+            = current_user.name
+          | 」としてログイン中
+    main.container.h-screen.w-full
+        = yield

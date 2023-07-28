@@ -1,7 +1,16 @@
-| <div id="
-= dom_id user
-| "> 
-- if action_name != "show"
+div id=user.id class="flex justify-start items-center m-3"
+  .avatar.mr-5
+    - if user.avatar.attached?
+      = image_tag user.avatar.variant(:thumb)
+    - else
+      .w-24.h-24.bg-green-200
+  ul.flex.flex-col.mr-5
+    li
+      = user.name
+    li
+      = user.id
+  - if action_name != "show"
   = link_to "Show this user", user, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium"
-  = link_to 'Edit this user', edit_user_path(user), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium"
+  - if user == current_user
+    = link_to 'Edit this user', edit_user_path(user), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium"
   hr.mt-6

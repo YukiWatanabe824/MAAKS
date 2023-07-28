@@ -15,63 +15,65 @@ mapboxgl.accessToken =
 
 const mapboxClient = mapboxSdk({ accessToken: mapboxgl.accessToken });
 
-fetch("/spots.json")
-  .then((response) => response.json())
-  .then((spots) => {
-    // データの取得後の処理
+document.addEventListener("turbo:load", function () {
+  fetch("/spots.json")
+    .then((response) => response.json())
+    .then((spots) => {
+      // データの取得後の処理
 
-    // マップを表示
-    const map = new mapboxgl.Map({
-      container: "map", // container ID
-      style: "mapbox://styles/yukiwatanabe/cljqcpwss004501oc6qhs4rek", // style URL
-      center: [139.791003, 35.777343], // starting position [lng, lat]
-      zoom: 14, // starting zoom
-    });
-    // create geocoder
-    map.addControl(
-      new MapboxGeocoder({
-        accessToken: mapboxgl.accessToken,
-        mapboxgl: mapboxgl,
-      })
-    );
-
-    // DBから取得したスポットの描画
-    for (const spot of spots) {
-      // create the popup
-      const popup = new mapboxgl.Popup({ offset: 25 }).setHTML(
-        `<div><h2>${spot.title}</h2><ul><li>${spot.accident_date}</li><li>${spot.accident_type}</li><li>${spot.contents}</li></ul></div>`
+      // マップを表示
+      const map = new mapboxgl.Map({
+        container: "map", // container ID
+        style: "mapbox://styles/yukiwatanabe/cljqcpwss004501oc6qhs4rek", // style URL
+        center: [139.791003, 35.777343], // starting position [lng, lat]
+        zoom: 12, // starting zoom
+      });
+      // create geocoder
+      map.addControl(
+        new MapboxGeocoder({
+          accessToken: mapboxgl.accessToken,
+          mapboxgl: mapboxgl,
+        })
       );
 
-      // create DOM element for the marker
-      const el = document.createElement("div");
-      el.id = "marker";
+      // DBから取得したスポットの描画
+      for (const spot of spots) {
+        // create the popup
+        const popup = new mapboxgl.Popup({ offset: 25 }).setHTML(
+          `<div><h2>${spot.title}</h2><ul><li>${spot.accident_date}</li><li>${spot.accident_type}</li><li>${spot.contents}</li></ul></div>`
+        );
 
-      // create the marker with popup
-      new mapboxgl.Marker()
-        .setLngLat([spot.longitude, spot.latitude])
-        .setPopup(popup)
-        .addTo(map);
-    }
-    let newMarker = ""
-    map.on("click", (e) => {
-      console.log(`座標は ${e.lngLat}`);
-      if (newMarker) {
-        newMarker.remove();
-        newMarker = new mapboxgl.Marker()
-          .setLngLat([e.lngLat.lng, e.lngLat.lat])
-          .addTo(map);
-      } else {
-        newMarker = new mapboxgl.Marker()
-          .setLngLat([e.lngLat.lng, e.lngLat.lat])
+        // create DOM element for the marker
+        const el = document.createElement("div");
+        el.id = "marker";
+
+        // create the marker with popup
+        new mapboxgl.Marker()
+          .setLngLat([spot.longitude, spot.latitude])
+          .setPopup(popup)
           .addTo(map);
       }
-      let formLatitude = document.querySelector("#latitude")
-      formLatitude.value = e.lngLat.lat
-      let formLongitude = document.querySelector("#longitude")
-      formLongitude.value = e.lngLat.lng
+      let newMarker = "";
+      map.on("click", (e) => {
+        console.log(`座標は ${e.lngLat}`);
+        if (newMarker) {
+          newMarker.remove();
+          newMarker = new mapboxgl.Marker()
+            .setLngLat([e.lngLat.lng, e.lngLat.lat])
+            .addTo(map);
+        } else {
+          newMarker = new mapboxgl.Marker()
+            .setLngLat([e.lngLat.lng, e.lngLat.lat])
+            .addTo(map);
+        }
+        let formLatitude = document.querySelector("#latitude");
+        formLatitude.value = e.lngLat.lat;
+        let formLongitude = document.querySelector("#longitude");
+        formLongitude.value = e.lngLat.lng;
+      });
+    })
+    .catch((error) => {
+      // エラーハンドリング
+      console.error(error);
     });
-  })
-  .catch((error) => {
-    // エラーハンドリング
-    console.error(error);
-  });
+});
