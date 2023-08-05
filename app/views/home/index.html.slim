@@ -5,8 +5,6 @@
         = link_to "ユーザーページ", users_path
       li
         = link_to 'ログイン', new_user_session_path
-      li
-        | メニュー03
 
     = form_with url: spots_path do |f|
       .form_content.flex.flex-col
@@ -28,7 +26,7 @@
 
           = f.hidden_field :longitude, value: ""
           = f.hidden_field :latitude, value: ""
-          = f.hidden_field :user_id, value: @user.id
+          = f.hidden_field :user_id, value: @user.id if current_user
 
       .btn
         = f.submit "保存する"

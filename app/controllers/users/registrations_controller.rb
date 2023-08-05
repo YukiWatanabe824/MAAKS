@@ -39,10 +39,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def avatar_destroy
     respond_to do |format|
       if @user.avatar.purge
-        format.html { redirect_to edit_user_path(@user), notice: '画像は削除されました' }
+        format.html { redirect_to edit_user_path(current_user), notice: '画像は削除されました' }
       else
         format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
   end
