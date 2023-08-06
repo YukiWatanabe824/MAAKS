@@ -3,7 +3,8 @@ class HomeController < ApplicationController
 
   # GET /users or /users.json
   def index
-    @user = User.find(577285198)
+    @users = User.all
+    @user = current_user if current_user
   end
 
   # GET /users/1 or /users/1.json
