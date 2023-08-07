@@ -1,0 +1,9 @@
+ul
+  - if @user.spot.present?
+    - @user.spot.each do |spot|
+      li
+        = spot.accident_date
+        = spot.title
+  - else
+    li
+      | 表示するものがありません
