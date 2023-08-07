@@ -2,7 +2,7 @@ doctype html
 html
   head
     title
-      | MAAKS
+      | MAAKS サイクリングの危ないスポットを「マークす」る
     meta[name="viewport" content="width=device-width,initial-scale=1"]
     = csrf_meta_tags
     = csp_meta_tag
@@ -14,15 +14,13 @@ html
     script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.2/mapbox-gl-geocoder.min.js", "data-turbo-track": "reload"
     script src="https://unpkg.com/@mapbox/mapbox-sdk/umd/mapbox-sdk.min.js", "data-turbo-track": "reload"
 
-  body
-    p.notice
-      = notice
-    p.alert
-      = alert
-
-    .flex.justify-between
-      h1
-        = link_to "MAAKS", root_path
+  body.h-screen
+    header.flex.justify-between
+      .title.flex.m-2.5
+        h1.font-bold.text-4xl
+          = link_to "MAAKS", root_path
+        span.self-end.ml-2
+          | サイクリングの危ないスポットを「マークす」る
       - if user_signed_in?
         ul
           li
@@ -33,6 +31,10 @@ html
         ul
           li
             = link_to "ログイン", new_user_session_path
+    .notification
+      p.notice
+        = notice
+      p.alert
+        = alert
 
-    main.container.h-screen.w-full
-        = yield
+    = yield

@@ -3,8 +3,8 @@ class HomeController < ApplicationController
 
   # GET /users or /users.json
   def index
-    @users = User.all
-    @user = current_user if current_user
+    @user = User.includes(:spot).find(current_user.id) if current_user
+    @spots = Spot.order(created_at: :desc)
   end
 
   # GET /users/1 or /users/1.json
