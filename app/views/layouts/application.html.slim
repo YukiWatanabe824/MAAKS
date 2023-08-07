@@ -15,26 +15,32 @@ html
     script src="https://unpkg.com/@mapbox/mapbox-sdk/umd/mapbox-sdk.min.js", "data-turbo-track": "reload"
 
   body.h-screen
-    header.flex.justify-between
+    header.flex.justify-between.items-center
       .title.flex.m-2.5
         h1.font-bold.text-4xl
           = link_to "MAAKS", root_path
         span.self-end.ml-2
           | サイクリングの危ないスポットを「マークす」る
-      - if user_signed_in?
-        ul
-          li
-            = link_to "ユーザー情報", user_path(@user)
-          li
-            = link_to "ログアウト", destroy_user_session_path, data: {turbo_method: :delete}
-      - else
-        ul
-          li
-            = link_to "ログイン", new_user_session_path
+      .user_header.flex
+        - if user_signed_in?
+          .avatar
+            - if @user.avatar.attached?
+              = image_tag @user.avatar.variant(resize: '48x48')
+            - else
+              .w-12.h-12.bg-green-200
+          ul
+            li
+              = link_to "マイページ", user_path(@user)
+            li
+              = link_to "ログアウト", destroy_user_session_path, data: {turbo_method: :delete}
+        - else
+          ul
+            li
+              = link_to "ログイン", new_user_session_path
     .notification
-      p.notice
+      p.rails_notice
         = notice
-      p.alert
+      p.rails_alert
         = alert
 
     = yield
