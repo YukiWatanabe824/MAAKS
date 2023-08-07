@@ -1,42 +1,47 @@
-h2
-  | Edit
-  = resource_name.to_s.humanize
-= form_with(model: @user, class: "contents" ) do |f|
-  = render "devise/shared/error_messages", resource: resource
-  .field
-    = f.label :name, "名前"
-    = f.text_field :name, autocomplete: "name"
-  .field
-    = f.label :avatar, "プロフ画像"
-    = f.file_field :avatar
-    br
-    - if current_user.avatar.attached?
-      = link_to "プロフ画像を削除する", "/users/#{@user.id}/avatar", action: 'users/registrations#avatar_destroy', data: { turbo_method: :delete }
-  .field
-    = f.label :email
-    = f.email_field :email, autofocus: true, autocomplete: "email"
-  - if devise_mapping.confirmable? && resource.pending_reconfirmation?
-    div
-      | Currently waiting confirmation for:
-      = resource.unconfirmed_email
-  .field
-    = f.label :password
-    | (leave blank if you don't want to change it)
-    = f.password_field :password, autocomplete: "new-password"
-    - if @minimum_password_length
-      | (
-      span
-        = @minimum_password_length
-      | 文字以上)
-  .field
-    = f.label :password_confirmation
-    = f.password_field :password_confirmation, autocomplete: "new-password"
-  .field
-    = f.label :current_password
-    | (we need your current password to confirm your changes)
-    = f.password_field :current_password, autocomplete: "current-password"
-  .actions
-    = f.submit "Update"
+.flex.flex-col.mx-auto.w-full.my-12
+  .user_info.mx-auto.flex.flex-col.items-center
+    h2.text-3xl.font-bold
+      | アカウント編集
+    = form_with(model: @user, class: "contents" ) do |f|
+      = render "devise/shared/error_messages", resource: resource
+      .user_avater.my-8
+        = f.label :avatar, class: "flex flex-col items-center"
+          - if @user.avatar.attached?
+            = image_tag @user.avatar.variant(resize_to_limit: [192, 192]), class: "rounded-full w-48 h-48"
+            = link_to "プロフィール画像を削除する", "/users/#{@user.id}/avatar", action: 'users/registrations#avatar_destroy', data: { turbo_method: :delete }
+          = f.file_field :avatar, class: "file-input file-input-bordered file-input-sm w-full max-w-xs"
+      .user_name.my-3.flex.flex-col.items-center
+        p.text-2xl.font-bold
+          | ユーザー名
+        = f.text_field :name, autocomplete: "#{@user.name}", class: "input input-bordered w-full max-w-xs"
+      .user_mail_address.my-3
+        p
+          | メールアドレス :
+        = f.email_field :email, autocomplete: "#{@user.email}", class: "input input-bordered w-full max-w-xs"
+      .user_created_at.my-3
+        p
+          | アカウント作成日時 : #{@user.created_at.year}年#{@user.created_at.month}月#{@user.created_at.day}日
+      .user_created_spot_count.my-3
+        p
+          - if @user.spot.present?
+            | ユーザーが作ったスポットの数 : #{@user.spot.length + 1}個
+          - else
+            | 登録したスポットの数 : 0個
+      .user_password.my-3
+        p
+          | 新しいパスワード :
+        = f.password_field :password, autocomplete: "新しいパスワード", class: "input input-bordered w-full max-w-xs"
+      .user_password_confirmation.my-3
+        p
+          | パスワード確認用再入力 :
+        = f.password_field :password_confirmation, autocomplete: "確認用再入力", class: "input input-bordered w-full max-w-xs"
+      .user_current_password.my-3
+        p
+          | 現在のパスワード :
+        = f.password_field :current_password, autocomplete: "現在のパスワード", class: "input input-bordered w-full max-w-xs"
+      .actions
+        = f.submit "Update", class: "btn"
 
-= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete
-= link_to "Back", :back
+    .user_menu.my-3
+      = link_to 'ユーザーページに戻る', user_path(@user)
+

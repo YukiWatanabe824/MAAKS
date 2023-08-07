@@ -1,10 +1,26 @@
-.mx-auto.md:w-2/3.w-full.flex
-  .mx-auto
-    - if notice.present?
-      p#notice.py-2.px-3.bg-green-50.mb-5.text-green-500.font-medium.rounded-lg.inline-block
-        = notice
-    = render @user
-    = link_to 'Edit this user', edit_user_path(@user), class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium"
-    .inline-block.ml-2
-      = button_to 'Destroy this user', user_path(@user), method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium"
-    = link_to 'Back to users', users_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium"
+.flex.flex-col.mx-auto.w-full.my-12
+  .user_info.mx-auto.flex.flex-col.items-center
+    h2.text-3xl.font-bold
+      | マイページ
+    .user_avater.w-48.h-48.rounded-full.bg-cyan-200.my-8
+      - if @user.avatar.attached?
+        = image_tag @user.avatar.variant(resize_to_limit: [192, 192]), class: "rounded-full w-48 h-48"
+    .user_name.my-3
+      p.text-2xl.font-bold
+        = @user.name
+    .user_mail_address.my-3
+      p
+        | メールアドレス : #{@user.email}
+    .user_created_at.my-3
+      p
+        | アカウント作成日時 : #{@user.created_at.year}年#{@user.created_at.month}月#{@user.created_at.day}日
+    .user_created_spot_count.my-3
+      p
+        - if @user.spot.present?
+          | ユーザーが作ったスポットの数 : #{@user.spot.length + 1}個
+        - else
+          | 登録したスポットの数 : 0個
+    .user_menu.my-3
+      = link_to 'Edit this user', edit_user_path(@user), class: "btn"
+      .inline-block.ml-2
+        = link_to 'Destroy this user', user_path(@user), data: {turbo_method: :delete}, class: "btn"
