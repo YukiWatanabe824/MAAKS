@@ -37,11 +37,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def avatar_destroy
+    @user.avatar.purge if @user.avatar.attached?
     respond_to do |format|
-      if @user.avatar.purge
-        format.html { redirect_to edit_user_path(current_user), notice: '画像は削除されました' }
+      if @user.avatar.attached?
+        format.html { render :show, status: :unprocessable_entity }
       else
-        format.html { render :new, status: :unprocessable_entity }
+        format.html { redirect_to edit_user_path(current_user), notice: '画像は削除されました' }
       end
     end
   end
