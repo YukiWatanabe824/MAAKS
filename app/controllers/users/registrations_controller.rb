@@ -22,11 +22,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to user_url(@user), notice: 'User was successfully created.' }
-        format.json { render :show, status: :created, location: @user }
+        format.html { redirect_to root_path, notice: 'User was successfully created.' }
       else
         format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -37,11 +35,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def avatar_destroy
+    @user.avatar.purge if @user.avatar.attached?
     respond_to do |format|
-      if @user.avatar.purge
-        format.html { redirect_to edit_user_path(current_user), notice: '画像は削除されました' }
+      if @user.avatar.attached?
+        format.html { render :show, status: :unprocessable_entity }
       else
-        format.html { render :new, status: :unprocessable_entity }
+        format.html { redirect_to edit_user_path(current_user), notice: '画像は削除されました' }
       end
     end
   end

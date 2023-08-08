@@ -1,0 +1,10 @@
+ul
+  - if @spots.present?
+    - @spots.each do |spot|
+      li.my-2
+        time.inline-block.w-32 datetime="#{spot.accident_date}"
+          | #{spot.accident_date.year}年#{spot.accident_date.month}月#{spot.accident_date.day}日
+        = spot.title
+  - else
+    li
+      | 表示するものがありません

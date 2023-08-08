@@ -1,35 +1,5 @@
-.main.flex.m-0.h-screen.w-screen
-  .menu.w-2/5.h-ful.bg-cyan-50.mr-0.5
-    ul.mb-3
-      li
-        = link_to "ユーザーページ", users_path
-      li
-        = link_to 'ログイン', new_user_session_path
+main.h-full.w-full.grid.grid-cols-5
+  aside.h-ful.bg-cyan-50.mr-0.5.col-span-1.p-3
+    = render "aside"
 
-    = form_with url: spots_path do |f|
-      .form_content.flex.flex-col
-        .form_menu.flex.flex-col
-          = f.label :title
-          = f.text_field :title
-
-        .form_menu.flex.flex-col
-          = f.label :accident_type
-          = f.text_field :accident_type
-
-        .form_menu.flex.flex-col
-          = f.label :contents
-          = f.text_field :contents
-
-        .form_menu.flex.flex-col
-          = f.label :accident_date
-          = f.date_field :accident_date, value: "2022-12-22"
-
-          = f.hidden_field :longitude, value: ""
-          = f.hidden_field :latitude, value: ""
-          = f.hidden_field :user_id, value: @user.id if current_user
-
-      .btn
-        = f.submit "保存する"
-
-
-  #map.w-4/5.h-ful
+  #map.h-ful.col-span-4

@@ -1,19 +1,15 @@
 .flex.flex-col.mx-auto.w-full.my-12
   .user_info.mx-auto.flex.flex-col.items-center
     h2.text-3xl.font-bold
-      | ログイン
-    = form_with(model: @user, class: "contents", url: session_path(resource_name) ) do |f|
+      | Forgot your password?
+    = form_with(model: @user, class: "contents", url: password_path(resource_name) ) do |f|
       = render "devise/shared/error_messages", resource: resource
       .user_mail_address.my-3
         p
           | メールアドレス :
         = f.email_field :email, autocomplete: "#{@user.email}", class: "input input-bordered w-full max-w-xs"
-      .user_password.my-3
-        p
-          | パスワード :
-        = f.password_field :password, autocomplete: "パスワード", class: "input input-bordered w-full max-w-xs"
       .actions
-        = f.submit "Sign in", class: "btn"
+        = f.submit "Send me reset password instructions", class: "btn"
 
     = render "devise/shared/links"
 
