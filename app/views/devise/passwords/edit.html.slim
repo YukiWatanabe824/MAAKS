@@ -1,25 +1,23 @@
-<h2>Change your password</h2>
+.flex.flex-col.mx-auto.w-full.my-12
+  .user_info.mx-auto.flex.flex-col.items-center
+    h2.text-3xl.font-bold
+      | Change your password
+    = form_with(model: @user, class: "contents", url: password_path(resource_name), data: { turbo_method: :put }) do |f|
+      = render "devise/shared/error_messages", resource: resource
+      = f.hidden_field :reset_password_token
+      .user_password.my-3
+        p
+          | 新しいパスワード :
+        = f.password_field :password, autocomplete: "新しいパスワード", class: "input input-bordered w-full max-w-xs"
+      .user_password_confirmation.my-3
+        p
+          | パスワード確認用再入力 :
+        = f.password_field :password_confirmation, autocomplete: "確認用再入力", class: "input input-bordered w-full max-w-xs"
+      .user_current_password.my-3
+      .actions
+        = f.submit "Sign up", class: "btn"
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "passwords/shared/error_messages", resource: resource %>
-  <%= f.hidden_field :reset_password_token %>
+    = render "devise/shared/links"
 
-  <div class="field">
-    <%= f.label :password, "New password" %><br />
-    <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> characters minimum)</em><br />
-    <% end %>
-    <%= f.password_field :password, autofocus: true, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation, "Confirm new password" %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Change my password" %>
-  </div>
-<% end %>
-
-<%= render "passwords/shared/links" %>
+    .user_menu.my-3
+      = link_to 'トップページに戻る', root_path
