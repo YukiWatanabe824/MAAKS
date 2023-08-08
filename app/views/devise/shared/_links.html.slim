@@ -1,4 +1,4 @@
-.flex.flex-col.mt-5
+.flex.flex-col.mt-5.items-center
   - if controller_name != 'sessions'
     = link_to "Log in", new_session_path(resource_name)
   - if devise_mapping.registerable? && controller_name != 'registrations'
