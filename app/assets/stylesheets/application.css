@@ -17,3 +17,45 @@
 aside {
   overflow-y: scroll;
 }
+
+.solid_icon{
+  position:absolute;
+}
+.solid_icon:before{
+  content:'';
+  position:absolute;
+  width:27px;
+  height:27px;
+  left:-13.5px;
+  top:-33px;
+  border:solid 2px;
+  background:currentColor;
+  border-radius:15px 15px 15px 0;
+  -webkit-transform:rotate(-45deg);
+      -ms-transform:rotate(-45deg);
+          transform:rotate(-45deg);
+  box-sizing:content-box;
+}
+.solid_icon:after{
+  content:'';
+  position:absolute;
+  left:-4px;
+  top:-24px;
+  width:12px;
+  height:12px;
+  background-color:white;
+  border-radius:6px;
+}
+/*マーカーの色のCSS*/
+.color_palette{
+  background-color:#3FB1CE;
+  color:#3FB1CE;
+  border-color:#3FB1CE;
+}
+
+#spot_menu {
+  display:block;
+  position:fixed;
+  left:0px;
+  top:0px;
+}
