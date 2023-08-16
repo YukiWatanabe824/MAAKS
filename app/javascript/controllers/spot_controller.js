@@ -4,8 +4,10 @@ import { Controller } from "@hotwired/stimulus";
 export default class extends Controller {
   static targets = [ "spot" ];
 
-  showSpotMenu(e) {
-    console.log(this.spotTarget.id);
+  setSpotInfo(){
+    const url = `spots/${this.spotTarget.id}`
+    Turbo.visit(url, { frame: 'drawer_menu' })
+  }
 
   showSpotMenu(e) {
     if (this.spotTarget.id == "new_spot_marker"){

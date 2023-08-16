@@ -9,6 +9,7 @@ class SpotsController < ApplicationController
 
   # GET /spots/1 or /spots/1.json
   def show
+    render partial: "show"
   end
 
   # GET /spots/new
