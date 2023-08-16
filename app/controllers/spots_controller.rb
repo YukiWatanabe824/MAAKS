@@ -44,7 +44,7 @@ class SpotsController < ApplicationController
       if @spot.update(spot_params)
         format.html { redirect_to root_path, notice: "Spot was successfully updated." }
       else
-        format.html { render :edit, status: :unprocessable_entity }
+        format.html { redirect_to root_path, status: :unprocessable_entity }
       end
     end
   end
