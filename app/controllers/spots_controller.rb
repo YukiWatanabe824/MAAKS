@@ -32,7 +32,7 @@ class SpotsController < ApplicationController
     respond_to do |format|
       if @spot.save
         format.turbo_stream
-        format.html { redirect_to root_path, notice: "Spot was successfully updated." }
+        format.html { redirect_to root_path, notice: "Spot was successfully created." }
       else
         format.html { render partial: "new_form", locals: { spot: @spot, user: @user }, status: :unprocessable_entity }
       end
@@ -41,11 +41,13 @@ class SpotsController < ApplicationController
 
   # PATCH/PUT /spots/1 or /spots/1.json
   def update
+    @user = current_user
     respond_to do |format|
       if @spot.update(spot_params)
+        format.turbo_stream
         format.html { redirect_to root_path, notice: "Spot was successfully updated." }
       else
-        format.html { redirect_to root_path, status: :unprocessable_entity }
+        format.html { render partial: "new_form", locals: { spot: @spot, user: @user }, status: :unprocessable_entity }
       end
     end
   end

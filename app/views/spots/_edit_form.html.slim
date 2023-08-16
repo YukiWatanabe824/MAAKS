@@ -1,4 +1,9 @@
 turbo-frame#drawer_menu
+  - if @spot.errors.any?
+    ul
+      - @spot.errors.full_messages.each do |msg|
+        li
+          = msg
   = form_with model: @spot, url: spot_path, class: "" do |f|
     .form_menu.flex.flex-col.my-4
       = f.label :title
@@ -16,7 +21,7 @@ turbo-frame#drawer_menu
       = f.hidden_field :longitude, value: @spot.longitude
       = f.hidden_field :latitude, value: @spot.latitude
       = f.hidden_field :user_id, value: @user.id if current_user
-    .btn.btn-neutral.my-4 data-turbo="false"
+    .btn.btn-neutral.my-4
       = f.submit "Update this spot", data: {turbo_method: :put}
   .spot_edit_and_destroy.my-3
     = link_to 'Return', spot_path(@spot), class: "btn my-2"
