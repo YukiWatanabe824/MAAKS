@@ -16,11 +16,13 @@ class SpotsController < ApplicationController
   def new
     @user = current_user
     @spot = Spot.new
-    render partial: "drawer_newspot_form"
+    render partial: "new_form"
   end
 
   # GET /spots/1/edit
   def edit
+    @user = current_user
+    render partial: "edit_form"
   end
 
   # POST /spots or /spots.json
@@ -40,11 +42,9 @@ class SpotsController < ApplicationController
   def update
     respond_to do |format|
       if @spot.update(spot_params)
-        format.html { redirect_to spot_url(@spot), notice: "Spot was successfully updated." }
-        format.json { render :show, status: :ok, location: @spot }
+        format.html { redirect_to root_path, notice: "Spot was successfully updated." }
       else
         format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @spot.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -66,7 +66,7 @@ class SpotsController < ApplicationController
     end
 
     def spot_params
-      params.permit(
+      params.require(:spot).permit(
         :title, :accident_type, :contents,
         :accident_date, :longitude, :latitude, :user_id
       )
