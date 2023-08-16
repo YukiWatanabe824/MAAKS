@@ -1,0 +1,17 @@
+turbo-frame#drawer_menu
+  .flex.flex-col.flex-wrap
+    h2.my-2
+      p.text-xl.font-bold
+        = @spot.title
+    ul.flex.flex-col.flex-wrap
+      li
+        | 発生日: #{@spot.accident_date.year}年#{@spot.accident_date.month}月#{@spot.accident_date.day}日
+      li
+        | 種別: #{@spot.accident_type}
+      li.text-lg.my-2
+        | #{@spot.contents}
+      li
+        | 投稿日: #{@spot.created_at.year}年#{@spot.created_at.month}月#{@spot.created_at.day}日
+    .spot_edit_and_destroy.my-3
+      = link_to 'Edit this spot', edit_spot_path(@spot), class: "btn my-2"
+      = link_to 'Destroy this spot', spot_path(@spot), data: {turbo_method: :delete}, class: "btn"
