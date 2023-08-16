@@ -36,8 +36,8 @@ export default class extends Controller {
   }
 
   setCoordinate(){
-    document.querySelector("#longitude").value = this.mapTarget.newMarker._lngLat.lng
-    document.querySelector("#latitude").value = this.mapTarget.newMarker._lngLat.lat
+    document.querySelector("#spot_longitude").value = this.mapTarget.newMarker._lngLat.lng
+    document.querySelector("#spot_latitude").value = this.mapTarget.newMarker._lngLat.lat
   }
 
   getSpots(map) {

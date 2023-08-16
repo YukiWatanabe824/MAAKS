@@ -1,5 +1,5 @@
 turbo-frame#drawer_menu data-controller="map"
-  = form_with url: spots_path, class: "" do |f|
+  = form_with model: @spot, url: spots_path, class: "" do |f|
     .form_menu.flex.flex-col.my-4
       = f.label :title
       = f.text_field :title, class: "input input-bordered w-full max-w-xs", placeholder: "概要を簡潔に書いてください"
