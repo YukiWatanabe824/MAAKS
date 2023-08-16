@@ -4,6 +4,7 @@ import mapboxgl from "mapbox-gl";
 // Connects to data-controller="map"
 export default class extends Controller {
   static targets = ["map", "drawer"];
+  static outlets = ["spot"]
   static values = {
     spotid: String,
   };
@@ -31,12 +32,12 @@ export default class extends Controller {
   }
 
   showDrawer() {
-    if (this.drawerTarget.checked){
-    } else {
-      document.querySelector("#longitude").value = this.mapTarget.newMarker._lngLat.lng
-      document.querySelector("#latitude").value = this.mapTarget.newMarker._lngLat.lng
-    }
     this.drawerTarget.checked = !this.drawerTarget.checked;
+  }
+
+  setCoordinate(){
+    document.querySelector("#longitude").value = this.mapTarget.newMarker._lngLat.lng
+    document.querySelector("#latitude").value = this.mapTarget.newMarker._lngLat.lat
   }
 
   getSpots(map) {
