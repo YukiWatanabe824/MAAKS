@@ -28,12 +28,13 @@ class SpotsController < ApplicationController
   # POST /spots or /spots.json
   def create
     @spot = Spot.new(spot_params)
+    @user = current_user
     respond_to do |format|
       if @spot.save
+        format.turbo_stream
         format.html { redirect_to root_path, notice: "Spot was successfully updated." }
       else
-        Rails.logger.error @spot.errors.full_messages
-        redirect_to root_path
+        format.html { render partial: "new_form", locals: { spot: @spot, user: @user }, status: :unprocessable_entity }
       end
     end
   end
