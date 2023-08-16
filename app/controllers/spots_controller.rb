@@ -13,7 +13,9 @@ class SpotsController < ApplicationController
 
   # GET /spots/new
   def new
+    @user = current_user
     @spot = Spot.new
+    render partial: "drawer_newspot_form"
   end
 
   # GET /spots/1/edit
@@ -23,12 +25,14 @@ class SpotsController < ApplicationController
   # POST /spots or /spots.json
   def create
     @spot = Spot.new(spot_params)
+    respond_to do |format|
       if @spot.save
-        redirect_to root_path
+        format.html { redirect_to root_path, notice: "Spot was successfully updated." }
       else
         Rails.logger.error @spot.errors.full_messages
         redirect_to root_path
       end
+    end
   end
 
   # PATCH/PUT /spots/1 or /spots/1.json

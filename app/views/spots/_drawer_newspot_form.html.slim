@@ -1,0 +1,20 @@
+turbo-frame#drawer_menu data-controller="map"
+  = form_with url: spots_path, class: "" do |f|
+    .form_menu.flex.flex-col.my-4
+      = f.label :title
+      = f.text_field :title, class: "input input-bordered w-full max-w-xs", placeholder: "概要を簡潔に書いてください"
+    .form_menu.flex.flex-col.my-4
+      = f.label :accident_type
+      = f.select :accident_type, [["物損事故", "物損事故"],["人身事故", "人身事故"], ["ヒヤリ・ハット", "ヒヤリ・ハット"], ["その他", "その他"]],     include_blank: true,  class: "select select-bordered w-full max-w-xs"
+    .form_menu.flex.flex-col.my-4
+      = f.label :contents
+      = f.text_area :contents, class: "textarea textarea-bordered h-52", placeholder: "事故の顛末を可能な範囲で詳細に記入してください"
+    .form_menu.flex.flex-col.my-4
+      = f.label :accident_date
+      = f.date_field :accident_date
+    .hidden_info
+      = f.hidden_field :longitude, value: ""
+      = f.hidden_field :latitude, value: ""
+      = f.hidden_field :user_id, value: @user.id if current_user
+    .btn.btn-neutral.my-4 data-action="click->map#setCoordinate" data-turbo="false"
+      = f.submit "保存する"
