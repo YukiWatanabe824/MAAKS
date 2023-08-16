@@ -51,11 +51,12 @@ class SpotsController < ApplicationController
 
   # DELETE /spots/1 or /spots/1.json
   def destroy
-    @spot.destroy
-
     respond_to do |format|
-      format.html { redirect_to spots_url, notice: "Spot was successfully destroyed." }
-      format.json { head :no_content }
+      if @spot.destroy
+        format.html { redirect_to root_path, notice: "Spot was successfully destroyed.", status: :see_other }
+      else
+        format.html { redirect_to root_path, status: :unprocessable_entity }
+      end
     end
   end
 
