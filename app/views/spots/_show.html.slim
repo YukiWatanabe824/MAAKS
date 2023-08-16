@@ -12,6 +12,7 @@ turbo-frame#drawer_menu
         | #{@spot.contents}
       li
         | 投稿日: #{@spot.created_at.year}年#{@spot.created_at.month}月#{@spot.created_at.day}日
-    .spot_edit_and_destroy.my-3
-      = link_to 'Edit this spot', edit_spot_path(@spot), class: "btn my-2"
-      = link_to 'Destroy this spot', spot_path(@spot), data: {turbo_method: :delete}, class: "btn"
+    - if @spot.user == current_user
+      .spot_edit_and_destroy.my-3
+        = link_to 'Edit this spot', edit_spot_path(@spot), class: "btn my-2"
+        = link_to 'Destroy this spot', spot_path(@spot), data: {turbo_method: :delete}, class: "btn"
