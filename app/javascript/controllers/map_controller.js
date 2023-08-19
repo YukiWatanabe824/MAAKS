@@ -3,7 +3,7 @@ import mapboxgl from "mapbox-gl";
 
 // Connects to data-controller="map"
 export default class extends Controller {
-  static targets = ["map", "drawer"];
+  static targets = ["map"];
   static outlets = ["spot"]
   static values = {
     spotid: String,
@@ -31,15 +31,6 @@ export default class extends Controller {
     document.querySelector("#spot_menu").remove()
   }
 
-  showDrawer() {
-    this.drawerTarget.checked = !this.drawerTarget.checked;
-  }
-
-  setCoordinate(){
-    document.querySelector("#spot_longitude").value = this.mapTarget.newMarker._lngLat.lng
-    document.querySelector("#spot_latitude").value = this.mapTarget.newMarker._lngLat.lat
-  }
-
   getSpots(map) {
     fetch("/spots.json")
       .then((response) => response.json())
@@ -52,7 +43,7 @@ export default class extends Controller {
           el.className = "spot_marker color_palette solid_icon";
           el.setAttribute("data-controller", "spot");
           el.setAttribute("data-spot-target", "spot");
-          el.setAttribute("data-action", "click->map#showDrawer click->spot#setSpotInfo");
+          el.setAttribute("data-action", "click->spot#setSpotInfo");
           // create the marker with popup
           new mapboxgl.Marker({
             element: el,

@@ -1,11 +1,7 @@
 main.h-full.w-full.grid.grid-cols-5
-  aside.h-ful.bg-cyan-50.mr-0.5.col-span-1.p-3
-    = render "aside"
+  aside.h-ful.bg-cyan-50.mr-0.5.col-span-1.p-3 data-controller="side-menu" data-side-menu-map-outlet="#map"
+    = turbo_frame_tag 'side_menu' do
+      = render "aside"
+      = render "aside_infomation_list"
 
   #map.h-ful.col-span-4 data-controller="map" data-map-target="map" data-map-spot-outlet=".spot_marker" data-action="click->map#getCoordinates click->map#deleteSpotMenu"
-    .drawer
-      input#my-drawer.drawer-toggle type="checkbox" data-map-target="drawer"
-      .drawer-side.z-50
-        label.drawer-overlay for="my-drawer"
-        .menu.p-4.w-80.h-full.bg-white.text-base-content
-          turbo-frame#drawer_menu

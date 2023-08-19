@@ -1,4 +1,4 @@
-= turbo_frame_tag 'drawer_menu' do
+= turbo_frame_tag 'side_menu' do
   - if @spot.errors.any?
     ul
       - @spot.errors.full_messages.each do |msg|
@@ -27,5 +27,5 @@
       = f.hidden_field :longitude, value: ""
       = f.hidden_field :latitude, value: ""
       = f.hidden_field :user_id, value: @user.id if current_user
-    .btn.btn-neutral.my-4 data-action="click->map#setCoordinate"
+    .btn.btn-neutral.my-4 data-action="click->side-menu#setCoordinate"
       = f.submit "保存する"
