@@ -1,0 +1,18 @@
+= turbo_frame_tag 'side_menu' do
+  .flex.flex-col.flex-wrap
+    h2.my-2
+      p.text-xl.font-bold
+        = @spot.title
+    ul.flex.flex-col.flex-wrap
+      li
+        | 発生日: #{@spot.accident_date.year}年#{@spot.accident_date.month}月#{@spot.accident_date.day}日
+      li
+        | 種別: #{@spot.accident_type}
+      li.text-lg.my-2
+        | #{@spot.contents}
+      li
+        | 投稿日: #{@spot.created_at.year}年#{@spot.created_at.month}月#{@spot.created_at.day}日
+    - if @spot.user == current_user
+      .spot_edit_and_destroy.my-3
+        = link_to 'Edit this spot', edit_spot_path(@spot), class: "btn my-2"
+        = button_to 'Destroy this spot', spot_path(@spot), method: :delete, form: { data: { turbo_confirm: "本当に削除しますか？", turbo_frame: '_top' } }, class: "btn"

@@ -1,5 +1,4 @@
 - if user_signed_in?
-  / = render "addspot"
   section.spot_list.mt-1.mb-5
     .my_spot_list.mt-5.mb-5
       .collapse.bg-base-200
@@ -32,11 +31,3 @@
             | 地図上のスポットを追加したい地点で右クリック
           li
             | 追加するを選択するとメニューが表示されるので記入して投稿
-.infomation
-  ul
-    li
-      = link_to "about service", root_path
-    li
-      = link_to "利用規約", root_path
-    li
-      = link_to "開発者のブログ", root_path
