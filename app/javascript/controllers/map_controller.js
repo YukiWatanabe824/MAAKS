@@ -4,31 +4,35 @@ import mapboxgl from "mapbox-gl";
 // Connects to data-controller="map"
 export default class extends Controller {
   static targets = ["map"];
-  static outlets = ["spot"]
+  static outlets = ["spot"];
   static values = {
     spotid: String,
   };
 
   connect() {
-    mapboxgl.accessToken = 'pk.eyJ1IjoieXVraXdhdGFuYWJlIiwiYSI6ImNsamx3NmQ2NzEwZTczZXBwOTUzbDE5amsifQ.ep62YrWWsdT4HtVFLVA-Og';
+    mapboxgl.accessToken =
+      "pk.eyJ1IjoieXVraXdhdGFuYWJlIiwiYSI6ImNsamx3NmQ2NzEwZTczZXBwOTUzbDE5amsifQ.ep62YrWWsdT4HtVFLVA-Og";
     // マップを表示
     this.mapTarget.mapbox = new mapboxgl.Map({
       container: "map", // container ID
-      style: 'mapbox://styles/yukiwatanabe/cljqcpwss004501oc6qhs4rek', // style URL
+      style: "mapbox://styles/yukiwatanabe/cljqcpwss004501oc6qhs4rek", // style URL
       center: [139.791003, 35.777343], // starting position [lng, lat]
       zoom: 12, // starting zoom
     });
     this.createGeoCorder(this.mapTarget.mapbox);
     this.getSpots(this.mapTarget.mapbox);
-    this.createMarker()
+    this.createMarker();
   }
 
-  zoomedMap(){
+  zoomedMap() {
     this.mapTarget.mapbox.jumpTo({
-      center: [this.mapTarget.newMarker._lngLat.lng,this.mapTarget.newMarker._lngLat.lat],
-      zoom: (this.mapTarget.mapbox.getZoom() + 1)
-    })
-    document.querySelector("#spot_menu").remove()
+      center: [
+        this.mapTarget.newMarker._lngLat.lng,
+        this.mapTarget.newMarker._lngLat.lat,
+      ],
+      zoom: this.mapTarget.mapbox.getZoom() + 1,
+    });
+    document.querySelector("#spot_menu").remove();
   }
 
   getSpots(map) {
@@ -80,18 +84,18 @@ export default class extends Controller {
       }
       this.mapTarget.newMarker = new mapboxgl.Marker({
         draggable: true,
-        color: "#cf5d40"
-      })
+        color: "#cf5d40",
+      });
 
-      const el = this.mapTarget.newMarker.getElement()
-      el.id = "new_spot_marker"
+      const el = this.mapTarget.newMarker.getElement();
+      el.id = "new_spot_marker";
       el.setAttribute("data-controller", "spot");
       el.setAttribute("data-spot-target", "spot");
       el.setAttribute("data-action", "contextmenu->spot#showSpotMenu");
 
       this.mapTarget.newMarker
-      .setLngLat([e.lngLat.lng, e.lngLat.lat])
-      .addTo(this.mapTarget.mapbox);
+        .setLngLat([e.lngLat.lng, e.lngLat.lat])
+        .addTo(this.mapTarget.mapbox);
     });
   }
 

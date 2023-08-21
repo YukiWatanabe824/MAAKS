@@ -2,15 +2,15 @@ import { Controller } from "@hotwired/stimulus";
 
 // Connects to data-controller="spot"
 export default class extends Controller {
-  static targets = [ "spot" ];
+  static targets = ["spot"];
 
-  setSpotInfo(){
-    const url = `spots/${this.spotTarget.id}`
-    Turbo.visit(url, { frame: 'side_menu' })
+  setSpotInfo() {
+    const url = `spots/${this.spotTarget.id}`;
+    Turbo.visit(url, { frame: "side_menu" });
   }
 
   showSpotMenu(e) {
-    if (this.spotTarget.id == "new_spot_marker"){
+    if (this.spotTarget.id == "new_spot_marker") {
       this.spotTarget.menu = document.createElement("div");
       const menu = this.spotTarget.menu;
       menu.id = `spot_menu`;
