@@ -10,12 +10,11 @@ export default class extends Controller {
   };
 
   connect() {
-    mapboxgl.accessToken =
-      "pk.eyJ1IjoieXVraXdhdGFuYWJlIiwiYSI6ImNsamx3NmQ2NzEwZTczZXBwOTUzbDE5amsifQ.ep62YrWWsdT4HtVFLVA-Og";
+    mapboxgl.accessToken = 'pk.eyJ1IjoieXVraXdhdGFuYWJlIiwiYSI6ImNsamx3NmQ2NzEwZTczZXBwOTUzbDE5amsifQ.ep62YrWWsdT4HtVFLVA-Og';
     // マップを表示
     this.mapTarget.mapbox = new mapboxgl.Map({
       container: "map", // container ID
-      style: "mapbox://styles/yukiwatanabe/cljqcpwss004501oc6qhs4rek", // style URL
+      style: 'mapbox://styles/yukiwatanabe/cljqcpwss004501oc6qhs4rek', // style URL
       center: [139.791003, 35.777343], // starting position [lng, lat]
       zoom: 12, // starting zoom
     });
