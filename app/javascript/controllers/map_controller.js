@@ -20,6 +20,7 @@ export default class extends Controller {
     });
     this.createGeoCorder(this.mapTarget.mapbox);
     this.getSpots(this.mapTarget.mapbox);
+    this.createMarker()
   }
 
   zoomedMap(){
