@@ -1,0 +1,43 @@
+= turbo_frame_tag 'user_frame' do
+  = form_with(model: @user, class: 'contents') do |f|
+    = render 'devise/shared/error_messages', resource: resource
+    .user_avater.my-8
+      = f.label :avatar, class: 'flex flex-col items-center'
+        - if @user.avatar.attached?
+          = link_to 'プロフィール画像を削除する', "/users/#{@user.id}/avatar", action: 'users/registrations#avatar_destroy', data: { turbo_method: :delete }
+        = f.file_field :avatar, class: 'file-input file-input-bordered file-input-sm w-full max-w-xs'
+    .user_name.my-3.flex.flex-col.items-center
+      p.text-2xl.font-bold
+        | ユーザー名
+      = f.text_field :name, autocomplete: @user.name.to_s, class: 'input input-bordered w-full max-w-xs'
+    .user_mail_address.my-3
+      p
+        | メールアドレス :
+      = f.email_field :email, autocomplete: @user.email.to_s, class: 'input input-bordered w-full max-w-xs'
+    .user_created_at.my-3
+      p
+        | アカウント作成日時 : #{@user.created_at.year}年#{@user.created_at.month}月#{@user.created_at.day}日
+    .user_created_spot_count.my-3
+      p
+        - if @user.spot.present?
+          | ユーザーが作ったスポットの数 : #{@user.spot.length + 1}個
+        - else
+          | 登録したスポットの数 : 0個
+    .user_password.my-3
+      p
+        | 新しいパスワード :
+      = f.password_field :password, autocomplete: '新しいパスワード', class: 'input input-bordered w-full max-w-xs'
+    .user_password_confirmation.my-3
+      p
+        | パスワード確認用再入力 :
+      = f.password_field :password_confirmation, autocomplete: '確認用再入力', class: 'input input-bordered w-full max-w-xs'
+    .user_current_password.my-3
+      p
+        | 現在のパスワード :
+      = f.password_field :current_password, autocomplete: '現在のパスワード', class: 'input input-bordered w-full max-w-xs'
+    .actions
+      = f.submit 'Update', class: 'btn'
+      .inline-block.ml-2
+        = link_to 'ユーザーページに戻る', user_path(@user), class: 'btn'
+
+
