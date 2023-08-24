@@ -4,24 +4,25 @@
       | マイページ
     .user_avater.w-48.h-48.rounded-full.bg-cyan-200.my-8
       - if @user.avatar.attached?
-        = image_tag @user.avatar.variant(resize_to_limit: [192, 192]), class: `rounded-full w-48 h-48`
+        = image_tag @user.avatar.variant(resize_to_limit: [192, 192]), class: 'rounded-full w-48 h-48'
     = turbo_frame_tag 'user_frame' do
-      .user_name.my-3
-        p.text-2xl.font-bold
-          = @user.name
-      .user_mail_address.my-3
-        p
-          | メールアドレス : #{@user.email}
-      .user_created_at.my-3
-        p
-          | アカウント作成日時 : #{@user.created_at.year}年#{@user.created_at.month}月#{@user.created_at.day}日
-      .user_created_spot_count.my-3
-        p
-          - if @user.spot.present?
-            | 登録したスポットの数 : #{@user.spot.length + 1}個
-          - else
-            | 登録したスポットの数 : 0個
-      .user_menu.my-3
-        = link_to 'Edit this user', { controller: 'users/registrations', action: 'edit' }, class: 'btn'
-        .inline-block.ml-2
-          = link_to 'Destroy this user', user_path(@user), data: { turbo_method: :delete }, class: `btn`
+      .flex.flex-col.items-center
+        .user_name.my-3
+          p.text-2xl.font-bold
+            = @user.name
+        .user_mail_address.my-3
+          p
+            | メールアドレス : #{@user.email}
+        .user_created_at.my-3
+          p
+            | アカウント作成日時 : #{@user.created_at.year}年#{@user.created_at.month}月#{@user.created_at.day}日
+        .user_created_spot_count.my-3
+          p
+            - if @user.spot.present?
+              | 登録したスポットの数 : #{@user.spot.length + 1}個
+            - else
+              | 登録したスポットの数 : 0個
+        .user_menu.my-3
+          = link_to 'Edit this user', { controller: 'users/registrations', action: 'edit' }, class: 'btn'
+          .inline-block.ml-2
+            = button_to 'Destroy this user', user_registration_path, method: :delete, form: { data: { turbo_confirm: "本当に削除しますか？", turbo_frame: '_top' } }, class: 'btn'

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Users::RegistrationsController < Devise::RegistrationsController
-  before_action :set_user, only: %i[show update destroy avatar_destroy]
+  before_action :set_user, only: %i[show update avatar_destroy]
   before_action :configure_sign_up_params, only: [:create]
   before_action :configure_account_update_params, only: [:update]
 
@@ -43,6 +43,16 @@ class Users::RegistrationsController < Devise::RegistrationsController
         format.html { render :show, status: :unprocessable_entity }
       else
         format.html { redirect_to edit_user_path(current_user), notice: '画像は削除されました' }
+      end
+    end
+  end
+
+  def destroy
+    respond_to do |format|
+      if @user.destroy
+        format.html { redirect_to root_path, notice: 'User was successfully destroyed.', status: :see_other }
+      else
+        format.html { redirect_to root_path, status: :unprocessable_entity }
       end
     end
   end
