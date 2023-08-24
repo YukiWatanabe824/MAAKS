@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Users::RegistrationsController < Devise::RegistrationsController
-  before_action :set_user, only: %i[show edit update destroy avatar_destroy]
+  before_action :set_user, only: %i[show update destroy avatar_destroy]
   before_action :configure_sign_up_params, only: [:create]
   before_action :configure_account_update_params, only: [:update]
 
@@ -9,7 +9,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @user = User.new
   end
 
-  def edit; end
+  def edit
+    render partial: 'edit_form'
+  end
 
   def update_resource(resource, params)
     return super if params['password'].present?
