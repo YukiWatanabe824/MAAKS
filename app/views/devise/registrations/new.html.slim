@@ -2,41 +2,32 @@
   .user_info.mx-auto.flex.flex-col.items-center
     h2.text-3xl.font-bold
       | アカウント登録
-    = form_with(model: @user, class: "contents" ) do |f|
-      = render "devise/shared/error_messages", resource: resource
+    = form_with(model: @user, url: user_registration_path, class: 'contents') do |f|
+      = render 'devise/shared/error_messages', resource: resource
       .user_avater.my-8
-        = f.label :avatar, class: "flex flex-col items-center"
-          - if @user.avatar.attached?
-            = image_tag @user.avatar.variant(resize_to_limit: [192, 192]), class: "rounded-full w-48 h-48"
-            = link_to "プロフィール画像を削除する", "/users/#{@user.id}/avatar", action: 'users/registrations#avatar_destroy', data: { turbo_method: :delete }
-          - else
-            .default_avater.w-48.h-48.rounded-full.bg-cyan-200.my-8
-            p
-              | プロフィール画像
-          = f.file_field :avatar, class: "file-input file-input-bordered file-input-sm w-full max-w-xs"
+        = f.label :avatar, class: 'flex flex-col items-center'
+          p
+            | プロフィール画像
+          = f.file_field :avatar, class: 'file-input file-input-bordered file-input-sm w-full max-w-xs'
       .user_name.my-3.flex.flex-col.items-center
         p.text-2xl.font-bold
           | ユーザー名
-        = f.text_field :name, autocomplete: "#{@user.name}", class: "input input-bordered w-full max-w-xs"
+        = f.text_field :name, autocomplete: "#{@user.name}", class: 'input input-bordered w-full max-w-xs'
       .user_mail_address.my-3
         p
           | メールアドレス :
-        = f.email_field :email, autocomplete: "#{@user.email}", class: "input input-bordered w-full max-w-xs"
+        = f.email_field :email, autocomplete: "#{@user.email}", class: 'input input-bordered w-full max-w-xs'
       .user_password.my-3
         p
           | パスワード :
-        = f.password_field :password, autocomplete: "パスワード", class: "input input-bordered w-full max-w-xs"
+        = f.password_field :password, autocomplete: 'パスワード', class: 'input input-bordered w-full max-w-xs'
       .user_password_confirmation.my-3
         p
           | パスワード確認用再入力 :
-        = f.password_field :password_confirmation, autocomplete: "確認用再入力", class: "input input-bordered w-full max-w-xs"
+        = f.password_field :password_confirmation, autocomplete: '確認用再入力', class: 'input input-bordered w-full max-w-xs'
       .user_current_password.my-3
       .actions
-        = f.submit "Sign up", class: "btn"
-
-    = render "devise/shared/links"
-
+        = f.submit 'Sign up', class: 'btn'
+    = render 'devise/shared/links'
     .user_menu.my-3
       = link_to 'トップページに戻る', root_path
-
-
