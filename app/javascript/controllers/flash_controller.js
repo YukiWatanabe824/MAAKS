@@ -2,9 +2,9 @@ import { Controller } from "@hotwired/stimulus";
 
 export default class extends Controller {
   static targets = ["flash"];
-  // connect() {
-  //   setTimeout(() => {
-  //     this.flashTarget.remove();
-  //   }, "5000");
-  // }
+  connect() {
+    setTimeout(() => {
+      this.flashTarget.remove();
+    }, "5000");
+  }
 }
