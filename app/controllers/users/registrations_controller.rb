@@ -1,7 +1,9 @@
 # frozen_string_literal: true
 
 class Users::RegistrationsController < Devise::RegistrationsController
-  before_action :set_user, only: %i[show edit update destroy avatar_destroy]
+  before_action :authenticate_user!, except: %i[new create build_resource configure_sign_up_params]
+  before_action :redirect_if_different_user, except: %i[new create build_resource configure_sign_up_params]
+  before_action :set_user, only: %i[update avatar_destroy]
   before_action :configure_sign_up_params, only: [:create]
   before_action :configure_account_update_params, only: [:update]
 
@@ -9,7 +11,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @user = User.new
   end
 
-  def edit; end
+  def edit
+    render partial: 'edit_form'
+  end
 
   def update_resource(resource, params)
     return super if params['password'].present?
@@ -45,6 +49,16 @@ class Users::RegistrationsController < Devise::RegistrationsController
     end
   end
 
+  def destroy
+    respond_to do |format|
+      if @user.destroy
+        format.html { redirect_to root_path, notice: 'User was successfully destroyed.', status: :see_other }
+      else
+        format.html { redirect_to root_path, status: :unprocessable_entity }
+      end
+    end
+  end
+
   protected
 
   def after_update_path_for(resource)
@@ -63,5 +77,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def configure_account_update_params
     devise_parameter_sanitizer.permit(:account_update, keys: %i[name avatar current_password])
+  end
+
+  def redirect_if_different_user
+    redirect_to root_path if current_user != User.find(params[:id])
   end
 end

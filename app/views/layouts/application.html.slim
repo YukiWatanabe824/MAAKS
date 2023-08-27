@@ -15,6 +15,8 @@ html
     script src="https://unpkg.com/@mapbox/mapbox-sdk/umd/mapbox-sdk.min.js", "data-turbo-track": "reload"
 
   body.h-screen
+    #flash.w-full
+      = render 'flash'
     header.flex.justify-between.items-center
       .title.flex.m-2.5
         h1.font-bold.text-4xl
@@ -39,10 +41,5 @@ html
               = link_to "ログイン", new_user_session_path
             li
               = link_to "アカウント作成", new_user_registration_path
-    .notification
-      p.rails_notice
-        = notice
-      p.rails_alert
-        = alert
 
     = yield
