@@ -4,7 +4,7 @@
       | アカウント登録
     = form_with(model: @user, url: user_registration_path, class: 'contents') do |f|
       = render 'devise/shared/error_messages', resource: resource
-      .user_avater.my-8
+      .user_avatar.my-8
         = f.label :avatar, class: 'flex flex-col items-center'
           p
             | プロフィール画像

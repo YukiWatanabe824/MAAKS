@@ -4,13 +4,13 @@
       | アカウント編集
     = form_with(model: @user, class: "contents" ) do |f|
       = render "devise/shared/error_messages", resource: resource
-      .user_avater.my-8
+      .user_avatar.my-8
         = f.label :avatar, class: "flex flex-col items-center"
           - if @user.avatar.attached?
             = image_tag @user.avatar.variant(resize_to_limit: [192, 192]), class: "rounded-full w-48 h-48"
             = link_to "プロフィール画像を削除する", "/users/#{@user.id}/avatar", action: 'users/registrations#avatar_destroy', data: { turbo_method: :delete }
           - else
-            .default_avater.w-48.h-48.rounded-full.bg-cyan-200.my-8
+            .default_avatar.w-48.h-48.rounded-full.bg-cyan-200.my-8
           = f.file_field :avatar, class: "file-input file-input-bordered file-input-sm w-full max-w-xs"
       .user_name.my-3.flex.flex-col.items-center
         p.text-2xl.font-bold
