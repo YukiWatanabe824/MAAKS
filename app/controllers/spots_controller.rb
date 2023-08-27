@@ -29,9 +29,9 @@ class SpotsController < ApplicationController
     respond_to do |format|
       if @spot.save
         format.turbo_stream
-        format.html { redirect_to root_path, notice: 'Spot was successfully created.' }
+        format.html { redirect_to root_path, notice: 'スポットを作成しました！' }
       else
-        format.html { render partial: 'new_form', locals: { spot: @spot, user: @user }, status: :unprocessable_entity }
+        format.html { render partial: 'new_form', locals: { spot: @spot, user: @user }, status: :unprocessable_entity, alert: 'スポットを作成できませんでした' }
       end
     end
   end
@@ -41,9 +41,9 @@ class SpotsController < ApplicationController
     respond_to do |format|
       if @spot.update(spot_params)
         format.turbo_stream
-        format.html { redirect_to root_path, notice: 'Spot was successfully updated.' }
+        format.html { redirect_to root_path, notice: 'スポットを更新しました！' }
       else
-        format.html { render partial: 'new_form', locals: { spot: @spot, user: @user }, status: :unprocessable_entity }
+        format.html { render partial: 'new_form', locals: { spot: @spot, user: @user }, status: :unprocessable_entity, alert: 'スポットを更新できませんでした' }
       end
     end
   end
@@ -51,9 +51,9 @@ class SpotsController < ApplicationController
   def destroy
     respond_to do |format|
       if @spot.destroy
-        format.html { redirect_to root_path, notice: 'Spot was successfully destroyed.', status: :see_other }
+        format.html { redirect_to root_path, notice: 'スポットを削除しました', status: :see_other }
       else
-        format.html { redirect_to root_path, status: :unprocessable_entity }
+        format.html { redirect_to root_path, status: :unprocessable_entity, alert: 'スポットを削除できませんでした' }
       end
     end
   end
