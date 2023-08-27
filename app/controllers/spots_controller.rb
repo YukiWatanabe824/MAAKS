@@ -40,6 +40,7 @@ class SpotsController < ApplicationController
     @user = current_user
     respond_to do |format|
       if @spot.update(spot_params)
+        flash.now.notice = "スポットを更新しました！"
         format.turbo_stream
         format.html { redirect_to root_path, notice: 'スポットを更新しました！' }
       else

@@ -15,7 +15,7 @@ html
     script src="https://unpkg.com/@mapbox/mapbox-sdk/umd/mapbox-sdk.min.js", "data-turbo-track": "reload"
 
   body.h-screen
-    .notification.w-full data-controller="flash" data-flash-target="flash"
+    #flash.notification.w-full data-controller="flash" data-flash-target="flash"
       = render 'flash'
     header.flex.justify-between.items-center
       .title.flex.m-2.5
