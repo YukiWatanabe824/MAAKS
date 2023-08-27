@@ -28,6 +28,7 @@ class SpotsController < ApplicationController
     @user = current_user
     respond_to do |format|
       if @spot.save
+        flash.now.notice = "スポットを作成しました！"
         format.turbo_stream
         format.html { redirect_to root_path, notice: 'スポットを作成しました！' }
       else
