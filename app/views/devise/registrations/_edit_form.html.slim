@@ -23,18 +23,19 @@
           | ユーザーが作ったスポットの数 : #{@user.spot.length + 1}個
         - else
           | 登録したスポットの数 : 0個
-    .user_password.my-3
-      p
-        | 新しいパスワード :
-      = f.password_field :password, autocomplete: '新しいパスワード', class: 'input input-bordered w-full max-w-xs'
-    .user_password_confirmation.my-3
-      p
-        | パスワード確認用再入力 :
-      = f.password_field :password_confirmation, autocomplete: '確認用再入力', class: 'input input-bordered w-full max-w-xs'
-    .user_current_password.my-3
-      p
-        | 現在のパスワード :
-      = f.password_field :current_password, autocomplete: '現在のパスワード', class: 'input input-bordered w-full max-w-xs'
+    - if !@user.provider.presence
+      .user_password.my-3
+        p
+          | 新しいパスワード :
+        = f.password_field :password, autocomplete: '新しいパスワード', class: 'input input-bordered w-full max-w-xs'
+      .user_password_confirmation.my-3
+        p
+          | パスワード確認用再入力 :
+        = f.password_field :password_confirmation, autocomplete: '確認用再入力', class: 'input input-bordered w-full max-w-xs'
+      .user_current_password.my-3
+        p
+          | 現在のパスワード :
+        = f.password_field :current_password, autocomplete: '現在のパスワード', class: 'input input-bordered w-full max-w-xs'
     .actions
       = f.submit 'Update', class: 'btn'
       .inline-block.ml-2
