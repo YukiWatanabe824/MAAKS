@@ -2,10 +2,12 @@
   .user_info.mx-auto.flex.flex-col.items-center
     h2.text-3xl.font-bold
       | マイページ
-    .user_avatar.w-48.h-48.rounded-full.bg-cyan-200.my-8
+    .user_avatar
       - if @user.avatar.attached?
         = image_tag @user.avatar.variant(resize_to_limit: [192, 192]), class: 'rounded-full w-48 h-48'
-    = turbo_frame_tag 'user_frame' do
+      - else
+        = render 'layouts/default_user_icon', locals: { view: 'show' }
+
       .flex.flex-col.items-center
         .user_name.my-3
           p.text-2xl.font-bold
