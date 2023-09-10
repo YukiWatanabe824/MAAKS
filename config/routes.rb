@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
   resources :maps
   resources :spots
-  resources :users, only: [:show]
+  resources :users, only: [:show, :index]
   resources :home
   root to: "home#index"
 
