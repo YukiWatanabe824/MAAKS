@@ -70,16 +70,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
     end
   end
 
-  def destroy
-    respond_to do |format|
-      if @user.destroy
-        format.html { redirect_to root_path, notice: 'User was successfully destroyed.', status: :see_other }
-      else
-        format.html { redirect_to root_path, status: :unprocessable_entity }
-      end
-    end
-  end
-
   protected
 
   def after_update_path_for(resource)
