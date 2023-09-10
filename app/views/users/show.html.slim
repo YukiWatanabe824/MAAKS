@@ -28,3 +28,10 @@
           = link_to 'Edit this user', { controller: 'users/registrations', action: 'edit' }, class: 'btn'
           .inline-block.ml-2
             = button_to 'Destroy this user', user_registration_path, method: :delete, form: { data: { turbo_confirm: "本当に削除しますか？", turbo_frame: '_top' } }, class: 'btn'
+  - if @user.admin?
+    .user_info.mx-auto.flex.flex-col.items-center
+      h2.text-3xl.font-bold
+        | 管理者向けメニュー
+      .user_menu.my-3
+        = link_to 'users', users_path, id: @user.id, class: 'btn', data: {turbo: false}
+        = link_to 'users', spots_path, class: 'btn'
