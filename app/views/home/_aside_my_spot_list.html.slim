@@ -1,6 +1,6 @@
 ul
-  - if @user.spot.present?
-    - @user.spot.each do |spot|
+  - if current_user.spot.present?
+    - current_user.spot.each do |spot|
       li
         = spot.accident_date
         = spot.title

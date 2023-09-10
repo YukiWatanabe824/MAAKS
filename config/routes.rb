@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   resources :spots
   resources :users, only: [:show, :index, :destroy]
   resources :home
+  resources :home_aside, only: [:index]
   root to: "home#index"
 
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
