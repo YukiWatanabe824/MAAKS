@@ -26,13 +26,13 @@ html
       .user_header.flex
         - if user_signed_in?
           .avatar
-            - if @user.avatar.attached?
-              = image_tag @user.avatar.variant(resize_to_limit: [48, 48]), class: "rounded-full mr-2"
+            - if current_user.avatar.attached?
+              = image_tag current_user.avatar.variant(resize_to_limit: [48, 48]), class: "rounded-full mr-2"
             - else
-              .w-12.h-12.bg-green-200
+              = render 'layouts/default_user_icon'
           ul
             li
-              = link_to "マイページ", user_path(@user)
+              = link_to "マイページ", user_path(current_user)
             li
               = link_to "ログアウト", destroy_user_session_path, data: {turbo_method: :delete}
         - else

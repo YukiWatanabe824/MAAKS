@@ -1,0 +1,10 @@
+- edited_user ||= false
+- if @user.avatar.attached?
+  = image_tag @user.avatar.variant(resize_to_limit: [200, 200]), class: 'rounded-full w-10 h-10'
+  - if edited_user
+    = link_to 'プロフィール画像を削除する', "/users/#{@user.id}/avatar", action: 'users/registrations#avatar_destroy', data: { turbo_method: :delete }
+- else
+  .avatar.online.placeholder
+    .bg-neutral-focus.text-neutral-content.rounded-full.w-12
+      span.text-4xl
+        = @user.name[0,1]
