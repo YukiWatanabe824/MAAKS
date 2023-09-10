@@ -42,18 +42,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
     resource.update_without_password(params.except('current_password'))
   end
 
-  def create
-    @user = User.new(sign_up_params)
-
-    respond_to do |format|
-      if @user.save
-        format.html { redirect_to root_path, notice: 'User was successfully created.' }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-      end
-    end
-  end
-
   def build_resource(hash = {})
     hash[:uid] = User.create_unique_string
     super
