@@ -2,15 +2,19 @@
   ul
     li.cursor-pointer onclick='how_to_maaks_modal.showModal()'
       | このサービスの使い方
-      dialog id='how_to_maaks_modal' class='modal'
-        = render 'modal_box', how_to_maaks: true
+      - if user_signed_in?
+        dialog id='how_to_maaks_modal' class='modal'
+          = render 'home/modal_box', how_to_maaks: true
+      - else
+        dialog id='how_to_maaks_modal' class='modal' open='true'
+          = render 'home/modal_box', how_to_maaks: true
     li.cursor-pointer onclick='terms_of_service_modal.showModal()'
       | 利用規約
       dialog id='terms_of_service_modal' class='modal'
-        = render 'modal_box', terms_of_service: true
+        = render 'home/modal_box', terms_of_service: true
     li.cursor-pointer onclick='privacy_policy_modal.showModal()'
       | プライバシポリシー
       dialog id='privacy_policy_modal' class='modal'
-        = render 'modal_box', privacy_policy: true
+        = render 'home/modal_box', privacy_policy: true
     li
       = link_to '開発者のブログ', 'https://yukiwatanabe.hatenablog.com/'

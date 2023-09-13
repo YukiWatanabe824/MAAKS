@@ -2,12 +2,12 @@
 - terms_of_service ||= false
 - privacy_policy ||= false
 
-.modal-box
+.modal-box.w-11/12.max-w-4xl
   form method='dialog'
     button.btn.btn-sm.btn-circle.btn-ghost.absolute.right-2.top-2
       | X
-  = render 'how_to_maaks' if how_to_maaks
-  = render 'terms_of_service' if terms_of_service
-  = render 'privacy_policy' if privacy_policy
+  = render 'home/how_to_maaks' if how_to_maaks
+  = render 'home/terms_of_service' if terms_of_service
+  = render 'home/privacy_policy' if privacy_policy
 form method='dialog' class='modal-backdrop'
   button
