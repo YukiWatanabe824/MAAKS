@@ -5,6 +5,11 @@ class HomeController < ApplicationController
   def index
     @user = User.includes(:spot).find(current_user.id) if current_user
     @spots = Spot.order(created_at: :desc)
+
+    if session[:first_access].nil?
+      @first_access = true
+      session[:first_access] = true
+    end
   end
 
   # GET /users/1 or /users/1.json

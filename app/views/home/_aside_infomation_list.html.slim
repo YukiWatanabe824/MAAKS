@@ -2,11 +2,11 @@
   ul
     li.cursor-pointer onclick='how_to_maaks_modal.showModal()'
       | このサービスの使い方
-      - if user_signed_in?
-        dialog id='how_to_maaks_modal' class='modal'
+      - if @first_access
+        dialog id='how_to_maaks_modal' class='modal' open='true'
           = render 'home/modal_box', how_to_maaks: true
       - else
-        dialog id='how_to_maaks_modal' class='modal' open='true'
+        dialog id='how_to_maaks_modal' class='modal'
           = render 'home/modal_box', how_to_maaks: true
     li.cursor-pointer onclick='terms_of_service_modal.showModal()'
       | 利用規約
