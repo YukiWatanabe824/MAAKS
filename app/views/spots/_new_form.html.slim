@@ -29,3 +29,4 @@
       = f.hidden_field :user_id, value: @user.id if current_user
     .btn.btn-neutral.my-4 data-action="click->side-menu#setCoordinate"
       = f.submit "保存する"
+    = link_to 'Return', home_aside_index_path, class: "btn"
