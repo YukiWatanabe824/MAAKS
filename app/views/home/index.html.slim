@@ -1,6 +1,6 @@
-main.h-full.w-full.grid.grid-cols-5
-  aside.h-ful.bg-cyan-50.mr-0.5.col-span-1.p-3 data-controller="side-menu" data-side-menu-map-outlet="#map"
+main.w-full.flex
+  aside.bg-neutral.mr-0.5.p-3.basis-2/6 data-controller="side-menu" data-side-menu-map-outlet="#map"
     = turbo_frame_tag 'side_menu' do
       = render "aside"
 
-  #map.h-ful.col-span-4 data-controller="map" data-map-target="map" data-map-spot-outlet=".spot_marker" data-action="click->map#getCoordinates click->map#deleteSpotMenu"
+  #map.basis4/6 data-controller="map" data-map-target="map" data-map-spot-outlet=".spot_marker" data-action="click->map#getCoordinates click->map#deleteSpotMenu"
