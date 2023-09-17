@@ -48,7 +48,7 @@ class SpotsController < ApplicationController
         format.turbo_stream
         format.html { redirect_to root_path, notice: 'スポットを更新しました！' }
       else
-        format.html { render partial: 'new_form', locals: { spot: @spot, user: @user }, status: :unprocessable_entity, alert: 'スポットを更新できませんでした' }
+        format.html { render partial: 'edit_form', locals: { spot: @spot, user: @user }, status: :unprocessable_entity, alert: 'スポットを更新できませんでした' }
       end
     end
   end
