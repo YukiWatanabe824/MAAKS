@@ -6,7 +6,7 @@ class SpotsController < ApplicationController
   def index
     @spots = Spot.all
     respond_to do |format|
-      format.json {render json: @spots}
+      format.json { render json: @spots }
       format.html
     end
   end
@@ -31,7 +31,7 @@ class SpotsController < ApplicationController
     @user = current_user
     respond_to do |format|
       if @spot.save
-        flash.now.notice = "スポットを作成しました！"
+        flash.now.notice = 'スポットを作成しました！'
         format.turbo_stream
         format.html { redirect_to root_path, notice: 'スポットを作成しました！' }
       else
@@ -44,7 +44,7 @@ class SpotsController < ApplicationController
     @user = current_user
     respond_to do |format|
       if @spot.update(spot_params)
-        flash.now.notice = "スポットを更新しました！"
+        flash.now.notice = 'スポットを更新しました！'
         format.turbo_stream
         format.html { redirect_to root_path, notice: 'スポットを更新しました！' }
       else

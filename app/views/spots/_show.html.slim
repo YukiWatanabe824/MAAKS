@@ -15,6 +15,6 @@
         | ID: #{@spot.id}
     - if @spot.user == current_user || current_user.admin?
       .my-3
-        = link_to 'edit this spot', edit_spot_path(@spot), class: "my-2 btn bg-base-100 text-primary"
-        = button_to 'Destroy this spot', spot_path(@spot), method: :delete, form: { data: { turbo_confirm: "本当に削除しますか？", turbo_frame: '_top' } }, class: "my-2 btn btn-outline btn-accent"
+        = link_to 'edit this spot', edit_spot_path(@spot), class: 'my-2 btn bg-base-100 text-primary'
+        = button_to 'Destroy this spot', spot_path(@spot), method: :delete, form: { data: { turbo_confirm: '本当に削除しますか？', turbo_frame: '_top' } }, class: 'my-2 btn btn-outline btn-accent'
         = link_to 'Return', home_aside_index_path, class: 'btn my-2 bg-base-100 text-primary'
