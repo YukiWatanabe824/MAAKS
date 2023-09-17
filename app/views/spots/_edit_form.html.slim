@@ -2,7 +2,7 @@
   h2.my-2.text-xl.font-bold.text-base-100
     | スポットの編集
   = form_with model: @spot, url: spot_path do |f|
-    = render `shared/error_messages`, object: f.object
+    = render 'shared/error_messages', object: f.object
     .form_menu.flex.flex-col.my-4
       = f.label :title, class: 'text-base-100'
       = f.text_field :title, class: 'input input-bordered w-full', value: @spot.title

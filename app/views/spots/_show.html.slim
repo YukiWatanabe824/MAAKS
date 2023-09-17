@@ -1,5 +1,5 @@
-= turbo_frame_tag 'side_menu' do
-  .flex.flex-col.flex-wrap.text-base-100.px-3
+= turbo_frame_tag 'side_menu', class: 'py-3' do
+  .flex.flex-col.flex-wrap.text-base-100
     h2.my-2.text-xl.font-bold
       = @spot.title
     ul.flex.flex-col.flex-wrap
@@ -13,8 +13,10 @@
         | 投稿日: #{@spot.created_at.year}年#{@spot.created_at.month}月#{@spot.created_at.day}日
       li.text-xs
         | ID: #{@spot.id}
-    - if @spot.user == current_user || current_user.admin?
-      .my-3
-        = link_to 'edit this spot', edit_spot_path(@spot), class: 'my-2 btn bg-base-100 text-primary'
-        = button_to 'Destroy this spot', spot_path(@spot), method: :delete, form: { data: { turbo_confirm: '本当に削除しますか？', turbo_frame: '_top' } }, class: 'my-2 btn btn-outline btn-accent'
-        = link_to 'Return', home_aside_index_path, class: 'btn my-2 bg-base-100 text-primary'
+    - if user_signed_in?
+      - if @spot.owned_by?(current_user) || current_user.admin?
+        .my-3
+          = link_to 'edit this spot', edit_spot_path(@spot), class: 'my-2 btn bg-base-100 text-primary'
+          = button_to 'Destroy this spot', spot_path(@spot), method: :delete, form: { data: { turbo_confirm: '本当に削除しますか？', turbo_frame: '_top' } }, class: 'my-2 btn btn-outline btn-accent'
+
+  = link_to 'Return', home_aside_index_path, class: 'btn my-2 bg-base-100 text-primary'

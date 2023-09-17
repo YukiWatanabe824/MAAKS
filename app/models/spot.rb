@@ -6,4 +6,8 @@ class Spot < ApplicationRecord
   validates :contents, presence: true
   validates :longitude, presence: true
   validates :latitude, presence: true
+
+  def owned_by?(target_user)
+    user == target_user
+  end
 end
