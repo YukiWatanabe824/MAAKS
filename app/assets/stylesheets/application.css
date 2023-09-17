@@ -71,7 +71,3 @@ main{
 aside{
   min-width: 256px;
 }
-
-#map {
-  width: calc(100vw - 256px);
-}
