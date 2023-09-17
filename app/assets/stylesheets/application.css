@@ -71,3 +71,7 @@ main{
 aside{
   min-width: 256px;
 }
+
+.btn {
+  font-weight: normal;
+}

@@ -1,55 +1,54 @@
-.my-4
-  = image_tag 'how_to_service_logo.png', alt: 'ブランドロゴ'
-.py-6.px-4
-  p.my-2
-    | 安全にライドして、無事に帰ってくる。<br>MAAKSはそんな思いから生まれたサービスです。
-  p.my-2
-    | みんなでサイクリング中のヒヤッとした経験や事故に遭った経験をマッピングして共有することで、あぶないスポットを事前に把握。<br>
-    | MAAKSはこれまで「サークル」「部活動」「ライドイベント主催者」などのコミュニティごとに把握していたあぶないスポットの情報を一つの地図に集約。集合知で事故を未然に防ぎます。
-  form method='dialog' class="mx-auto my-4"
-    button.btn.mx-auto
-      | MAAKSを使ってみる
-
-  #privacy_policy_list.my-6
-    h3.font-bold.text-lg
+section.mt-4.mb-8
+  h2
+    = image_tag 'how_to_service_logo.png', alt: 'サービスロゴ', class: 'm-auto'
+  .py-6.px-4.text-base-100
+    .mb-20
+      p.my-4.text-2xl.leading-10
+        | 安全にサイクリングをして、無事に帰ってくる。<br>MAAKSはそんな思いから生まれたサービスです。
+      p.my-4.text-2xl.leading-10
+        | みんなでサイクリング中のヒヤッとした経験や事故に遭った経験をマッピングして共有することで、あぶないスポットを事前に把握。
+      p.my-4.text-2xl.leading-10
+        | MAAKSはこれまでコミュニティごとに把握していたサイクリングルート上のあぶないスポットの情報を一つの地図に集約。集合知で事故を未然に防ぎます。
+      .m-auto.my-10.flex.items-center.w-full
+        form.m-auto method='dialog'
+          button.btn.mx-auto.text-2xl.w-full.bg-base-100.text-primary
+            | MAAKSを使ってみる
+  section.my-6.px-4.text-base-100.
+    h3.font-bold.text-4xl
       | このサービスの使い方
     .my-6
-      p
+      p.text-2xl
         | MAAKSは無料のWEBサービスです。<br>
         | みんなで作ったmapを見るだけなら、アクセスするだけで可能です。<br>
         | あなたの体験を持ち寄っていただく際にも、簡単なユーザー登録を済ませていただければスポットを登録できるようになります。
-    .my-6
-      h4.font-bold.text-base
+    section.my-10
+      h4.font-bold.text-3xl
         | あぶないスポットを見る
       = image_tag 'how_to_viewed_spot.png', class: 'p-6 m-3 bg-sky-100', size: '500x341'
-      p
+      p.text-2xl
         | MAAKSのサービスページにアクセスすると危険スポットには水色のピンが立っています。<br>
         | 水色のピンを触ると詳細が表示されてスポットに登録された内容を確認できます。
-    .my-6
-      h4.font-bold.text-base
+    section.my-10
+      h4.font-bold.text-3xl
         | サイクリングにMAAKSを使う
-      p
+      p.text-2xl
         | 「Ride with GPS」や「Strava」等のルート作成機能を持つサービスと併用してルートと照らし合わせてあぶないスポットを事前に確認しましょう。
-    .my-4
-      h4.font-bold.text-base
+    section.my-10
+      h4.font-bold.text-3xl
         | あぶないスポットを登録する
-      p
-        | あぶないスポットはあなたがサイクリングをしていて事故に遭ってしまった地点はもちろんのこと、事故に至らずともヒヤッとした体験をした場所も対象です。あなたの体験を持ち寄っていただくことで誰かの事故を防げるかもしれません。
-      .how_to_create_spot
-        h5.font-bold
-          | ユーザー登録をする
+      p.text-2xl
+        | あなたがサイクリングをしていて事故に遭ってしまった地点や、事故に至らずともヒヤッとした体験をした場所を登録していきましょう。あなたの体験を持ち寄ることで知らない誰かの事故を防ぐことにつながります。
+      section#how_to_join.my-8
         = image_tag 'how_to_joined_user.png', class: 'p-6 m-3 bg-sky-100', size: '500x339'
-        p
+        p.text-2xl
           | まずはユーザー登録が必要です。
           | サービス画面右上の「アカウント作成」からユーザー登録が可能です。
           | Googleアカウントをお持ちの方は、ご自身のGoogleアカウントでもログインが可能です。
-        h5.font-bold
-          | マップにピンを立てる
+      section#how_to_create_spot.my-8
         = image_tag 'how_to_create_spot.png', class: 'p-6 m-3 bg-sky-100', size: '500x454'
-        p
+        p.text-2xl
           | マップ上をタッチもしくはクリックすると赤いピンが立ちます。
           | 右クリックをすることでメニューが開き、ピンが立っている座標にスポットを登録できるようになります。
-        h5.font-bold
-          | スポット情報を記入して登録
-        p
-          | あぶないスポットとして情報を記入して登録すればOKです。
+          | 情報を記入して「保存する」を押して登録すればOKです。
+        p.text-2xl
+          | これを繰り返してあぶないスポットが網羅された地図をつくっていきましょう！

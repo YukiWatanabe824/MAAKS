@@ -23,7 +23,7 @@ html data-theme="corporate"
       .title.flex.m-2.5
         h1.font-bold.text-4xl
           = link_to root_path
-            = image_tag 'header_service_logo.png', size: '150x80'
+            = image_tag 'header_service_logo.png', size: '150x80', alt: 'サービスロゴ「マークス」'
       .user_header.flex
         ul.flex.w-auto.items-center
           - if user_signed_in?
