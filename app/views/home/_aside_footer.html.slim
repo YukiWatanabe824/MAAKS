@@ -1,0 +1,22 @@
+footer.flex-initial
+  ul.text-base-100
+    li.cursor-pointer.my-2 onclick='terms_of_service_modal.showModal()'
+      | 利用規約
+      dialog id='terms_of_service_modal' class='modal'
+        = render 'home/modal_box', terms_of_service: true
+    li.cursor-pointer.my-2 onclick='privacy_policy_modal.showModal()'
+      | プライバシポリシー
+      dialog id='privacy_policy_modal' class='modal'
+        = render 'home/modal_box', privacy_policy: true
+    li
+      = link_to '開発者のブログ', 'https://yukiwatanabe.hatenablog.com/'
+  .mt-5.flex
+    = link_to 'https://twitter.com/Yuki_Watanabe99'
+      = image_tag 'x-twitter-logo.svg', size: '30x30', alt: 'X twitter', class: 'm-2'
+    = link_to 'https://github.com/YukiWatanabe824/MAAKS'
+      = image_tag 'github.webp', size: '32x32', alt: 'GitHub', class: 'bg-base-100 rounded-full m-2'
+  .mt-2
+    p.text-base-100.text-xs
+      |  © YukiWatanabe, 2023, All Rights Reserved
+
+
