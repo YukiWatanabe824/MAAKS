@@ -41,6 +41,9 @@
           = f.password_field :current_password, autocomplete: '現在のパスワード', class: 'input input-bordered w-full max-w-xs'
       .actions
         = f.submit 'Update', class: 'btn'
+  / .inline-block.ml-2
+    /   = button_to 'Destroy this user', user_path(@user), method: :delete, data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, class: 'btn'
+
         .inline-block.ml-2
           = link_to 'ユーザーページに戻る', user_path(@user), class: 'btn'
 
