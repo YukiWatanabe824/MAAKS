@@ -1,10 +1,9 @@
 # frozen_string_literal: true
 
 class Users::RegistrationsController < Devise::RegistrationsController
-  before_action :authenticate_user!, except: %i[new create build_resource configure_sign_up_params]
-  before_action :redirect_if_different_user, except: %i[new create build_resource configure_sign_up_params]
-  before_action :set_user, only: %i[update avatar_destroy edit]
-  before_action :configure_sign_up_params, only: [:create]
+  before_action :authenticate_user!, except: %i[new build_resource configure_sign_up_params]
+  before_action :redirect_if_different_user, except: %i[new build_resource configure_sign_up_params]
+  before_action :set_user, only: %i[update edit]
   before_action :configure_account_update_params, only: [:update]
 
   def new

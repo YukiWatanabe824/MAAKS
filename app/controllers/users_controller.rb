@@ -32,12 +32,13 @@ class UsersController < ApplicationController
 
   def redirect_if_different_user_or_admin
     return if current_user.admin?
+
     redirect_to root_path if current_user != User.find(params[:id])
   end
 
   def authenticate_admin!
     return if current_user == set_user
-    redirect_to root_path , notice: '管理権限がありません' if !current_user.admin?
-  end
 
+    redirect_to root_path, notice: '管理権限がありません' if !current_user.admin?
+  end
 end
