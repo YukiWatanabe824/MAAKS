@@ -47,17 +47,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
     super
   end
 
-  def avatar_destroy
-    @user.avatar.purge if @user.avatar.attached?
-    respond_to do |format|
-      if @user.avatar.attached?
-        format.html { render :show, status: :unprocessable_entity }
-      else
-        format.html { redirect_to edit_user_path(current_user), notice: '画像は削除されました' }
-      end
-    end
-  end
-
   protected
 
   def after_update_path_for(resource)
