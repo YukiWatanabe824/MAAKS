@@ -25,10 +25,4 @@
         .inline-block.ml-2
           = button_to 'Destroy this user', user_path(@user), method: :delete, data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, class: 'btn'
 
-  - if @user.admin?
-    .user_info.mx-auto.flex.flex-col.items-center
-      h2.text-3xl.font-bold
-        | 管理者向けメニュー
-      .user_menu.my-3
-        = link_to 'users', users_path, id: @user.id, class: 'btn', data: {turbo: false}
-        = link_to 'users', spots_path, class: 'btn'
+= render 'users/footer'
