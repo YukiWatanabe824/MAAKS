@@ -1,49 +1,42 @@
-.flex.flex-col.mx-auto.w-full.my-12
-  .user_info.mx-auto.flex.flex-col.items-center
+section.flex.flex-col.mx-auto.w-full.py-12.mt-4.mb-12.items-center
+  .my-8
     h2.text-3xl.font-bold
-      | ユーザー編集
-  = form_with(model: @user, class: 'contents') do |f|
+      | アカウント編集
+  = form_with(model: @user, class: 'flex flex-col items-center') do |f|
     = render 'devise/shared/error_messages', resource: resource
-    .flex.flex-col.items-center
-      .user_avatar.my-8
-        = f.label :avatar, class: 'flex flex-col items-center'
-          = render 'users/user_icon', locals: { view: 'show' }, edited_user: true
-          = f.file_field :avatar, class: 'file-input file-input-bordered file-input-sm w-full max-w-xs my-2'
-      .user_name.my-3.flex.flex-col.items-center
-        p.text-2xl.font-bold
-          | ユーザー名
-        = f.text_field :name, autocomplete: @user.name.to_s, class: 'input input-bordered w-full max-w-xs'
-      .user_mail_address.my-3
-        p
-          | メールアドレス :
-        = f.email_field :email, autocomplete: @user.email.to_s, class: 'input input-bordered w-full max-w-xs'
-      .user_created_at.my-3
-        p
-          | アカウント作成日時 : #{@user.created_at.year}年#{@user.created_at.month}月#{@user.created_at.day}日
-      .user_created_spot_count.my-3
-        p
-          - if @user.spot.present?
-            | ユーザーが作ったスポットの数 : #{@user.spot.length + 1}個
-          - else
-            | 登録したスポットの数 : 0個
-      - unless @user.provider.presence || current_user.admin?
-        .user_password.my-3
+    .user_avatar.my-8
+      = f.label :avatar, class: 'flex flex-col items-center'
+        = render 'users/user_icon', locals: { view: 'show' }, edited_user: true
+        .my-2
           p
-            | 新しいパスワード :
-          = f.password_field :password, autocomplete: '新しいパスワード', class: 'input input-bordered w-full max-w-xs'
-        .user_password_confirmation.my-3
-          p
-            | パスワード確認用再入力 :
-          = f.password_field :password_confirmation, autocomplete: '確認用再入力', class: 'input input-bordered w-full max-w-xs'
-        .user_current_password.my-3
-          p
-            | 現在のパスワード :
-          = f.password_field :current_password, autocomplete: '現在のパスワード', class: 'input input-bordered w-full max-w-xs'
-      .actions
-        = f.submit 'Update', class: 'btn'
-  / .inline-block.ml-2
-    /   = button_to 'Destroy this user', user_path(@user), method: :delete, data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, class: 'btn'
+            | 新しい画像をアップ
+          = f.file_field :avatar, class: 'file-input file-input-bordered file-input-sm w-xs'
 
-        .inline-block.ml-2
-          = link_to 'ユーザーページに戻る', user_path(@user), class: 'btn'
+    .my-3
+      p
+        | ユーザー名
+      = f.text_field :name, autocomplete: @user.name.to_s, class: 'input input-bordered w-xs'
+    .my-3
+      p
+        | メールアドレス
+      = f.email_field :email, autocomplete: @user.email.to_s, class: 'input input-bordered w-xs'
+    - unless @user.provider.presence || current_user.admin?
+      .my-3
+        p
+          | 新しいパスワード
+        = f.password_field :password, autocomplete: '新しいパスワード', class: 'input input-bordered w-xs'
+      .my-3
+        p
+          | 新パスワード確認用再入力
+        = f.password_field :password_confirmation, autocomplete: '確認用再入力', class: 'input input-bordered w-xs'
+      .my-3
+        p
+          | 現在のパスワード
+        = f.password_field :current_password, autocomplete: '現在のパスワード', class: 'input input-bordered w-xs'
+    = f.submit 'Update', class: 'btn my-5'
+  = button_to 'Destroy this user', user_path(@user), method: :delete, data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, class: 'link text-neutral'
+
+  = link_to '戻る', user_path(@user), class: 'btn my-8'
+
+= render 'users/footer'
 
