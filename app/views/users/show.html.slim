@@ -1,34 +1,21 @@
-.flex.flex-col.mx-auto.w-full.my-12
-  .user_info.mx-auto.flex.flex-col.items-center
+section.flex.flex-col.mx-auto.w-full.py-12.mt-4.mb-12.items-center
+  .my-8
     h2.text-3xl.font-bold
       | マイページ
-    .flex.flex-col.items-center
-      .user_avatar.mx-auto
-        = render 'user_icon', locals: { view: 'show' }
-      .user_name.my-3
-        p.text-2xl.font-bold
-          = @user.name
-      .user_mail_address.my-3
-        p
-          | メールアドレス : #{@user.email}
-      .user_created_at.my-3
-        p
-          | アカウント作成日時 : #{@user.created_at.year}年#{@user.created_at.month}月#{@user.created_at.day}日
-      .user_created_spot_count.my-3
-        p
-          - if @user.spot.present?
-            | 登録したスポットの数 : #{@user.spot.length + 1}個
-          - else
-            | 登録したスポットの数 : 0個
-      .user_menu.my-3
-        = link_to 'Edit this user', { controller: 'users/registrations', action: 'edit' }, class: 'btn'
-        .inline-block.ml-2
-          = button_to 'Destroy this user', user_path(@user), method: :delete, data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, class: 'btn'
-
+  = render 'user_icon', locals: { view: 'show' }
+  .my-3
+    p.text-xl.font-bold
+      = @user.name
+  .my-3
+    | アカウント作成日時 : #{@user.created_at.year}年#{@user.created_at.month}月#{@user.created_at.day}日
+  .my-3
+    p
+      - if @user.spot.present?
+        | 登録したスポットの数 : #{ @user.spot.length }個
+      - else
+        | 登録したスポットの数 : 0個
+  = link_to 'Edit this user', { controller: 'users/registrations', action: 'edit' }, class: 'btn my-3'
   - if @user.admin?
-    .user_info.mx-auto.flex.flex-col.items-center
-      h2.text-3xl.font-bold
-        | 管理者向けメニュー
-      .user_menu.my-3
-        = link_to 'users', users_path, id: @user.id, class: 'btn', data: {turbo: false}
-        = link_to 'users', spots_path, class: 'btn'
+    = link_to 'show all users', users_path, id: @user.id, class: 'btn my-3', data: { turbo: false }
+
+= render 'users/footer'

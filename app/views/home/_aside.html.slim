@@ -1,35 +1,28 @@
-= turbo_frame_tag 'side_menu' do
-  - if user_signed_in?
-    section.spot_list.mt-1.mb-5
+= turbo_frame_tag 'side_menu', class: 'flex flex-col h-full' do
+  section.spot_list.mt-1.mb-5.flex-auto
+    - if user_signed_in?
       .my_spot_list.mt-5.mb-5
-        .collapse.bg-base-200
+        .collapse.bg-base-100.text-primary.collapse-arrow
           input.w-full type='checkbox'
           .collapse-title.text-xl.font-medium
             | 自分の投稿
           .collapse-content
             = render 'home/aside_my_spot_list'
-      .latest_spot_list.mt-5.mb-5
-        .collapse.bg-base-200
-          input.w-full type='checkbox'
-          .collapse-title.text-xl.font-medium
-            | 最新の投稿
-          .collapse-content
-            = render 'home/aside_latest_spot_list'
-  - else
-    section.demo
-      .demo_image.w-full.h-48.bg-orange-200
-  .howto.mt-5.mb-5
-    .collapse.bg-base-200
-      input.w-full[type='checkbox' checked]
-      .collapse-title.text-xl.font-medium
-        | このサービスの使い方
-      .collapse-content
-        .howto
-          ul.list-decimal.list-inside
-            li
-              | アカウントを作る
-            li
-              | 地図上のスポットを追加したい地点で右クリック
-            li
-              | 追加するを選択するとメニューが表示されるので記入して投稿
-  = render 'home/aside_infomation_list'
+    .latest_spot_list.mt-5.mb-5
+      .collapse.bg-base-100.text-primary.collapse-arrow
+        input.w-full type='checkbox'
+        .collapse-title.text-xl.font-medium
+          | 最新の投稿
+        .collapse-content
+          = render 'home/aside_latest_spot_list'
+    .how_to_service.mt-5.mb-5
+      button.w-full.btn.bg-base-100.text-primary onclick='how_to_maaks_modal.showModal()'
+        .text-left.text-xl.font-medium.mr-auto
+          | 使い方
+    - if @first_access
+      dialog id='how_to_maaks_modal' class='modal' open='true'
+        = render 'home/modal_box', how_to_maaks: true
+    - else
+      dialog id='how_to_maaks_modal' class='modal'
+        = render 'home/modal_box', how_to_maaks: true
+  = render 'home/aside_footer'
