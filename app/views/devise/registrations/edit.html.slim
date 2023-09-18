@@ -34,7 +34,7 @@ section.flex.flex-col.mx-auto.w-full.py-12.mt-4.mb-12.items-center
           | 現在のパスワード
         = f.password_field :current_password, autocomplete: '現在のパスワード', class: 'input input-bordered w-xs'
     = f.submit 'Update', class: 'btn my-5'
-  = button_to 'Destroy this user', user_path(@user), method: :delete, data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, class: 'link text-neutral'
+  = button_to 'Destroy this user', user_path(@user), method: :delete, data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, class: 'link link-hover text-neutral'
 
   = link_to '戻る', user_path(@user), class: 'btn my-8'
 

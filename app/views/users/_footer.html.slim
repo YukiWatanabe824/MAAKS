@@ -2,16 +2,16 @@ footer.w-full.bg-primary.flex.flex-col.pt-16.pb-8.justify-around.h-80
   .flex.justify-around.w-1/2.mx-auto
     div
       .cursor-pointer onclick='terms_of_service_modal.showModal()'
-        p.text-base-100
+        p.text-base-100.link.link-hover
           | 利用規約
         dialog id='terms_of_service_modal' class='modal text-base-100'
           = render 'home/modal_box', terms_of_service: true
       .cursor-pointer onclick='privacy_policy_modal.showModal()'
-        p.text-base-100
+        p.text-base-100.link.link-hover
           | プライバシポリシー
         dialog id='privacy_policy_modal' class='modal text-base-100'
           = render 'home/modal_box', privacy_policy: true
-      = link_to '開発者のブログ', 'https://yukiwatanabe.hatenablog.com/', class: 'text-base-100'
+      = link_to '開発者のブログ', 'https://yukiwatanabe.hatenablog.com/', class: 'link link-hover text-base-100'
     .flex.items-center
       = link_to 'https://twitter.com/Yuki_Watanabe99'
         = image_tag 'x-twitter-logo.svg', size: '28x28', alt: 'X twitter', class: 'm-2'
