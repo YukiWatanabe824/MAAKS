@@ -16,7 +16,8 @@ class UsersController < ApplicationController
   def destroy
     respond_to do |format|
       if @user.destroy
-        format.html { redirect_to users_path, notice: 'User was successfully destroyed.', status: :see_other }
+        format.html { redirect_to users_path, notice: 'User was successfully destroyed.', status: :see_other } if current_user.admin?
+        format.html { redirect_to root_path, notice: 'User was successfully destroyed.', status: :see_other }
       else
         format.html { redirect_to root_path, status: :unprocessable_entity }
       end
@@ -35,7 +36,8 @@ class UsersController < ApplicationController
   end
 
   def authenticate_admin!
-    redirect_to toot_path , notice: '管理権限がありません' if !current_user.admin?
+    return if current_user == set_user
+    redirect_to root_path , notice: '管理権限がありません' if !current_user.admin?
   end
 
 end
