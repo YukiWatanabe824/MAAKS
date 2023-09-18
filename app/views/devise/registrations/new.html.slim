@@ -25,7 +25,6 @@ section.flex.flex-col.mx-auto.w-full.py-12.mt-4.mb-12.items-center
       p
         | パスワード確認用再入力
       = f.password_field :password_confirmation, autocomplete: '確認用再入力', class: 'input input-bordered w-xs'
-    .my-3
     = f.submit 'Sign up', class: 'btn my-5'
   - resource_class.omniauth_providers.each do |provider|
     = button_to omniauth_authorize_path(resource_name, provider), data: { turbo: false }, class: 'btn'
