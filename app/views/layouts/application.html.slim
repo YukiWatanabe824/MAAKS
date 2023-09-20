@@ -23,7 +23,7 @@ html data-theme="corporate"
       .m-2.5
         h1.font-bold.text-4xl
           = link_to root_path
-            = image_tag 'header_service_logo.png', size: '150x80', alt: 'サービスロゴ「マークス」'
+            = image_tag 'header_service_logo.png', size: '100x53', alt: 'サービスロゴ「マークス」'
       .user_header.flex
         ul.w-auto.items-center.hidden.lg:flex
           - if user_signed_in?
@@ -43,7 +43,7 @@ html data-theme="corporate"
       .dropdown.dropdown-end.m-2.lg:hidden
         label.btn.btn-outline.btn-accent tabindex="0"
           | MENU
-        ul.menu.dropdown-content.p-2.shadow.bg-base-100.rounded-box.w-52.mt-4.absolute tabindex="0" class="z-[1]"
+        ul.menu.dropdown-content.p-2.shadow.bg-base-100.rounded-box.w-52.mt-1.absolute tabindex="0" class="z-[5]"
           - if user_signed_in?
             li.m-2
               = link_to "マイページ", user_path(current_user)
