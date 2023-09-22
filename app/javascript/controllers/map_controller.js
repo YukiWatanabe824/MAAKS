@@ -81,6 +81,7 @@ export default class extends Controller {
       const el = this.mapTarget.newMarker.getElement();
       el.id = "new_spot_marker";
       el.setAttribute("data-controller", "spot");
+      el.setAttribute("data-controller", "new-spot-marker");
       el.setAttribute("data-spot-target", "spot");
       el.setAttribute("data-action", "contextmenu->spot#showSpotMenu");
 
