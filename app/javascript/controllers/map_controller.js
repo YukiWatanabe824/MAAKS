@@ -68,21 +68,13 @@ export default class extends Controller {
     }
   }
 
-  getCoordinates() {
-    if (document.querySelector(`#spot_menu`)) {
-      return;
-    } else {
-      this.createMarker();
-    }
-  }
-
   createMarker() {
     this.mapTarget.mapbox.on("click", (e) => {
       if (this.mapTarget.newMarker) {
         this.mapTarget.newMarker.remove();
       }
       this.mapTarget.newMarker = new mapboxgl.Marker({
-        draggable: true,
+        draggable: false,
         color: "#cf5d40",
       });
 
