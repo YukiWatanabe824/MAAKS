@@ -60,9 +60,8 @@ export default class extends Controller {
 
   deleteSpotMenu(event) {
     if (event.target === document.querySelector(".mapboxgl-canvas")) {
-      const spotMenu = document.querySelector("#spot_menu");
-      if (spotMenu) {
-        spotMenu.remove();
+      if (document.querySelector("#spot_menu")) {
+        document.querySelector("#spot_menu").remove();
       }
     } else {
       return;
