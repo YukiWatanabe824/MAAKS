@@ -1,9 +1,7 @@
 ul
   - if current_user.spot.present?
     - current_user.spot.each do |spot|
-      li
-        = spot.accident_date
-        = spot.title
+      = render partial: 'home/spot_item', locals: { spot: spot }
   - else
     li
       | 表示するものがありません
