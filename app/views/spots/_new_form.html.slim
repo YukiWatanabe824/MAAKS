@@ -1,5 +1,5 @@
 = turbo_frame_tag 'side_menu' do
-  div data-controller='created-spot-side-menu'
+  div data-controller='created-spot-side-menu' data-created-spot-side-menu-map-outlet='#map'
   h2.my-2.text-xl.font-bold.text-base-100
     | スポットの登録
   - if user_signed_in?
@@ -23,9 +23,13 @@
       .form_menu.flex.flex-col.my-4
         = f.label :accident_date, class: 'text-base-100'
         = f.date_field :accident_date, class: 'w-full', placeholder: @spot.accident_date
+      .form_menu.flex.flex-col.my-4
+        = f.label :longitude, class: 'text-base-100'
+        = f.text_field :longitude, readonly: true, class: 'w-full', value: ''
+      .form_menu.flex.flex-col.my-4
+        = f.label :latitude, class: 'text-base-100'
+        = f.text_field :latitude, readonly: true, class: 'w-full', value: ''
       .hidden_info
-        = f.hidden_field :longitude, value: ''
-        = f.hidden_field :latitude, value: ''
         = f.hidden_field :user_id, value: @user.id if current_user
       = f.submit '保存する', class: 'my-2 btn bg-base-100 text-primary', data: { action: 'click->side-menu#setCoordinate' }
   - else
