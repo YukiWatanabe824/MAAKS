@@ -23,7 +23,7 @@
     border-right-color: #999;
     border-left-color: #999;
     border-bottom-color: #BBB;
-    border-top: #B00100 solid 4px;
+    border-top: #5483b9 solid 4px;
     border-top-left-radius: 9px;
     border-top-right-radius: 9px;
     background-color: white;
@@ -33,7 +33,7 @@
 
   .rails-default-error-page h1 {
     font-size: 100%;
-    color: #730E15;
+    color: #e1000f;
     line-height: 1.5em;
   }
 
@@ -51,11 +51,24 @@
     color: #666;
     box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
   }
+  .error_code {
+    margin: 1rem auto 0;
+  }
+  .error_code > p {
+    font-size: 10rem;
+    font-weight: 900;
+    padding: 1rem;
+    background-color: #F7F7F7;
+    color: #5483b9;
+  }
   </style>
 </head>
 
 <body class="rails-default-error-page">
   <!-- This file lives in public/500.html -->
+  <div class="error_code">
+    <p>500</p>
+  </div>
   <div class="dialog">
     <div>
       <h1>We're sorry, but something went wrong.</h1>
