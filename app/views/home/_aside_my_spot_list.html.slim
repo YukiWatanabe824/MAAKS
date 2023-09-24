@@ -1,6 +1,6 @@
 ul
-  - if current_user.spot.present?
-    - current_user.spot.each do |spot|
+  - if @my_spots.present?
+    - @my_spots.each do |spot|
       = render partial: 'home/spot_item', locals: { spot: spot }
   - else
     li
