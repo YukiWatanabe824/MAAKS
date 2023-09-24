@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class SpotsController < ApplicationController
+  before_action :generate_500_error, only: %i[show edit new]
   before_action :set_spot, only: %i[show edit update destroy]
 
   def index
@@ -74,5 +75,9 @@ class SpotsController < ApplicationController
       :title, :accident_type, :contents,
       :accident_date, :longitude, :latitude, :user_id
     )
+  end
+
+  def generate_500_error
+    raise StandardError unless turbo_frame_request?
   end
 end
