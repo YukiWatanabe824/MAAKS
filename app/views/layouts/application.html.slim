@@ -15,7 +15,6 @@ html data-theme="corporate"
     script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.2/mapbox-gl-geocoder.min.js", "data-turbo-track": "reload"
     script src="https://unpkg.com/@mapbox/mapbox-sdk/umd/mapbox-sdk.min.js", "data-turbo-track": "reload"
 
-
   body
     #flash.w-full
       = render 'flash'
@@ -23,22 +22,36 @@ html data-theme="corporate"
       .m-2.5
         h1.font-bold.text-4xl
           = link_to root_path
-            = image_tag 'header_service_logo.png', size: '150x80', alt: 'サービスロゴ「マークス」'
+            = image_tag 'header_service_logo.png', size: '100x53', alt: 'サービスロゴ「マークス」'
       .user_header.flex
-        ul.flex.w-auto.items-center
+        ul.w-auto.items-center.hidden.lg:flex
           - if user_signed_in?
-              - if current_user.avatar.attached?
-                = image_tag current_user.avatar.variant(resize_to_limit: [48, 48]), class: "rounded-full m-2"
-              - else
-                = render 'layouts/default_user_icon'
-              li.m-2
-                = link_to "マイページ", user_path(current_user), class: "btn btn-outline btn-accent"
-              li.m-2
-                = link_to "ログアウト", destroy_user_session_path, data: {turbo_method: :delete}, class: "btn btn-outline btn-accent"
+            - if current_user.avatar.attached?
+              = image_tag current_user.avatar.variant(resize_to_limit: [48, 48]), class: "rounded-full m-2"
+            - else
+              = render 'layouts/default_user_icon'
+            li.m-2
+              = link_to "マイページ", user_path(current_user), class: "btn btn-outline btn-accent"
+            li.m-2
+              = link_to "ログアウト", destroy_user_session_path, data: {turbo_method: :delete}, class: "btn btn-outline btn-accent"
           - else
-              li.m-2
-                = link_to "ログイン", new_user_session_path, class: "btn btn-outline btn-accent"
-              li.m-2
-                = link_to "ユーザー登録", new_user_registration_path, class: "btn btn-outline btn-accent"
+            li.m-2
+              = link_to "ログイン", new_user_session_path, class: "btn btn-outline btn-accent"
+            li.m-2
+              = link_to "ユーザー登録", new_user_registration_path, class: "btn btn-outline btn-accent"
+      .dropdown.dropdown-end.m-2.lg:hidden
+        label.btn.btn-outline.btn-accent tabindex="0"
+          | MENU
+        ul.menu.dropdown-content.p-2.shadow.bg-base-100.rounded-box.w-52.mt-1.absolute tabindex="0" class="z-[5]"
+          - if user_signed_in?
+            li.m-2
+              = link_to "マイページ", user_path(current_user)
+            li.m-2
+              = link_to "ログアウト", destroy_user_session_path, data: {turbo_method: :delete}
+          - else
+            li.m-2
+              = link_to "ログイン", new_user_session_path
+            li.m-2
+              = link_to "ユーザー登録", new_user_registration_path
 
     = yield

@@ -56,24 +56,15 @@ export default class extends Controller {
             .addTo(map);
         }
       });
-  }
+    }
 
   deleteSpotMenu(event) {
     if (event.target === document.querySelector(".mapboxgl-canvas")) {
-      const spotMenu = document.querySelector("#spot_menu");
-      if (spotMenu) {
-        spotMenu.remove();
+      if (document.querySelector("#spot_menu")) {
+        document.querySelector("#spot_menu").remove();
       }
     } else {
       return;
-    }
-  }
-
-  getCoordinates() {
-    if (document.querySelector(`#spot_menu`)) {
-      return;
-    } else {
-      this.createMarker();
     }
   }
 
@@ -83,13 +74,13 @@ export default class extends Controller {
         this.mapTarget.newMarker.remove();
       }
       this.mapTarget.newMarker = new mapboxgl.Marker({
-        draggable: true,
+        draggable: false,
         color: "#cf5d40",
       });
 
       const el = this.mapTarget.newMarker.getElement();
       el.id = "new_spot_marker";
-      el.setAttribute("data-controller", "spot");
+      el.setAttribute("data-controller", "spot new-spot-marker");
       el.setAttribute("data-spot-target", "spot");
       el.setAttribute("data-action", "contextmenu->spot#showSpotMenu");
 
