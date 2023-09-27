@@ -1,5 +1,7 @@
+- spot_created ||= false
+
 = turbo_frame_tag 'side_menu', class: 'py-3' do
-  - if true
+  - if spot_created
     #spot_detail.flex.flex-col.flex-wrap.text-base-100 data-controller="showing-spot-menu" data-showing-spot-menu-map-outlet="#map" data-showing-spot-menu-target="SpotDetailPanel" data-id="#{@spot.id}" data-longitude="#{@spot.longitude}" data-latitude="#{@spot.latitude}"
       h2.my-2.text-xl.font-bold
         = @spot.title

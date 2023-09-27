@@ -1,41 +1,41 @@
 = turbo_frame_tag 'side_menu' do
   div data-controller='created-spot-side-menu' data-created-spot-side-menu-map-outlet='#map'
-  h2.my-2.text-xl.font-bold.text-base-100
-    | スポットの登録
-  - if user_signed_in?
-    = form_with model: @spot, url: spots_path do |f|
-      = render 'shared/error_messages', object: f.object
-      .form_menu.flex.flex-col.my-4
-        = f.label :title, class: 'text-base-100'
-        = f.text_field :title, class: 'input input-bordered w-full', placeholder: '道端の舗装が悪くハンドルを取られて落車'
-        p.text-xs.text-base-100
-          | 概要を簡潔に書いてください
-      .form_menu.flex.flex-col.my-4
-        = f.label :accident_type, class: 'text-base-100'
-        = f.select :accident_type, [['物損事故', '物損事故'], ['人身事故', '人身事故'], ['ヒヤリ・ハット', 'ヒヤリ・ハット'], ['その他', 'その他']], include_blank: true, class: 'select select-bordered w-full'
-        p.text-xs.text-base-100
-          | トラブルのカテゴリーを選んでください。「ヒヤリ・ハット」とは事故に満たないヒヤっとする体験やハッとさせられた体験のことです。一つの事故にはその裏に300件のヒヤリ・ハットがあると言われています。
-      .form_menu.flex.flex-col.my-4
-        = f.label :contents, class: 'text-base-100'
-        = f.text_area :contents, class: 'textarea textarea-bordered h-52 w-full', placeholder: 'トラックが走行するエリアのため自転車が走行する車道の左端は舗装が乱れており、深くえぐれた箇所に車輪が引っかかってしまい転倒した。車通り自体は少ないため、二次事故などなく歩道に退避して事故対応をした。'
-        p.text-xs.text-base-100
-          | トラブルの内容を詳細に書いてください。現場の地理上の問題と思われる点や救急搬送の所要時間など現地特有の項目を記入すると、よりほかの方の役に立ちます。
-      .form_menu.flex.flex-col.my-4
-        = f.label :accident_date, class: 'text-base-100'
-        = f.date_field :accident_date, class: 'w-full', placeholder: @spot.accident_date
-      .form_menu.flex.flex-col.my-4
-        = f.label :longitude, class: 'text-base-100'
-        = f.text_field :longitude, readonly: true, class: 'w-full', value: ''
-      .form_menu.flex.flex-col.my-4
-        = f.label :latitude, class: 'text-base-100'
-        = f.text_field :latitude, readonly: true, class: 'w-full', value: ''
-      .hidden_info
-        = f.hidden_field :user_id, value: @user.id if current_user
-      = f.submit '保存する', class: 'my-2 btn bg-base-100 text-primary', data: { action: 'click->side-menu#setCoordinate' }
-  - else
-    .flex.flex-col
-      p.text-base-100.my-2
-        | スポットの登録にはユーザー登録が必要です
-      = link_to "ユーザー登録", new_user_registration_path, data: { turbo: false }, class: "btn bg-base-100 text-primary my-2"
+    h2.my-2.text-xl.font-bold.text-base-100
+      | スポットの登録
+    - if user_signed_in?
+      = form_with model: @spot, url: spots_path do |f|
+        = render 'shared/error_messages', object: f.object
+        .form_menu.flex.flex-col.my-4
+          = f.label :title, class: 'text-base-100'
+          = f.text_field :title, class: 'input input-bordered w-full', placeholder: '道端の舗装が悪くハンドルを取られて落車'
+          p.text-xs.text-base-100
+            | 概要を簡潔に書いてください
+        .form_menu.flex.flex-col.my-4
+          = f.label :accident_type, class: 'text-base-100'
+          = f.select :accident_type, [['物損事故', '物損事故'], ['人身事故', '人身事故'], ['ヒヤリ・ハット', 'ヒヤリ・ハット'], ['その他', 'その他']], include_blank: true, class: 'select select-bordered w-full'
+          p.text-xs.text-base-100
+            | トラブルのカテゴリーを選んでください。「ヒヤリ・ハット」とは事故に満たないヒヤっとする体験やハッとさせられた体験のことです。一つの事故にはその裏に300件のヒヤリ・ハットがあると言われています。
+        .form_menu.flex.flex-col.my-4
+          = f.label :contents, class: 'text-base-100'
+          = f.text_area :contents, class: 'textarea textarea-bordered h-52 w-full', placeholder: 'トラックが走行するエリアのため自転車が走行する車道の左端は舗装が乱れており、深くえぐれた箇所に車輪が引っかかってしまい転倒した。車通り自体は少ないため、二次事故などなく歩道に退避して事故対応をした。'
+          p.text-xs.text-base-100
+            | トラブルの内容を詳細に書いてください。現場の地理上の問題と思われる点や救急搬送の所要時間など現地特有の項目を記入すると、よりほかの方の役に立ちます。
+        .form_menu.flex.flex-col.my-4
+          = f.label :accident_date, class: 'text-base-100'
+          = f.date_field :accident_date, class: 'w-full', placeholder: @spot.accident_date
+        .form_menu.flex.flex-col.my-4
+          = f.label :longitude, class: 'text-base-100'
+          = f.text_field :longitude, readonly: true, class: 'w-full', value: ''
+        .form_menu.flex.flex-col.my-4
+          = f.label :latitude, class: 'text-base-100'
+          = f.text_field :latitude, readonly: true, class: 'w-full', value: ''
+        .hidden_info
+          = f.hidden_field :user_id, value: @user.id if current_user
+        = f.submit '保存する', class: 'my-2 btn bg-base-100 text-primary', data: { action: 'click->side-menu#setCoordinate' }
+    - else
+      .flex.flex-col
+        p.text-base-100.my-2
+          | スポットの登録にはユーザー登録が必要です
+        = link_to "ユーザー登録", new_user_registration_path, data: { turbo: false }, class: "btn bg-base-100 text-primary my-2"
 
   = link_to 'Return', home_aside_index_path, class: 'btn my-2 bg-base-100 text-primary'
