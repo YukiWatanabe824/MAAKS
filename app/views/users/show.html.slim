@@ -18,4 +18,6 @@ section.flex.flex-col.mx-auto.w-full.py-12.mt-4.mb-12.items-center
   - if @user.admin?
     = link_to 'show all users', users_path, id: @user.id, class: 'btn my-3', data: { turbo: false }
 
+  = link_to '戻る', root_path, class: 'btn my-8'
+
 = render 'users/footer'
