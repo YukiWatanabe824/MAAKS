@@ -1,4 +1,4 @@
 = turbo_stream.replace 'side_menu' do
-  = render partial: 'spots/show', locals: { spot: @spot }
+  = render partial: 'spots/show', locals: { spot: @spot, spot_created?: true }
 
 = turbo_stream_flash

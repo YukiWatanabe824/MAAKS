@@ -19,5 +19,4 @@ export default class extends Controller {
     document.querySelector("#spot_longitude").value = this.mapOutlet.element.newMarker._lngLat.lng
     document.querySelector("#spot_latitude").value = this.mapOutlet.element.newMarker._lngLat.lat
   }
-
 }
