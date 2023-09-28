@@ -4,7 +4,7 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
   connect() {
     document.querySelector('#new_spot_marker').addEventListener("pointerdown", () => {
-      const intervalId = setInterval(changeMenu, 500);
+      const intervalId = setInterval(changeMenu, 300);
 
       document.addEventListener(
         "pointerup", () => {
