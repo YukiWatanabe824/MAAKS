@@ -1,7 +1,6 @@
-ul
-  - if @my_spots.present?
-    - @my_spots.each do |spot|
-      = render partial: 'home/spot_item', locals: { spot: spot }
-  - else
+- if @my_spots.present?
+  = render partial: 'home/spot_item', locals: { spots: @my_spots, pagy: @my_spots_pagy }
+- else
+  ul
     li
       | 表示するものがありません
