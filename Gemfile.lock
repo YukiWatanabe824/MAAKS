@@ -184,6 +184,7 @@ GEM
       actionpack (>= 4.2)
       omniauth (~> 2.0)
     orm_adapter (0.5.0)
+    pagy (6.1.0)
     parallel (1.23.0)
     parser (3.2.2.3)
       ast (~> 2.4.1)
@@ -338,6 +339,7 @@ DEPENDENCIES
   letter_opener_web (~> 2.0)
   omniauth-google-oauth2
   omniauth-rails_csrf_protection
+  pagy
   pg (~> 1.1)
   puma (~> 5.0)
   rails (~> 7.0.5, >= 7.0.5.1)

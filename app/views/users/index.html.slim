@@ -4,4 +4,6 @@ section.flex.flex-col.mx-auto.w-full.py-12.mt-4.mb-12.items-center
       | Users
   #users.min-w-full.h-auto.flex.flex-col.items-center
     = render @users
+
+    == pagy_nav(@pagy)
   = link_to '戻る', user_path(@user), class: 'btn my-8'
