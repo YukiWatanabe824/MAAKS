@@ -7,7 +7,8 @@ class UsersController < ApplicationController
   before_action :set_user, only: %i[show destroy]
 
   def index
-    @users = User.all
+    @pagy, @users = pagy(User.all, items: 50)
+
     @user = current_user
   end
 
