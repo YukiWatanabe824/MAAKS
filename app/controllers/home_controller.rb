@@ -7,6 +7,11 @@ class HomeController < ApplicationController
     @spots_pagy, @spots = pagy(Spot.order(created_at: :desc))
     @my_spots_pagy, @my_spots = pagy(Spot.order(created_at: :desc).where("user_id = #{current_user.id}")) if user_signed_in?
 
+    if session[:logged_out]
+      @signed_out = true
+      session.delete(:logged_out)
+    end
+
     return unless session[:first_access].nil?
 
     @first_access = true
