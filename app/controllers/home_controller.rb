@@ -1,5 +1,6 @@
 class HomeController < ApplicationController
   before_action :set_user, only: %i[show edit update destroy]
+  before_action :set_mapbox, only: %i[index]
 
   # GET /users or /users.json
   def index
@@ -77,5 +78,10 @@ class HomeController < ApplicationController
   # Only allow a list of trusted parameters through.
   def user_params
     params.fetch(:user, {})
+  end
+
+  def set_mapbox
+    @mapbox_access_token = Rails.application.credentials.mapbox.access_token
+    @mapbox_style = Rails.application.credentials.mapbox.style
   end
 end
