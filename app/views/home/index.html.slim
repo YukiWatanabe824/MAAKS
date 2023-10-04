@@ -1,5 +1,5 @@
 main.w-full.lg:flex-row-reverse.lg:flex class="h-[calc(100vh-65px)]"
-  #map.h-4/6.lg:h-full.lg:basis-9/12 data-controller='map' data-map-target='map' data-map-spot-outlet='.spot_marker' data-action='click->map#createMarker click->map#deleteSpotMenu'
+  #map.h-4/6.lg:h-full.lg:basis-9/12 data-controller='map' data-map-target='map' data-map-spot-outlet='.spot_marker' data-action='click->map#createMarker click->map#deleteSpotMenu' data-mapbox-access-token="#{@mapbox_access_token}" data-mapbox-style="#{@mapbox_style}"
 
   aside.bg-neutral.mr-0.5.p-3.lg:basis-3/12 data-side-menu-map-outlet='#map'
     = turbo_frame_tag 'side_menu' do

@@ -9,8 +9,6 @@ Rails.application.routes.draw do
     patch '/users/:id', to: 'users/registrations#update'
     delete '/users/:id/avatar', to: 'users/registrations#avatar_destroy'
   end
-
-  resources :maps
   resources :spots
   resources :users, only: [:show, :index, :destroy] do
     resources :avatars, only: [:destroy]

@@ -28,7 +28,7 @@ class Users::SessionsController < Devise::SessionsController
   private
 
   def respond_to_on_destroy
-    @signed_out = true
+    session[:logged_out] = true
 
     respond_to do |format|
       format.all { head :no_content }
