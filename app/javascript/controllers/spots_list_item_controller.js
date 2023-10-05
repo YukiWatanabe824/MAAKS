@@ -1,6 +1,6 @@
 import { Controller } from "@hotwired/stimulus"
 
-// Connects to data-controller="spots-list"
+// Connects to data-controller="spots-list-item"
 export default class extends Controller {
   static targets = ["item"];
   static outlets = ["map"];
