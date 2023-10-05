@@ -1,4 +1,15 @@
 = turbo_frame_tag 'side_menu', class: 'flex flex-col h-full' do
+  section#spot_list data-controller="spots-list"
+    .tabs
+      a.tab.tab-lifted.tab-lg.text-xl.tab-active.text-primary.bg-base-100
+        | 最新の投稿
+      a.tab.tab-lifted.tab-lg.text-xl.bg-accent.text-primary
+        | 自分の投稿
+    .bg-base-100.rounded-b-lg.rounded-r-lg.p-4.text-primary class="min-h-[24rem]"
+      = render 'home/aside_latest_spot_list'
+    .bg-base-100.rounded-b-lg.rounded-r-lg.p-4.text-primary.hidden class="min-h-[24rem]"
+      = render 'home/aside_my_spot_list'
+
   section.spot_list.mt-1.mb-5.flex-auto
     - if user_signed_in?
       .my_spot_list.mt-5.mb-5
