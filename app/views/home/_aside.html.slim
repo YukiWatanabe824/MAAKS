@@ -1,39 +1,33 @@
 = turbo_frame_tag 'side_menu', class: 'flex flex-col h-full' do
-  section#spot_list data-controller="spots-list"
-    .tabs
-      a.tab.tab-lifted.tab-lg.text-xl.tab-active.text-primary.bg-base-100
-        | 最新の投稿
-      a.tab.tab-lifted.tab-lg.text-xl.bg-accent.text-primary
-        | 自分の投稿
-    .bg-base-100.rounded-b-lg.rounded-r-lg.p-4.text-primary class="min-h-[24rem]"
-      = render 'home/aside_latest_spot_list'
-    .bg-base-100.rounded-b-lg.rounded-r-lg.p-4.text-primary.hidden class="min-h-[24rem]"
-      = render 'home/aside_my_spot_list'
+  .how_to_service.mb-5.mt-2
+    button.w-full.btn.bg-base-100.text-primary onclick='how_to_maaks_modal.showModal()'
+      .text-left.text-xl.font-medium.mr-auto
+        | 使い方
+  - if @first_access && !@signed_out
+    dialog id='how_to_maaks_modal' class='modal' open='true'
+      = render 'home/modal_box', how_to_maaks: true
+  - else
+    dialog id='how_to_maaks_modal' class='modal'
+      = render 'home/modal_box', how_to_maaks: true
 
-  section.spot_list.mt-1.mb-5.flex-auto
-    - if user_signed_in?
-      .my_spot_list.mt-5.mb-5
-        .collapse.bg-base-100.text-primary.collapse-arrow
-          input.w-full type='checkbox'
-          .collapse-title.text-xl.font-medium
+    section#spot_list data-controller="spot-list" data-spot-list-target="spotListContainer"
+      - if user_signed_in?
+        .tabs
+          a.tab.tab-lifted.tab-lg.text-xl.tab-active.text-primary.bg-base-100.rounded-none.rounded-t
+            | 最新の投稿
+          a.tab.tab-lifted.tab-lg.text-xl.bg-accent.text-primary.rounded-none.rounded-t data-action="click->spot-list#switchTabContent"
             | 自分の投稿
-          .collapse-content
+        .contents
+          .bg-base-100.rounded-b.rounded-r.p-4.text-primary class="min-h-[24rem]"
+            = render 'home/aside_latest_spot_list'
+          .bg-base-100.rounded-b.rounded-r.p-4.text-primary.hidden class="min-h-[24rem]"
             = render 'home/aside_my_spot_list'
-    .latest_spot_list.mt-5.mb-5
-      .collapse.bg-base-100.text-primary.collapse-arrow
-        input.w-full type='checkbox'
-        .collapse-title.text-xl.font-medium
-          | 最新の投稿
-        .collapse-content
-          = render 'home/aside_latest_spot_list'
-    .how_to_service.mt-5.mb-5
-      button.w-full.btn.bg-base-100.text-primary onclick='how_to_maaks_modal.showModal()'
-        .text-left.text-xl.font-medium.mr-auto
-          | 使い方
-    - if @first_access && !@signed_out
-      dialog id='how_to_maaks_modal' class='modal' open='true'
-        = render 'home/modal_box', how_to_maaks: true
-    - else
-      dialog id='how_to_maaks_modal' class='modal'
-        = render 'home/modal_box', how_to_maaks: true
+      - else
+        .tabs
+          a.tab.tab-lifted.tab-lg.text-xl.tab-active.text-primary.bg-base-100
+            | 最新の投稿
+        .contents
+          .bg-base-100.rounded-b-lg.rounded-r-lg.p-4.text-primary class="min-h-[24rem]"
+            = render 'home/aside_latest_spot_list'
+
   = render 'home/aside_footer'

@@ -5,21 +5,25 @@ export default class extends Controller {
   static targets = ["spotListContainer"];
 
   switchTabContent(event) {
-    // 表示されているタブとコンテンツを消す処理
-    // アクティブ状態だとtabには.tab-active.text-primary.bg-base-100がついている
-    // .tab-activeをもつDOMから上記クラスをremoveさせる
-    // Element: removeAttribute() メソッド
+    const activeTab = this.spotListContainerTarget.querySelector(".tab-active");
+    activeTab.classList.remove("tab-active", "bg-base-100");
+    activeTab.classList.add("bg-accent");
+    activeTab.setAttribute("data-action", "click->spot-list#switchTabContent");
 
-    // コンテンツには特になし。アクティブでないコンテンツに.hiddenがついている
-    // タブから紐づく形でコンテンツを発見させて要素を変えたい
-    // .contents_activeを検討したがTabと紐づかなければ処理に違和感がある
-    // tabにdata-tab-numberでナンバリングする
-    // `.contenttab${Number}`でquerySelectorで取得する
+    event.target.classList.add("tab-active", "bg-base-100");
+    event.target.removeAttribute("data-action");
+    const indexActiveTab = Array.from(
+      this.spotListContainerTarget.querySelectorAll(".tab")
+    ).indexOf(activeTab);
+    this.spotListContainerTarget.lastChild.children[
+      indexActiveTab
+    ].classList.add("hidden");
 
-    // クリックしたタブをアクティブにする処理
-    // クリックしたタブに紐づいたコンテンツを表示させる処理
-
-
-    );
+    const indexTargetTab = Array.from(
+      this.spotListContainerTarget.querySelectorAll(".tab")
+    ).indexOf(event.target);
+    this.spotListContainerTarget.lastChild.children[
+      indexTargetTab
+    ].classList.remove("hidden");
   }
 }
