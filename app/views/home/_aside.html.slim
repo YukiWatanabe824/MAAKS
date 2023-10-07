@@ -2,7 +2,7 @@
   .how_to_service.mb-5.mt-2
     button.w-full.btn.bg-base-100.text-primary onclick='how_to_maaks_modal.showModal()'
       .text-left.text-xl.font-medium.mr-auto
-        | 使い方
+        = t'view.how_to_use'
   - if @first_access && !@signed_out
     dialog id='how_to_maaks_modal' class='modal' open='true'
       = render 'home/modal_box', how_to_maaks: true
@@ -14,9 +14,9 @@
       - if user_signed_in?
         .tabs
           a.tab.tab-lifted.tab-lg.text-xl.tab-active.text-primary.bg-base-100.rounded-none.rounded-t
-            | 最新の投稿
+            = t'view.latest_post'
           a.tab.tab-lifted.tab-lg.text-xl.bg-accent.text-primary.rounded-none.rounded-t data-action="click->spot-list#switchTabContent"
-            | 自分の投稿
+            = t'view.my_post'
         .contents
           .bg-base-100.rounded-b.rounded-r.p-4.text-primary class="min-h-[24rem]"
             = render 'home/aside_latest_spot_list'
@@ -25,7 +25,7 @@
       - else
         .tabs
           a.tab.tab-lifted.tab-lg.text-xl.tab-active.text-primary.bg-base-100
-            | 最新の投稿
+            = t'view.latest_post'
         .contents
           .bg-base-100.rounded-b-lg.rounded-r-lg.p-4.text-primary class="min-h-[24rem]"
             = render 'home/aside_latest_spot_list'

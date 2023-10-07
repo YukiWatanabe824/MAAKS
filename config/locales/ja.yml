@@ -15,7 +15,6 @@ ja:
         contents: 詳細
         longitude: 経度
         latitude: 緯度
-
   view:
     return: "戻る"
     show_all_users: "ユーザー一覧"
@@ -39,5 +38,12 @@ ja:
     do_you_really_want_to_remove_it?: 本当に削除しますか？
     user_registration_is_required_to_register_spot: スポットの登録にはユーザー登録が必要です
     create_user_account: ユーザー登録
-
-
+    sign_out: ログアウト
+    sign_in: ログイン
+    menu: メニュー
+    how_to_use: このサービスの使い方
+    latest_post: 最新の投稿
+    my_post: 自分の投稿
+    terms_of_service: 利用規約
+    privacy_policy: プライバシーポリシー
+    developers_blog: 開発者のブログ
