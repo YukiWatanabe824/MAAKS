@@ -64,10 +64,6 @@ header {
   height: 65px
 }
 
-aside{
-  min-width: 288px;
-}
-
 .btn {
   font-weight: normal;
 }
