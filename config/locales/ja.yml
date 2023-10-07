@@ -15,6 +15,12 @@ ja:
         contents: 詳細
         longitude: 経度
         latitude: 緯度
+      user:
+        avatar: ユーザーアイコン
+        name: ユーザー名
+        email: メールアドレス
+        password: パスワード
+        password_confimation: パスワード確認用再入力
   view:
     return: "戻る"
     show_all_users: "ユーザー一覧"
@@ -47,3 +53,4 @@ ja:
     terms_of_service: 利用規約
     privacy_policy: プライバシーポリシー
     developers_blog: 開発者のブログ
+    sign_in_with_google: Googleアカウントでログイン

@@ -1,29 +1,27 @@
 section.flex.flex-col.mx-auto.w-full.py-12.mt-4.mb-12.items-center
   .my-8
     h2.text-3xl.font-bold
-      | ログイン
+      = t'devise.sessions.new.sign_in'
   = form_with(model: @user, class: "flex flex-col items-center", url: session_path(resource_name) ) do |f|
     = render "devise/shared/error_messages", resource: resource
-    .my-3
-      p
-        | メールアドレス
+    .my-3.flex.flex-col
+      = f.label :email
       = f.email_field :email, autocomplete: "#{@user.email}", class: "input input-bordered w-xs"
-    .my-3
-      p
-        | パスワード
+    .my-3.flex.flex-col
+      = f.label :password
       = f.password_field :password, autocomplete: "パスワード", class: "input input-bordered w-xs"
       div.text-sm
-        = link_to 'Forgot your password?', new_password_path(resource_name), class: 'link link-hover'
-    = f.submit "Sign in", class: "btn my-5"
+        = link_to t('devise.shared.links.forgot_your_password'), new_password_path(resource_name), class: 'link link-hover'
+    = f.submit t('devise.sessions.new.sign_in'), class: "btn my-5"
   - resource_class.omniauth_providers.each do |provider|
     = button_to omniauth_authorize_path(resource_name, provider), data: { turbo: false }, class: 'btn'
       .flex.items-center
         = image_tag 'icon_google.svg', alt: "Sign in with #{OmniAuth::Utils.camelize(provider)}", size: '18x18'
         p.ml-2.font-bold
-          | Googleでログイン
+          = t'view.sign_in_with_google'
   = render "devise/shared/links"
 
   .my-3
-    = link_to 'トップページに戻る', root_path, class: 'link link-hover'
+    = link_to t('view.return'), root_path, class: 'link link-hover'
 
 = render 'users/footer'

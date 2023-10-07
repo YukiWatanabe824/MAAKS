@@ -1,18 +1,18 @@
 section.flex.flex-col.mx-auto.w-full.py-12.mt-4.mb-12.items-center
   .my-8
     h2.text-3xl.font-bold
-      | Forgot your password?
+      = t'devise.passwords.new.forgot_your_password'
   = form_with(model: @user, class: 'flex flex-col items-center', url: password_path(resource_name)) do |f|
     = render 'devise/shared/error_messages', resource: resource
     .my-3
       p
-        | メールアドレス
+        = t'view.mail_address'
       = f.email_field :email, autocomplete: "#{@user.email}", class: 'input input-bordered w-xs'
     = f.submit 'Send me reset password instructions', class: 'btn my-5'
 
   = render 'devise/shared/links'
 
   .my-3
-    = link_to 'トップページに戻る', root_path, class: 'link link-hover'
+    = link_to t('view.return'), root_path, class: 'link link-hover'
 
 = render 'users/footer'
