@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class HomeAsideController < ApplicationController
   def index
     @spots_pagy, @spots = pagy(Spot.order(created_at: :desc))
