@@ -21,26 +21,25 @@ gem 'tailwindcss-rails'
 
 gem 'jbuilder'
 
-# Use Redis adapter to run Action Cable in production
-# gem "redis", "~> 4.0"
-
-# Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
-# gem "kredis"
-
-# Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
-# gem "bcrypt", "~> 3.1.7"
-
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 gem 'bootsnap', require: false
 
-# Use Sass to process CSS
-# gem "sassc-rails"
-
 gem 'image_processing', '~> 1.2'
 
 gem 'html2slim'
+
 gem 'slim-rails'
+
+gem 'devise', '~> 4.9'
+
+gem 'omniauth-google-oauth2'
+
+gem 'omniauth-rails_csrf_protection'
+
+gem 'pagy'
+
+gem 'rails-i18n'
 
 group :development, :test do
   gem 'debug', platforms: %i[mri mingw x64_mingw]
@@ -50,15 +49,8 @@ group :development, :test do
 end
 
 group :development do
-  gem 'web-console'
-
-  # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
-  # gem "rack-mini-profiler"
-
-  # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
-  # gem "spring"
-
   gem 'letter_opener_web', '~> 2.0'
+  gem 'web-console'
 end
 
 group :test do
@@ -66,9 +58,3 @@ group :test do
   gem 'selenium-webdriver'
   gem 'webdrivers'
 end
-
-gem 'devise', '~> 4.9'
-
-gem 'omniauth-google-oauth2'
-gem 'omniauth-rails_csrf_protection'
-gem 'pagy'
