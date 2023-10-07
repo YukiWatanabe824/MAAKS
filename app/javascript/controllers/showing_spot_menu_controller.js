@@ -19,8 +19,7 @@ export default class extends Controller {
     el.setAttribute("data-spot-target", "spot");
     el.setAttribute("data-action", "click->spot#setSpotInfo");
 
-    mapboxgl.accessToken =
-      "pk.eyJ1IjoieXVraXdhdGFuYWJlIiwiYSI6ImNsamx3NmQ2NzEwZTczZXBwOTUzbDE5amsifQ.ep62YrWWsdT4HtVFLVA-Og";
+    mapboxgl.accessToken = this.mapOutlet.mapTarget.dataset.mapboxAccessToken;
 
     new mapboxgl.Marker({
       element: el,
