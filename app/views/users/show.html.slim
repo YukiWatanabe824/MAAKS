@@ -1,23 +1,26 @@
 section.flex.flex-col.mx-auto.w-full.py-12.mt-4.mb-12.items-center
   .my-8
     h2.text-3xl.font-bold
-      | マイページ
+      = t'view.my_page'
   = render 'user_icon', locals: { view: 'show' }
   .my-3
     p.text-xl.font-bold
       = @user.name
   .my-3
-    | アカウント作成日時 : #{@user.created_at.year}年#{@user.created_at.month}月#{@user.created_at.day}日
+    = t'view.account'
+    = t'view.created_at'
+    |  : #{@user.created_at.year}年#{@user.created_at.month}月#{@user.created_at.day}日
   .my-3
     p
+      = t'view.number_of_spots_registered'
       - if @user.spot.present?
-        | 登録したスポットの数 : #{ @user.spot.length }個
+        |  : #{ @user.spot.length }
       - else
-        | 登録したスポットの数 : 0個
-  = link_to 'Edit this user', { controller: 'users/registrations', action: 'edit' }, class: 'btn my-3'
-  - if @user.admin?
-    = link_to 'show all users', users_path, id: @user.id, class: 'btn my-3', data: { turbo: false }
+        |  : 0
+  = link_to t('view.edit_this_user'), { controller: 'users/registrations', action: 'edit' }, class: 'btn my-3'
+  - if current_user.admin?
+    = link_to t('view.show_all_users'), users_path, id: @user.id, class: 'btn my-3', data: { turbo: false }
 
-  = link_to '戻る', root_path, class: 'btn my-8'
+  = link_to t('view.return'), root_path, class: 'btn my-8'
 
 = render 'users/footer'

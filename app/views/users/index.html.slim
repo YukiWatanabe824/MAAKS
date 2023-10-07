@@ -1,9 +1,9 @@
 section.flex.flex-col.mx-auto.w-full.py-12.mt-4.mb-12.items-center
   .my-8
     h2.text-3xl.font-bold
-      | Users
+      = t'view.show_all_users'
   #users.min-w-full.h-auto.flex.flex-col.items-center
     = render @users
 
     == pagy_nav(@pagy)
-  = link_to '戻る', user_path(@user), class: 'btn my-8'
+  = link_to t('view.return'), user_path(@user), class: 'btn my-8'
