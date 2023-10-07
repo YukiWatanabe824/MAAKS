@@ -95,6 +95,8 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
+    devise-i18n (1.12.0)
+      devise (>= 4.9.0)
     erubi (1.12.0)
     faraday (2.7.10)
       faraday-net_http (>= 2.0, < 3.1)
@@ -335,6 +337,7 @@ DEPENDENCIES
   capybara
   debug
   devise (~> 4.9)
+  devise-i18n
   html2slim
   image_processing (~> 1.2)
   importmap-rails
