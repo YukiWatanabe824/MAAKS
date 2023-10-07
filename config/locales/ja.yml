@@ -2,13 +2,25 @@ ja:
   time:
     formats:
       default: "%Y/%m/%d %H:%M:%S"
-  spot: "スポット"
-  user: "ユーザー"
   activerecord:
+    models:
+      spot: "スポット"
+      user: "ユーザー"
+    attributes:
+      spot:
+        accident_date: 発生日
+        accident_type: 種別
+        created_at: 投稿日
+        title: タイトル
+        contents: 詳細
+        longitude: 経度
+        latitude: 緯度
+
   view:
     return: "戻る"
     show_all_users: "ユーザー一覧"
     edit_this_user: "プロフィール編集"
+    edit_this_spot: "スポットの編集"
     my_page: "マイページ"
     account: "アカウント"
     created_at: "作成日"
@@ -22,5 +34,10 @@ ja:
     current_password: ”現在のパスワード"
     destroy_this_user: "アカウントを削除する"
     show_this_user: 'ユーザー'
+    edit: 編集
+    destroy: 削除
+    do_you_really_want_to_remove_it?: 本当に削除しますか？
+    user_registration_is_required_to_register_spot: スポットの登録にはユーザー登録が必要です
+    create_user_account: ユーザー登録
 
 
