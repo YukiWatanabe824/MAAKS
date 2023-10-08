@@ -1,40 +1,34 @@
 section.flex.flex-col.mx-auto.w-full.py-12.mt-4.mb-12.items-center
   .my-8
     h2.text-3xl.font-bold
-      | ユーザー登録
+      = t'devise.registrations.new.sign_up'
   = form_with(model: @user, url: user_registration_path, class: 'flex flex-col items-center') do |f|
     = render 'devise/shared/error_messages', resource: resource
-    .user_avatar.my-8
-      = f.label :avatar, class: 'flex flex-col items-center'
-        p
-          | プロフィール画像
-        = f.file_field :avatar, class: 'file-input file-input-bordered file-input-sm w-xs'
-    .my-3
-      p
-        | ユーザー名
+    .user_avatar.my-8.flex.flex-col
+      = f.label :avatar
+      = f.file_field :avatar, class: 'file-input file-input-bordered file-input-sm w-xs'
+    .my-3.flex.flex-col
+      = f.label :name
       = f.text_field :name, autocomplete: "#{@user.name}", class: 'input input-bordered w-xs'
-    .my-3
-      p
-        | メールアドレス
+    .my-3.flex.flex-col
+      = f.label :email
       = f.email_field :email, autocomplete: "#{@user.email}", class: 'input input-bordered w-xs'
-    .my-3
-      p
-        | パスワード
+    .my-3.flex.flex-col
+      = f.label :password
       = f.password_field :password, autocomplete: 'パスワード', class: 'input input-bordered w-xs'
-    .my-3
-      p
-        | パスワード確認用再入力
+    .my-3.flex.flex-col
+      = f.label :password_confimation
       = f.password_field :password_confirmation, autocomplete: '確認用再入力', class: 'input input-bordered w-xs'
-    = f.submit 'Sign up', class: 'btn my-5'
+    = f.submit t('devise.registrations.new.sign_up'), class: 'btn my-5'
   - resource_class.omniauth_providers.each do |provider|
     = button_to omniauth_authorize_path(resource_name, provider), data: { turbo: false }, class: 'btn'
       .flex.items-center
         = image_tag 'icon_google.svg', alt: "Sign in with #{OmniAuth::Utils.camelize(provider)}", size: '18x18'
         p.ml-2.font-bold
-          | Googleでログイン
+          = t'view.sign_in_with_google'
   = render 'devise/shared/links'
 
   .my-3
-    = link_to 'トップページに戻る', root_path, class: 'link link-hover'
+    = link_to t('view.return'), root_path, class: 'link link-hover'
 
 = render 'users/footer'

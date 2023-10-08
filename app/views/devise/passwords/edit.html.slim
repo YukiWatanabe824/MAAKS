@@ -1,23 +1,23 @@
 section.flex.flex-col.mx-auto.w-full.py-12.mt-4.mb-12.items-center
   .my-8
     h2.text-3xl.font-bold
-      | Change your password
+      = t'devise.passwords.edit.change_my_password'
   = form_with(model: @user, class: 'flex flex-col items-center', url: password_path(resource_name)) do |f|
     = render 'devise/shared/error_messages', resource: resource
     = f.hidden_field :reset_password_token
     .my-3
       p
-        | 新しいパスワード
+        = t'devise.passwords.edit.new_password'
       = f.password_field :password, autocomplete: '新しいパスワード', class: 'input input-bordered w-xs'
     .my-3
       p
-        | パスワード確認用再入力
+        = t'devise.passwords.edit.confirm_new_password'
       = f.password_field :password_confirmation, autocomplete: '確認用再入力', class: 'input input-bordered w-xs'
     = f.submit 'Sign up', class: 'btn my-5'
 
   = render 'devise/shared/links'
 
   .my-3
-    = link_to 'トップページに戻る', root_path, class: 'link link-hover'
+    = link_to t('view.return'), root_path, class: 'link link-hover'
 
 = render 'users/footer'
