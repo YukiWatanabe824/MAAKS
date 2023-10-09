@@ -51,6 +51,7 @@ group :development, :test do
 end
 
 group :development do
+  gem 'bullet'
   gem 'letter_opener_web', '~> 2.0'
   gem 'web-console'
 end
