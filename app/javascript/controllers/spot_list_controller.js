@@ -6,11 +6,12 @@ export default class extends Controller {
 
   switchTabContent(event) {
     const activeTab = this.spotListContainerTarget.querySelector(".tab-active");
-    activeTab.classList.remove("tab-active", "bg-base-100");
-    activeTab.classList.add("bg-accent");
+    activeTab.classList.remove("tab-active", "bg-neutral", "text-base-100");
+    activeTab.classList.add("bg-primary", "opacity-50", "text-accent");
     activeTab.setAttribute("data-action", "click->spot-list#switchTabContent");
 
-    event.target.classList.add("tab-active", "bg-base-100");
+    event.target.classList.add("tab-active", "bg-neutral", "text-base-100");
+    event.target.classList.remove("bg-primary", "opacity-50", "text-accent");
     event.target.removeAttribute("data-action");
     const indexActiveTab = Array.from(
       this.spotListContainerTarget.querySelectorAll(".tab")
