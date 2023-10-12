@@ -7,7 +7,7 @@ class HomeController < ApplicationController
   # GET /users or /users.json
   def index
     @user = User.find(current_user.id) if current_user
-    @spots_pagy, @spots = pagy(Spot.order(created_at: :desc))
+    @spots_pagy, @spots = pagy(Spot.order(created_at: :desc).limit(50))
     @my_spots_pagy, @my_spots = pagy(Spot.order(created_at: :desc).where("user_id = #{current_user.id}")) if user_signed_in?
 
     if session[:logged_out]
