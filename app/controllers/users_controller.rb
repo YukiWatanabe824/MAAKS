@@ -2,7 +2,7 @@
 
 class UsersController < ApplicationController
   before_action :authenticate_user!, only: %i[show]
-  before_action :redirect_if_different_user_or, only: %i[show]
+  before_action :redirect_if_different_user, only: %i[show]
   before_action :set_user, only: %i[show destroy]
 
   def index
@@ -18,8 +18,8 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.destroy
-        format.html { redirect_to users_path, notice: 'User was successfully destroyed.', status: :see_other } if current_user.admin?
-        format.html { redirect_to root_path, notice: 'User was successfully destroyed.', status: :see_other }
+        format.html { redirect_to users_path, notice: t('controller.user_was_successfully_destroyed'), status: :see_other } if current_user.admin?
+        format.html { redirect_to root_path, notice: t('controller.user_was_successfully_destroyed'), status: :see_other }
       else
         format.html { redirect_to root_path, status: :unprocessable_entity }
       end
@@ -41,6 +41,6 @@ class UsersController < ApplicationController
   def authenticate_admin(user = @user)
     return if current_user == user
 
-    redirect_to root_path, alert: '管理権限がありません' if !current_user.admin?
+    redirect_to root_path, alert: t('controller.you_do_not_have_administrative_privileges') if !current_user.admin?
   end
 end

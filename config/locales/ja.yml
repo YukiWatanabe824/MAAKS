@@ -55,3 +55,6 @@ ja:
     developers_blog: 開発者のブログ
     sign_in_with_google: Googleアカウントでログイン
     this_mail_address_used: このメールアドレスは登録済みです
+  controller:
+    user_was_successfully_destroyed: ユーザーを削除しました
+    you_do_not_have_administrative_privileges: 管理権限がありません
