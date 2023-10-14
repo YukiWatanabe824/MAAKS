@@ -1,17 +1,17 @@
 # frozen_string_literal: true
 
 class AvatarsController < UsersController
-  before_action :authenticate_user!
-  before_action :redirect_if_different_user
+  before_action :authenticate_user!, only: %i[destroy]
+  before_action :redirect_if_different_user, only: %i[destroy]
   before_action :set_user, only: %i[destroy]
 
   def destroy
     @user.avatar.purge if @user.avatar.attached?
     respond_to do |format|
       if @user.avatar.attached?
-        format.html { render :show, status: :unprocessable_entity }
+        format.html { render :show, status: :unprocessable_entity, alert: t('controller.failed_to_deleted') }
       else
-        format.html { redirect_to "/users/#{@user.id}/edit", notice: '画像は削除されました' }
+        format.html { redirect_to "/users/#{@user.id}/edit", notice: t('controller.deleted') }
       end
     end
   end
