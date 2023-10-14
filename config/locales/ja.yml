@@ -58,3 +58,9 @@ ja:
   controller:
     user_was_successfully_destroyed: ユーザーを削除しました
     you_do_not_have_administrative_privileges: 管理権限がありません
+    spot_created!: スポットを作成しました！
+    failed_to_create_spot: スポットの作成に失敗しました
+    updated: 更新しました！
+    failed_to_updated: 更新できませんでした
+    deleted: 削除しました
+    failed_to_deleted: 削除できませんでした
