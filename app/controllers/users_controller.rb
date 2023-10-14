@@ -2,8 +2,7 @@
 
 class UsersController < ApplicationController
   before_action :authenticate_user!, only: %i[show]
-  before_action :authenticate_admin!, only: %i[destroy]
-  before_action :redirect_if_different_user_or_admin, only: %i[show]
+  before_action :redirect_if_different_user_or, only: %i[show]
   before_action :set_user, only: %i[show destroy]
 
   def index
@@ -15,6 +14,8 @@ class UsersController < ApplicationController
   def show; end
 
   def destroy
+    authenticate_admin
+
     respond_to do |format|
       if @user.destroy
         format.html { redirect_to users_path, notice: 'User was successfully destroyed.', status: :see_other } if current_user.admin?
@@ -31,15 +32,15 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
-  def redirect_if_different_user_or_admin
+  def redirect_if_different_user
     return if current_user.admin?
 
     redirect_to root_path if current_user != User.find(params[:id])
   end
 
-  def authenticate_admin!
-    return if current_user == set_user
+  def authenticate_admin(user = @user)
+    return if current_user == user
 
-    redirect_to root_path, notice: '管理権限がありません' if !current_user.admin?
+    redirect_to root_path, alert: '管理権限がありません' if !current_user.admin?
   end
 end
