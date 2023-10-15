@@ -22,11 +22,11 @@ section.flex.flex-col.mx-auto.w-full.py-12.mt-4.mb-12.items-center
     .my-3
       p
         = t'view.user_name'
-      = f.text_field :name, autocomplete: @user.name.to_s, class: 'input input-bordered w-xs'
+      = f.text_field :name, autocomplete: html_escape(@user.name), class: 'input input-bordered w-xs'
     .my-3
       p
         = t'view.mail_address'
-      = f.email_field :email, autocomplete: @user.email.to_s, class: 'input input-bordered w-xs'
+      = f.email_field :email, autocomplete: html_escape(@user.email), class: 'input input-bordered w-xs'
     - unless @user.provider.presence || current_user.admin?
       .my-3
         p
