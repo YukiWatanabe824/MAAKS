@@ -8,7 +8,7 @@ section.flex.flex-col.mx-auto.w-full.py-12.mt-4.mb-12.items-center
       p
         = t'view.mail_address'
       = f.email_field :email, autocomplete: "#{@user.email}", class: 'input input-bordered w-xs'
-    = f.submit 'Send me reset password instructions', class: 'btn my-5'
+    = f.submit t('view.send_me_reset_password_instructions'), class: 'btn my-5'
 
   = render 'devise/shared/links'
 
