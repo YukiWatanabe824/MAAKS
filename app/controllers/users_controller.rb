@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   before_action :set_user, only: %i[show destroy]
 
   def index
-    @pagy, @users = pagy(User.includes([:avatar_attachment]), items: 50)
+    redirect_to root_path, alert: t('controller.you_do_not_have_administrative_privileges') if !current_user.admin?
 
     @user = current_user
   end
