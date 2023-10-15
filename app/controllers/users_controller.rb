@@ -9,6 +9,7 @@ class UsersController < ApplicationController
     redirect_to root_path, alert: t('controller.you_do_not_have_administrative_privileges') if !current_user.admin?
 
     @user = current_user
+    @pagy, @users = pagy(User.includes(avatar_attachment: :blob), items: 50)
   end
 
   def show; end
