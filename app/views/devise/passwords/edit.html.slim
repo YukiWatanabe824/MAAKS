@@ -13,7 +13,7 @@ section.flex.flex-col.mx-auto.w-full.py-12.mt-4.mb-12.items-center
       p
         = t'devise.passwords.edit.confirm_new_password'
       = f.password_field :password_confirmation, autocomplete: '確認用再入力', class: 'input input-bordered w-xs'
-    = f.submit 'Sign up', class: 'btn my-5'
+    = f.submit t('view.signed_up'), class: 'btn my-5'
 
   = render 'devise/shared/links'
 

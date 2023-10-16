@@ -46,6 +46,7 @@ ja:
     create_user_account: ユーザー登録
     sign_out: ログアウト
     sign_in: ログイン
+    sign_up: ユーザー登録
     menu: メニュー
     how_to_use: このサービスの使い方
     latest_post: 最新の投稿
@@ -55,3 +56,13 @@ ja:
     developers_blog: 開発者のブログ
     sign_in_with_google: Googleアカウントでログイン
     this_mail_address_used: このメールアドレスは登録済みです
+    send_me_reset_password_instructions: パスワードのリセット方法を教えてください
+  controller:
+    user_was_successfully_destroyed: ユーザーを削除しました
+    you_do_not_have_administrative_privileges: 管理権限がありません
+    spot_created!: スポットを作成しました！
+    failed_to_create_spot: スポットの作成に失敗しました
+    updated: 更新しました！
+    failed_to_updated: 更新できませんでした
+    deleted: 削除しました
+    failed_to_deleted: 削除できませんでした

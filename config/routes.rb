@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :index, :destroy] do
     resources :avatars, only: [:destroy]
   end
-  resources :home
+  resources :home, only: [:index]
   resources :home_aside, only: [:index]
 
   root to: "home#index"

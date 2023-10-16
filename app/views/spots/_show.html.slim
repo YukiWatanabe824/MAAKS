@@ -4,7 +4,7 @@
   - if spot_created
     #spot_detail.flex.flex-col.flex-wrap.text-base-100 data-controller="showing-spot-menu" data-showing-spot-menu-map-outlet="#map" data-showing-spot-menu-target="SpotDetailPanel" data-id="#{@spot.id}" data-longitude="#{@spot.longitude}" data-latitude="#{@spot.latitude}"
       h2.my-2.text-xl.font-bold
-        = @spot.title
+        = format_content(@spot.title)
       ul.flex.flex-col.flex-wrap
         li
           = t'activerecord.attributes.spot.accident_date'
@@ -13,7 +13,7 @@
           = t'activerecord.attributes.spot.accident_type'
           |  : #{@spot.accident_type}
         li.my-2.leading-6
-          | #{@spot.contents}
+          = format_content(@spot.contents)
         li
           = t'activerecord.attributes.spot.created_at'
           |  : #{@spot.created_at.year}年#{@spot.created_at.month}月#{@spot.created_at.day}日
