@@ -1,11 +1,11 @@
 footer.mt-auto
   ul
-    li.cursor-pointer.my-2 onclick='terms_of_service_modal.showModal()'
+    li.terms_of_service.cursor-pointer.my-2 onclick='terms_of_service_modal.showModal()'
       span.text-base-100.link.link-hover
         = t'view.terms_of_service'
       dialog id='terms_of_service_modal' class='modal text-base-100'
         = render 'home/modal_box', terms_of_service: true
-    li.cursor-pointer.my-2 onclick='privacy_policy_modal.showModal()'
+    li.privacy_policy.cursor-pointer.my-2 onclick='privacy_policy_modal.showModal()'
       span.text-base-100.link.link-hover
         = t'view.privacy_policy'
       dialog id='privacy_policy_modal' class='modal text-base-100'
@@ -13,10 +13,10 @@ footer.mt-auto
     li
       = link_to t('view.developers_blog'), 'https://yukiwatanabe.hatenablog.com/', class: 'link link-hover text-base-100'
   .mt-5.flex.items-center
-    = link_to 'https://twitter.com/Yuki_Watanabe99'
-      = image_tag 'x-twitter-logo.svg', size: '28x28', alt: 'X twitter', class: 'm-2'
-    = link_to 'https://github.com/YukiWatanabe824/MAAKS'
-      = image_tag 'github-mark-white.svg', size: '32x32', alt: 'GitHub', class: 'rounded-full m-2'
+    = link_to 'https://twitter.com/Yuki_Watanabe99', class: 'developers_sns_x'
+      = image_tag 'x-twitter-logo.svg', size: '28x28', alt: 'X twitter', class: 'm-2 x_logo_mark'
+    = link_to 'https://github.com/YukiWatanabe824/MAAKS', class: 'developers_github'
+      = image_tag 'github-mark-white.svg', size: '32x32', alt: 'GitHub', class: 'rounded-full m-2 github_logo_mark'
   .mt-2
     p.text-base-100.text-xs
       |  © YukiWatanabe, 2023, All Rights Reserved
