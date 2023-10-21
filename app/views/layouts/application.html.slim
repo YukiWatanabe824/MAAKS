@@ -31,14 +31,14 @@ html data-theme='corporate'
             - else
               = render 'layouts/default_user_icon'
             li.m-2
-              = link_to t('view.my_page'), user_path(current_user), class: "btn btn-outline btn-accent"
+              = link_to t('view.my_page'), user_path(current_user), class: "my_page_button btn btn-outline btn-accent"
             li.m-2
-              = link_to t('view.sign_out'), destroy_user_session_path, data: {turbo_method: :delete}, class: "btn btn-outline btn-accent"
+              = link_to t('view.sign_out'), destroy_user_session_path, data: {turbo_method: :delete}, class: "sign_out_button btn btn-outline btn-accent"
           - else
             li.m-2
-              = link_to t('view.sign_in'), new_user_session_path, class: "btn btn-outline btn-accent"
+              = link_to t('view.sign_in'), new_user_session_path, class: "sign_in_button btn btn-outline btn-accent"
             li.m-2
-              = link_to t('view.create_user_account'), new_user_registration_path, class: "btn btn-outline btn-accent"
+              = link_to t('view.create_user_account'), new_user_registration_path, class: "create_user_button btn btn-outline btn-accent"
       .dropdown.dropdown-end.m-2.lg:hidden
         label.btn.btn-outline.btn-accent tabindex="0"
           = t'view.menu'
