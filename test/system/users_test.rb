@@ -28,7 +28,6 @@ class UsersTest < ApplicationSystemTestCase
 
   test 'sign-in and sign-up and associated flash messages' do
     visit '/users/sign_up'
-    attach_file 'user_avatar', "#{Rails.root.join('test/system/fixtures/user_icon.jpg')}"
     fill_in('ユーザー名', with: 'test')
     fill_in('メールアドレス', with: 'test@example.com')
     fill_in('パスワード', with: '123456')
