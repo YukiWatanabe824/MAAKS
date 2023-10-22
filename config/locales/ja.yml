@@ -56,7 +56,7 @@ ja:
     developers_blog: 開発者のブログ
     sign_in_with_google: Googleアカウントでログイン
     this_mail_address_used: このメールアドレスは登録済みです
-    send_me_reset_password_instructions: パスワードのリセット方法を教えてください
+    send_me_reset_password_instructions: パスワードリセットメールを送信する
   controller:
     user_was_successfully_destroyed: ユーザーを削除しました
     you_do_not_have_administrative_privileges: 管理権限がありません

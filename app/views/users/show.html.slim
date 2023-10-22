@@ -4,7 +4,7 @@ section.flex.flex-col.mx-auto.w-full.py-12.mt-4.mb-12.items-center
       = t'view.my_page'
   = render 'user_icon', locals: { view: 'show' }
   .my-3
-    p.text-xl.font-bold
+    p.user_name.text-xl.font-bold
       = format_content(@user.name)
   .my-3
     = t'view.account'

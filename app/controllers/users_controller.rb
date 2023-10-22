@@ -19,7 +19,6 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.destroy
-        format.html { redirect_to users_path, notice: t('controller.user_was_successfully_destroyed'), status: :see_other } if current_user.admin?
         format.html { redirect_to root_path, notice: t('controller.user_was_successfully_destroyed'), status: :see_other }
       else
         format.html { redirect_to root_path, status: :unprocessable_entity }

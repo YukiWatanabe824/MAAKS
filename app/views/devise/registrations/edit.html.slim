@@ -34,7 +34,7 @@ section.flex.flex-col.mx-auto.w-full.py-12.mt-4.mb-12.items-center
           = t'view.current_password'
         = f.password_field :current_password, autocomplete: '現在のパスワード', class: 'input input-bordered w-xs'
     = f.submit t('helpers.submit.update'), class: 'btn my-5'
-  = button_to t('view.destroy_this_user'), user_path(@user), method: :delete, data: { confirm: t('view.do_you_really_want_to_remove_it?'), turbo_confirm: t('view.do_you_really_want_to_remove_it?') }, class: 'link link-hover text-neutral'
+  = button_to t('view.destroy_this_user'), user_path(@user), method: :delete, data: { confirm: t('view.do_you_really_want_to_remove_it?'), turbo_confirm: t('view.do_you_really_want_to_remove_it?') }, class: 'delete_account_button link link-hover text-neutral'
 
   = link_to t('view.return'), user_path(@user), class: 'btn my-8'
 

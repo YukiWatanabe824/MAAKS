@@ -26,14 +26,31 @@ class UsersTest < ApplicationSystemTestCase
     assert_selector('#flash', text: 'ログアウトしました。')
   end
 
-  test "should create user" do
-    visit users_url
-    click_on "New user"
+  test 'sign-in and sign-up and associated flash messages' do
+    visit '/users/sign_up'
+    attach_file 'user_avatar', "#{Rails.root.join('test/system/fixtures/user_icon.jpg')}"
+    fill_in('ユーザー名', with: 'test')
+    fill_in('メールアドレス', with: 'test@example.com')
+    fill_in('パスワード', with: '123456')
+    fill_in('user[password_confirmation]', with: '123456')
+    click_on('アカウント登録')
+    assert_selector('#flash', text: 'アカウント登録が完了しました。')
 
-    click_on "Create User"
+    find('.close_modal_button').click
+    click_on('ログアウト')
+    assert_selector('#flash', text: 'ログアウトしました。')
 
-    assert_text "User was successfully created"
-    click_on "Back"
+    visit '/users/sign_in'
+    fill_in('メールアドレス', with: 'test@example.com')
+    fill_in('パスワード', with: '12345678')
+    click_on('commit')
+    assert_selector('#flash', text: 'メールアドレスまたはパスワードが違います。')
+
+    visit '/users/sign_in'
+    fill_in('メールアドレス', with: 'test@example.com')
+    fill_in('パスワード', with: '123456')
+    click_on('commit')
+    assert_selector('#flash', text: 'ログインしました。')
   end
 
   test 'showing user mypage' do
