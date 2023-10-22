@@ -14,7 +14,7 @@ export default class extends Controller {
   addSpot(spot) {
     const el = document.createElement("div");
     el.id = spot.id;
-    el.className = "spot_marker color_palette solid_icon";
+    el.className = `spot-${spot.id} spot_marker color_palette solid_icon`;;
     el.setAttribute("data-controller", "spot");
     el.setAttribute("data-spot-target", "spot");
     el.setAttribute("data-action", "click->spot#setSpotInfo");
