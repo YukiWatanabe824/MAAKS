@@ -1,7 +1,7 @@
 watanabe:
   name: "yuki"
   email: "xxx@example.jp"
-  password: "1234"
+  password: "123456"
   avatar_url: ""
   admin: true
   updated_at: "2014-01-01 00:00:01"
@@ -10,7 +10,7 @@ watanabe:
 test01:
   name: "test"
   email: "test@example.jp"
-  password: "1234"
+  password: "123456"
   avatar_url: ""
   admin: false
   updated_at: "2014-01-01 00:00:01"

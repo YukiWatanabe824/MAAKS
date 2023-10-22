@@ -2,14 +2,7 @@ section.flex.flex-col.mx-auto.w-full.py-12.mt-4.mb-12.items-center
   .my-8
     h2.text-3xl.font-bold
       = t'view.edit_this_user'
-  - if @user.avatar.attached?
-    = image_tag @user.avatar.variant(resize_to_limit: [200, 200]), class: 'rounded-full w-24 h-24'
-    = button_to t('view.delete_for_image'), "/users/#{@user.id}/avatars/#{@user.avatar.id}", method: :delete, data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" },   class: 'link link-hover my-2'
-  - else
-    .avatar.placeholder
-      .bg-secondary-focus.text-neutral-content.rounded-full.w-24
-        span.text-7xl
-          = @user.name[0,1]
+  = render 'users/user_icon', edited_user: true
   = form_with(model: @user, class: 'flex flex-col items-center') do |f|
     = render 'devise/shared/error_messages', resource: resource
     .user_avatar.mb-8
