@@ -3,21 +3,21 @@
 = turbo_frame_tag 'side_menu', class: 'py-3' do
   - if spot_created
     #spot_detail.flex.flex-col.flex-wrap.text-base-100 data-controller="showing-spot-menu" data-showing-spot-menu-map-outlet="#map" data-showing-spot-menu-target="SpotDetailPanel" data-id="#{@spot.id}" data-longitude="#{@spot.longitude}" data-latitude="#{@spot.latitude}"
-      h2.my-2.text-xl.font-bold
+      h2.my-2.text-xl.font-bold.spot_title
         = format_content(@spot.title)
       ul.flex.flex-col.flex-wrap
-        li
+        li.spot_accident_date
           = t'activerecord.attributes.spot.accident_date'
           |  : #{@spot.accident_date.year}年#{@spot.accident_date.month}月#{@spot.accident_date.day}日
-        li
+        li.spot_accident_type
           = t'activerecord.attributes.spot.accident_type'
           |  : #{@spot.accident_type}
-        li.my-2.leading-6
+        li.my-2.leading-6.spot_content
           = format_content(@spot.contents)
-        li
+        li.spot_created_at
           = t'activerecord.attributes.spot.created_at'
           |  : #{@spot.created_at.year}年#{@spot.created_at.month}月#{@spot.created_at.day}日
-        li.text-xs
+        li.text-xs.spot_id
           | ID: #{@spot.id}
       - if user_signed_in?
         - if @spot.owned_by?(current_user) || current_user.admin?
