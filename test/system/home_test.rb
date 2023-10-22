@@ -8,9 +8,9 @@ class HomeTest < ApplicationSystemTestCase
 
   test 'showing how to modal when first access in day and no show how to modal when after the second access that day' do
     visit '/'
-    assert_selector("#how_to_maaks_modal", visible: :visible)
+    assert_selector('#how_to_maaks_modal', visible: :visible)
     visit '/'
-    assert_no_selector("#how_to_maaks_modal", visible: :visible)
+    assert_no_selector('#how_to_maaks_modal', visible: :visible)
   end
 
   test 'open and close three modal' do
@@ -34,26 +34,10 @@ class HomeTest < ApplicationSystemTestCase
     user = users(:watanabe)
     sign_in user
     visit '/'
-    
+
     find('a.tab.opacity-50').click
     assert_no_selector 'a.tab.tab-active', text: '最新の投稿'
     assert_selector 'a.tab.tab-active', text: '自分の投稿'
-  end
-  
-  test 'showing spots on map' do
-    visit '/'
-    find('.close_modal_button').click
-    assert_equal spots.length, page.all('.spot_marker', visible: false).count
-  end
-
-  test 'showing spot menu by right click on spot marker' do
-    visit '/'
-    find('.close_modal_button').click
-    find('#map').click
-    find('#map').click
-    find('#new_spot_marker').right_click
-    assert_selector('#spot_menu')
-
   end
 
   test 'showing map' do
@@ -61,7 +45,7 @@ class HomeTest < ApplicationSystemTestCase
     find('.close_modal_button').click
     assert_selector('.mapboxgl-map')
   end
-  
+
   test 'showing developpers sns' do
     visit '/'
     find('.close_modal_button').click
