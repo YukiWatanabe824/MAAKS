@@ -83,7 +83,7 @@ class UsersTest < ApplicationSystemTestCase
     assert_selector '.user_default_icon', text: 't'
   end
 
-  test 'edit user profile' do
+  test 'edit user' do
     user = users(:watanabe)
     sign_in user
     visit "users/#{user.id}/edit"
@@ -95,7 +95,7 @@ class UsersTest < ApplicationSystemTestCase
     assert_selector('p', text: 'test')
   end
 
-  test 'delete user account' do
+  test 'delete user' do
     user = users(:watanabe)
     sign_in user
     visit "users/#{user.id}/edit"
