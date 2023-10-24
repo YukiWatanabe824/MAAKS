@@ -14,7 +14,7 @@ section.flex.flex-col.mx-auto.w-full.py-12.mt-4.mb-12.items-center
         = link_to t('devise.shared.links.forgot_your_password'), new_password_path(resource_name), class: 'link link-hover'
     = f.submit t('devise.sessions.new.sign_in'), class: "btn my-5"
   - resource_class.omniauth_providers.each do |provider|
-    = button_to omniauth_authorize_path(resource_name, provider), data: { turbo: false }, class: 'btn'
+    = button_to omniauth_authorize_path(resource_name, provider), data: { turbo: false }, class: "btn #{provider}"
       .flex.items-center
         = image_tag 'icon_google.svg', alt: "Sign in with #{OmniAuth::Utils.camelize(provider)}", size: '18x18'
         p.ml-2.font-bold
