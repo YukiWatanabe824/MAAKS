@@ -1,10 +1,10 @@
 - edited_user ||= false
 - if @user.avatar.attached?
-  = image_tag @user.avatar.variant(resize_to_limit: [200, 200]), class: 'rounded-full w-24 h-24'
+  = image_tag @user.avatar.variant(resize_to_limit: [200, 200]), class: 'user_icon rounded-full w-24 h-24'
   - if edited_user
-    = button_to t('view.delete_for_image'), "/users/#{@user.id}/avatars/#{@user.avatar.id}", method: :delete, data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, class: 'link link-hover my-2'
+    = button_to t('view.delete_for_image'), "/users/#{@user.id}/avatars/#{@user.avatar.id}", method: :delete, data: { confirm: t('view.do_you_really_want_to_remove_it?'), turbo_confirm: t('view.do_you_really_want_to_remove_it?') }, class: 'link link-hover my-2'
 - else
-  .avatar.placeholder
+  .avatar.placeholder.user_default_icon
     .bg-secondary-focus.text-neutral-content.rounded-full.w-24
       span.text-7xl
         = @user.name[0, 1]

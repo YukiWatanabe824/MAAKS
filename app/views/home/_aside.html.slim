@@ -10,24 +10,24 @@
     dialog id='how_to_maaks_modal' class='modal'
       = render 'home/modal_box', how_to_maaks: true
 
-    section#spot_list data-controller="spot-list" data-spot-list-target="spotListContainer"
-      - if user_signed_in?
-        .tabs
-          a.tab.tab-bordered.tab-active.tab-lg.text-xl.text-base-100.bg-neutral.rounded-none.rounded-t
-            = t'view.latest_post'
-          a.tab.tab-bordered.tab-lg.text-xl.bg-primary.text-accent.rounded-none.rounded-t.opacity-50 data-action="click->spot-list#switchTabContent"
-            = t'view.my_post'
-        .contents
-          .bg-base-100.rounded-b.rounded-r.p-4.text-primary class="min-h-[24rem]"
-            = render 'home/aside_latest_spot_list'
-          .bg-base-100.rounded-b.rounded-r.p-4.text-primary.hidden class="min-h-[24rem]"
-            = render 'home/aside_my_spot_list'
-      - else
-        .tabs
-          a.tab.tab-bordered.tab-active.tab-lg.text-xl.text-base-100.bg-neutral.rounded-none.rounded-t
-            = t'view.latest_post'
-        .contents
-          .bg-base-100.rounded-b-lg.rounded-r-lg.p-4.text-primary class="min-h-[24rem]"
-            = render 'home/aside_latest_spot_list'
+  section#spot_list data-controller="spot-list" data-spot-list-target="spotListContainer"
+    - if user_signed_in?
+      .tabs
+        a.tab.tab-bordered.tab-active.tab-lg.text-xl.text-base-100.bg-neutral.rounded-none.rounded-t
+          = t'view.latest_post'
+        a.tab.tab-bordered.tab-lg.text-xl.bg-primary.text-accent.rounded-none.rounded-t.opacity-50 data-action="click->spot-list#switchTabContent"
+          = t'view.my_post'
+      .contents
+        .bg-base-100.rounded-b.rounded-r.p-4.text-primary class="min-h-[24rem]"
+          = render 'home/aside_latest_spot_list'
+        .bg-base-100.rounded-b.rounded-r.p-4.text-primary.hidden class="min-h-[24rem]"
+          = render 'home/aside_my_spot_list'
+    - else
+      .tabs
+        a.tab.tab-bordered.tab-active.tab-lg.text-xl.text-base-100.bg-neutral.rounded-none.rounded-t
+          = t'view.latest_post'
+      .contents
+        .bg-base-100.rounded-b-lg.rounded-r-lg.p-4.text-primary class="min-h-[24rem]"
+          = render 'home/aside_latest_spot_list'
 
   = render 'home/aside_footer'
