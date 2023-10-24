@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'application_system_test_case'
 
 class UsersTest < ApplicationSystemTestCase
@@ -62,7 +64,7 @@ class UsersTest < ApplicationSystemTestCase
 
   test 'upload user_icon image file' do
     visit '/users/sign_up'
-    attach_file 'user_avatar', "#{Rails.root.join('test/fixtures/files/user_icon.webp')}"
+    attach_file 'user_avatar', Rails.root.join('test/fixtures/files/user_icon.webp').to_s
     fill_in('ユーザー名', with: 'test')
     fill_in('メールアドレス', with: 'test@example.com')
     fill_in('パスワード', with: '123456')
