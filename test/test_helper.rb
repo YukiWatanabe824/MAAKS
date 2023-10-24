@@ -8,4 +8,9 @@ class ActiveSupport::TestCase
 
   # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
   fixtures :all
+
+  def visit_root_closed_modal
+    visit '/'
+    find('.close_modal_button').click
+  end
 end

@@ -2,22 +2,19 @@ require 'application_system_test_case'
 
 class SpotsTest < ApplicationSystemTestCase
   test 'showing spots on map' do
-    visit '/'
-    find('.close_modal_button').click
+    visit_root_closed_modal
     assert_equal spots.length, page.all('.spot_marker', visible: false).count
   end
 
   test 'showing spot menu by right click on spot marker' do
-    visit '/'
-    find('.close_modal_button').click
+    visit_root_closed_modal
     find('#map').click
     find('#new_spot_marker').right_click
     assert_selector('#spot_menu')
   end
 
   test 'showing spot info in side menu by not signed in' do
-    visit '/'
-    find('.close_modal_button').click
+    visit_root_closed_modal
     assert_selector('#map')
     assert_selector('.mapboxgl-canvas-container')
 
@@ -34,8 +31,7 @@ class SpotsTest < ApplicationSystemTestCase
   test 'create spot' do
     user = users(:watanabe)
     sign_in user
-    visit '/'
-    find('.close_modal_button').click
+    visit_root_closed_modal
 
     find('#map').click
     find('#new_spot_marker').right_click
@@ -52,8 +48,7 @@ class SpotsTest < ApplicationSystemTestCase
   end
 
   test 'create a spot but a warning appears if you are not logged in' do
-    visit '/'
-    find('.close_modal_button').click
+    visit_root_closed_modal
     assert_selector('#map')
 
     find('#map').click
@@ -66,8 +61,7 @@ class SpotsTest < ApplicationSystemTestCase
   test 'edit spot' do
     user = users(:watanabe)
     sign_in user
-    visit '/'
-    find('.close_modal_button').click
+    visit_root_closed_modal
 
     find(".spot-#{user.spot[0].id}", visible: false).click(x: 0, y: -5)
     click_on '編集'
@@ -82,8 +76,7 @@ class SpotsTest < ApplicationSystemTestCase
   test 'destroy spot' do
     user = users(:watanabe)
     sign_in user
-    visit '/'
-    find('.close_modal_button').click
+    visit_root_closed_modal
 
     find(".spot-#{user.spot[0].id}", visible: false).click(x: 0, y: -5)
     accept_confirm do

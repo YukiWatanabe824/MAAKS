@@ -2,8 +2,7 @@ require 'application_system_test_case'
 
 class UsersTest < ApplicationSystemTestCase
   test 'user sign in, create, sign out, my page button is show' do
-    visit '/'
-    find('.close_modal_button').click
+    visit_root_closed_modal
 
     assert_selector('.sign_in_button')
     assert_selector('.create_user_button')
@@ -19,8 +18,7 @@ class UsersTest < ApplicationSystemTestCase
   test 'user signed out flash message' do
     user = users(:watanabe)
     sign_in user
-    visit '/'
-    find('.close_modal_button').click
+    visit_root_closed_modal
 
     click_link('ログアウト')
     assert_selector('#flash', text: 'ログアウトしました。')

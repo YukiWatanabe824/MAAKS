@@ -14,8 +14,7 @@ class HomeTest < ApplicationSystemTestCase
   end
 
   test 'open and close three modal' do
-    visit '/'
-    find('.close_modal_button').click
+    visit_root_closed_modal
     find_button('このサービスの使い方').click
     assert_text '安全にサイクリングをして、無事に帰ってくる。'
     find('.close_modal_button').click
@@ -27,8 +26,7 @@ class HomeTest < ApplicationSystemTestCase
   end
 
   test 'latest spot list tab is displayed' do
-    visit '/'
-    find('.close_modal_button').click
+    visit_root_closed_modal
     assert_selector 'a.tab.tab-active', text: '最新の投稿'
 
     user = users(:watanabe)
@@ -41,14 +39,12 @@ class HomeTest < ApplicationSystemTestCase
   end
 
   test 'showing map' do
-    visit '/'
-    find('.close_modal_button').click
+    visit_root_closed_modal
     assert_selector('.mapboxgl-map')
   end
 
   test 'showing developpers sns' do
-    visit '/'
-    find('.close_modal_button').click
+    visit_root_closed_modal
     assert_selector('.developers_sns_x')
     assert_selector('.x_logo_mark')
     assert_selector('.developers_github')

@@ -5,8 +5,7 @@ class AdminUserTest < ApplicationSystemTestCase
     admin_user = users(:watanabe)
     user = users(:test01)
     sign_in admin_user
-    visit '/'
-    find('.close_modal_button').click
+    visit_root_closed_modal
 
     find(".spot-#{user.spot[0].id}", visible: false).click(x: 0, y: -5)
     click_on '編集'
@@ -22,8 +21,7 @@ class AdminUserTest < ApplicationSystemTestCase
     admin_user = users(:watanabe)
     user = users(:test01)
     sign_in admin_user
-    visit '/'
-    find('.close_modal_button').click
+    visit_root_closed_modal
 
     find(".spot-#{user.spot[0].id}", visible: false).click(x: 0, y: -5)
     accept_confirm do
