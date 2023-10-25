@@ -1,18 +1,18 @@
 section.flex.flex-col.mx-auto.w-full.py-12.mt-4.mb-12.items-center
   .my-8
     h2.text-3xl.font-bold
-      = t'devise.registrations.new.sign_up'
+      = t 'devise.registrations.new.sign_up'
   = form_with(model: @user, url: user_registration_path, class: 'flex flex-col items-center') do |f|
-    = render 'devise/shared/error_messages', resource: resource
+    = render 'devise/shared/error_messages', resource:
     .user_avatar.my-8.flex.flex-col
       = f.label :avatar
       = f.file_field :avatar, class: 'file-input file-input-bordered file-input-sm w-xs'
     .my-3.flex.flex-col
       = f.label :name
-      = f.text_field :name, autocomplete: "#{@user.name}", class: 'input input-bordered w-xs'
+      = f.text_field :name, autocomplete: @user.name.to_s, class: 'input input-bordered w-xs'
     .my-3.flex.flex-col
       = f.label :email
-      = f.email_field :email, autocomplete: "#{@user.email}", class: 'input input-bordered w-xs'
+      = f.email_field :email, autocomplete: @user.email.to_s, class: 'input input-bordered w-xs'
     .my-3.flex.flex-col
       = f.label :password
       = f.password_field :password, autocomplete: 'パスワード', class: 'input input-bordered w-xs'
@@ -25,7 +25,7 @@ section.flex.flex-col.mx-auto.w-full.py-12.mt-4.mb-12.items-center
       .flex.items-center
         = image_tag 'icon_google.svg', alt: "Sign in with #{OmniAuth::Utils.camelize(provider)}", size: '18x18'
         p.ml-2.font-bold
-          = t'view.sign_in_with_google'
+          = t 'view.sign_in_with_google'
   = render 'devise/shared/links'
 
   .my-3
