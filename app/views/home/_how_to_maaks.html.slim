@@ -21,34 +21,43 @@ section.mt-4.mb-8
         | MAAKSは無料のWEBサービスです。<br>
         | みんなで作ったmapを見るだけなら、アクセスするだけで可能です。<br>
         | あなたの体験を持ち寄っていただく際にも、簡単なユーザー登録を済ませていただければスポットを登録できるようになります。
-    section.my-10
-      h4.font-bold.text-3xl
-        | あぶないスポットを見る
-      = image_tag 'how_to_viewed_spot.png', class: 'p-6 m-3 bg-sky-100', size: '500x341'
+    section.my-20
+      h4.font-bold.text-3xl.my-3
+        | スポットを見る
+      = image_tag 'how_to_viewed_spot.webp', class: 'p-1 m-3 bg-sky-100', size: '500x350'
       p.text-2xl
-        | MAAKSのサービスページにアクセスすると危険スポットには水色のピンが立っています。<br>
-        | 水色のピンを触ると詳細が表示されてスポットに登録された内容を確認できます。
-    section.my-10
-      h4.font-bold.text-3xl
+        | マップ上の「水色のピン」があぶないスポットです。<br>
+        | 水色のピンをタッチもしくはクリックするとサイドメニューに詳細情報が表示されます。
+    section.my-20
+      h4.font-bold.text-3xl.my-3
         | サイクリングにMAAKSを使う
       p.text-2xl
-        | 「Ride with GPS」や「Strava」等のルート作成機能を持つサービスと併用してルートと照らし合わせてあぶないスポットを事前に確認しましょう。
-    section.my-10
-      h4.font-bold.text-3xl
-        | あぶないスポットを登録する
+        | ルート作成機能を持つサービス(「Ride with GPS」や「Strava」等)と併用して、走行するルート上のあぶないスポットをライド前に確認しましょう。<br>
+        | 事前に把握すること、仲間内で共有することで事故を未然に防ぐことにつながります。
+    section.my-20
+      h4.font-bold.text-3xl.my-3
+        | スポットを登録する
       p.text-2xl
-        | あなたがサイクリングをしていて事故に遭ってしまった地点や、事故に至らずともヒヤッとした体験をした場所を登録していきましょう。あなたの体験を持ち寄ることで知らない誰かの事故を防ぐことにつながります。
+        | あなたがサイクリングをしていて事故に遭ってしまった地点を登録していきましょう。<br>
+        | あなたの体験を持ち寄ることで知らない誰かの事故を防ぐことにつながります。<br>
+        | 事故に至らずともヒヤッとした体験をした場所でもOK！ そういった事例が集中して起こる地点には何らかの要因があると推測できます。
       section#how_to_join.my-8
-        = image_tag 'how_to_joined_user.png', class: 'p-6 m-3 bg-sky-100', size: '500x339'
+        = image_tag 'how_to_joined_user.webp', class: 'p-1 m-3 bg-sky-100', size: '500x350'
         p.text-2xl
           | まずはユーザー登録が必要です。
           | サービス画面右上の「アカウント作成」からユーザー登録が可能です。
-          | Googleアカウントをお持ちの方は、ご自身のGoogleアカウントでもログインが可能です。
+          | Googleアカウントをお持ちの方は、自身のGoogleアカウントでもログインが可能です。
       section#how_to_create_spot.my-8
-        = image_tag 'how_to_create_spot.png', class: 'p-6 m-3 bg-sky-100', size: '500x454'
+        = image_tag 'how_to_created_new_marker.webp', class: 'p-1 m-3 bg-sky-100', size: '300x250'
         p.text-2xl
-          | マップ上をタッチもしくはクリックすると赤いピンが立ちます。
-          | 右クリックをすることでメニューが開き、ピンが立っている座標にスポットを登録できるようになります。
-          | 情報を記入して「保存する」を押して登録すればOKです。
+          | マップ上をタッチもしくはクリックすると赤いピンが立ちます。<br>
+          | スマートフォンでは赤いピンを「長押し」するとサイドメニューが登録画面に切り替わります。
+        = image_tag 'how_to_created_new_marker_menu.webp', class: 'p-1 m-3 bg-sky-100', size: '347x250'
+        p.text-2xl
+          | PCでは赤いピンを右クリックをするとメニューが開き、ピンが立っている座標にスポットを登録できるようになります。
+        = image_tag 'how_to_created_spot.webp', class: 'p-1 m-3 bg-sky-100', size: '500x306'
+        p.text-2xl
+          | 情報を記入して「登録する」を押すと登録されて画面上にスポットが表示されます。
+        = image_tag 'create_spot.webp', class: 'p-1 m-3 bg-sky-100', size: '500x350'
         p.text-2xl
           | これを繰り返してあぶないスポットが網羅された地図をつくっていきましょう！
