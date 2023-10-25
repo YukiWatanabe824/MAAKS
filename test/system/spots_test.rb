@@ -54,6 +54,8 @@ class SpotsTest < ApplicationSystemTestCase
     assert_selector('#map')
 
     find('#map').click
+
+    assert_selector('#new_spot_marker')
     find('#new_spot_marker').right_click
     click_on('スポットを作成する')
 

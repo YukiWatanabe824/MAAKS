@@ -4,8 +4,8 @@ one:
   accident_type: "自損"
   contents: "走行中に左折レーンに入ってしまい直進しようとした際に、後方車列を振り向いて確認した際にふらついて落車"
   accident_date: "2014-01-01 00:00:01"
-  longitude: 139.788541
-  latitude: 35.77541
+  longitude: 139.774373
+  latitude: 35.684420
   created_at: "2014-01-01 00:00:01"
   updated_at: "2014-01-01 00:00:01"
 
@@ -15,7 +15,7 @@ two:
   accident_type: "人身"
   contents: "testtesttest"
   accident_date: "2014-01-01 00:00:01"
-  longitude: 139.791003
-  latitude: 35.777343
+  longitude: 139.774375
+  latitude: 35.684427
   created_at: "2014-01-01 00:00:01"
   updated_at: "2014-01-01 00:00:01"
