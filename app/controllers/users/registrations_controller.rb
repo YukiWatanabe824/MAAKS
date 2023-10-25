@@ -66,10 +66,4 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def configure_account_update_params
     devise_parameter_sanitizer.permit(:account_update, keys: %i[name avatar current_password])
   end
-
-  def redirect_if_different_user
-    return if current_user.admin?
-
-    redirect_to root_path if current_user != User.find(params[:id])
-  end
 end
