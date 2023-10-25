@@ -1,6 +1,5 @@
 import { Controller } from "@hotwired/stimulus"
 
-// Connects to data-controller="new-spot-marker"
 export default class extends Controller {
   connect() {
     document.querySelector('#new_spot_marker').addEventListener("pointerdown", () => {
