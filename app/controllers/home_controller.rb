@@ -15,10 +15,10 @@ class HomeController < ApplicationController
   private
 
   def check_signed_out_session
-    if session[:logged_out]
-      @signed_out = true
-      session.delete(:logged_out)
-    end
+    return unless session[:logged_out]
+
+    @signed_out = true
+    session.delete(:logged_out)
   end
 
   def check_first_access_session
