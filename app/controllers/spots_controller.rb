@@ -36,7 +36,9 @@ class SpotsController < ApplicationController
         format.turbo_stream
         format.html { redirect_to root_path, notice: t('controller.spot_created!') }
       else
-        format.html { render partial: 'new_form', locals: { spot: @spot, user: @user }, status: :unprocessable_entity, alert: t('controller.failed_to_create_spot') }
+        format.html do
+          render partial: 'new_form', locals: { spot: @spot, user: @user }, status: :unprocessable_entity, alert: t('controller.failed_to_create_spot')
+        end
       end
     end
   end
@@ -49,7 +51,9 @@ class SpotsController < ApplicationController
         format.turbo_stream
         format.html { redirect_to root_path, notice: t('controller.updated') }
       else
-        format.html { render partial: 'edit_form', locals: { spot: @spot, user: @user }, status: :unprocessable_entity, alert: t('controller.failed_to_updated') }
+        format.html do
+          render partial: 'edit_form', locals: { spot: @spot, user: @user }, status: :unprocessable_entity, alert: t('controller.failed_to_updated')
+        end
       end
     end
   end

@@ -2,12 +2,12 @@ footer.w-full.bg-primary.flex.flex-col.pt-16.pb-8.justify-around.h-80
   .flex.justify-around.w-3/5.mx-auto
     .cursor-pointer onclick='terms_of_service_modal.showModal()'
       p.text-base-100.link.link-hover
-        = t'view.terms_of_service'
+        = t 'view.terms_of_service'
       dialog id='terms_of_service_modal' class='modal text-base-100'
         = render 'home/modal_box', terms_of_service: true
     .cursor-pointer onclick='privacy_policy_modal.showModal()'
       p.text-base-100.link.link-hover
-        = t'view.privacy_policy'
+        = t 'view.privacy_policy'
       dialog id='privacy_policy_modal' class='modal text-base-100'
         = render 'home/modal_box', privacy_policy: true
     = link_to t('view.developers_blog'), 'https://yukiwatanabe.hatenablog.com/', class: 'link link-hover text-base-100'

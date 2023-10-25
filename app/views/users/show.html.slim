@@ -1,18 +1,18 @@
 section.flex.flex-col.mx-auto.w-full.py-12.mt-4.mb-12.items-center
   .my-8
     h2.text-3xl.font-bold
-      = t'view.my_page'
+      = t 'view.my_page'
   = render 'user_icon', locals: { view: 'show' }
   .my-3
     p.user_name.text-xl.font-bold
       = format_content(@user.name)
   .my-3
-    = t'view.account'
-    = t'view.created_at'
+    = t 'view.account'
+    = t 'view.created_at'
     |  : #{@user.created_at.year}年#{@user.created_at.month}月#{@user.created_at.day}日
   .my-3
     p
-      = t'view.number_of_spots_registered'
+      = t 'view.number_of_spots_registered'
       - if @user.spot.present?
         |  : #{ @user.spot.length }
       - else

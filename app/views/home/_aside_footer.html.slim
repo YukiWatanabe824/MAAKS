@@ -2,12 +2,12 @@ footer.mt-auto
   ul
     li.terms_of_service.cursor-pointer.my-2 onclick='terms_of_service_modal.showModal()'
       span.text-base-100.link.link-hover
-        = t'view.terms_of_service'
+        = t 'view.terms_of_service'
       dialog id='terms_of_service_modal' class='modal text-base-100'
         = render 'home/modal_box', terms_of_service: true
     li.privacy_policy.cursor-pointer.my-2 onclick='privacy_policy_modal.showModal()'
       span.text-base-100.link.link-hover
-        = t'view.privacy_policy'
+        = t 'view.privacy_policy'
       dialog id='privacy_policy_modal' class='modal text-base-100'
         = render 'home/modal_box', privacy_policy: true
     li

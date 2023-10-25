@@ -1,10 +1,9 @@
 import { Controller } from "@hotwired/stimulus";
 
-// Connects to data-controller="spot"
 export default class extends Controller {
   static targets = ["spot"];
 
-  setSpotInfo() {
+  setSpotInfoForSideMenu() {
     const url = `spots/${this.spotTarget.id}`;
     Turbo.visit(url, { frame: "side_menu" });
   }

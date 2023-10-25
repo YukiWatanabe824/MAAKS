@@ -1,13 +1,13 @@
 section.flex.flex-col.mx-auto.w-full.py-12.mt-4.mb-12.items-center
   .my-8
     h2.text-3xl.font-bold
-      = t'devise.passwords.new.forgot_your_password'
+      = t 'devise.passwords.new.forgot_your_password'
   = form_with(model: @user, class: 'flex flex-col items-center', url: password_path(resource_name)) do |f|
-    = render 'devise/shared/error_messages', resource: resource
+    = render 'devise/shared/error_messages', resource:
     .my-3
       p
-        = t'view.mail_address'
-      = f.email_field :email, autocomplete: "#{@user.email}", class: 'input input-bordered w-xs'
+        = t 'view.mail_address'
+      = f.email_field :email, autocomplete: @user.email.to_s, class: 'input input-bordered w-xs'
     = f.submit t('view.send_me_reset_password_instructions'), class: 'btn my-5'
 
   = render 'devise/shared/links'

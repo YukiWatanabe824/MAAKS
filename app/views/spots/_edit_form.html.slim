@@ -1,6 +1,6 @@
 = turbo_frame_tag 'side_menu' do
   h2.my-2.text-xl.font-bold.text-base-100
-    = t'view.edit_this_spot'
+    = t 'view.edit_this_spot'
   = form_with model: @spot, url: spot_path do |f|
     = render 'shared/error_messages', object: f.object
     .form_menu.flex.flex-col.my-4

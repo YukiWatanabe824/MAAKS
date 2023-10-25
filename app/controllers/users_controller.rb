@@ -32,12 +32,6 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
-  def redirect_if_different_user
-    return if current_user.admin?
-
-    redirect_to root_path if current_user != User.find(params[:id])
-  end
-
   def authenticate_admin(user = @user)
     return if current_user == user
 

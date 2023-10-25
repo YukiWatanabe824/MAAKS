@@ -1,7 +1,6 @@
 import { Controller } from "@hotwired/stimulus";
 import mapboxgl from "mapbox-gl";
 
-// Connects to data-controller="map"
 export default class extends Controller {
   static targets = ["map"];
   static outlets = ["spot"];
@@ -11,16 +10,15 @@ export default class extends Controller {
 
   connect() {
     mapboxgl.accessToken = this.mapTarget.dataset.mapboxAccessToken;
-    // マップを表示
     this.mapTarget.mapbox = new mapboxgl.Map({
-      container: "map", // container ID
-      style: this.mapTarget.dataset.mapboxStyle, // style URL
-      center: [139.791003, 35.777343], // starting position [lng, lat]
-      zoom: 12, // starting zoom
+      container: "map",
+      style: this.mapTarget.dataset.mapboxStyle,
+      center: [139.774375, 35.684420],
+      zoom: 12,
     });
     this.createGeoCorder(this.mapTarget.mapbox);
     this.getSpots(this.mapTarget.mapbox);
-    this.createMarker();
+    this.createNewSpotMarker();
   }
 
   zoomedMap() {
@@ -38,16 +36,13 @@ export default class extends Controller {
     fetch("/spots.json")
       .then((response) => response.json())
       .then((spots) => {
-        // DBから取得したスポットの描画
         for (const spot of spots) {
-          // create DOM element for the marker
           const el = document.createElement("div");
           el.id = spot.id;
           el.className = `spot-${spot.id} spot_marker color_palette solid_icon`;
           el.setAttribute("data-controller", "spot");
           el.setAttribute("data-spot-target", "spot");
-          el.setAttribute("data-action", "click->spot#setSpotInfo");
-          // create the marker with popup
+          el.setAttribute("data-action", "click->spot#setSpotInfoForSideMenu");
           new mapboxgl.Marker({
             element: el,
           })
@@ -67,7 +62,7 @@ export default class extends Controller {
     }
   }
 
-  createMarker() {
+  createNewSpotMarker() {
     this.mapTarget.mapbox.on("click", (e) => {
       if (this.mapTarget.newMarker) {
         this.mapTarget.newMarker.remove();
