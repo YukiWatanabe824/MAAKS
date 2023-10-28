@@ -23,7 +23,7 @@ jobs:
           POSTGRES_PASSWORD: password
     steps:
       - name: Check out source code
-          uses: actions/checkout@v3
+        uses: actions/checkout@v3
 
       - name: Install Ruby and gems
         uses: ruby/setup-ruby@v1
@@ -32,32 +32,32 @@ jobs:
           bundler-cache: true
 
       - name: Install Bundler
-          run: gem install bundler --no-document -v $(grep "BUNDLED WITH" -1 Gemfile.lock | tail -n 1)
+        run: gem install bundler --no-document -v $(grep "BUNDLED WITH" -1 Gemfile.lock | tail -n 1)
 
       - name: Bundle install
-          run: |
-            bundle config set --local path 'vendor/bundle'
-            bundle install --jobs 4 --retry 3
+        run: |
+          bundle config set --local path 'vendor/bundle'
+          bundle install --jobs 4 --retry 3
 
       - name: Set up database schema
         run: bin/rails db:schema:load
 
       - name: Install Node.js
-          uses: actions/setup-node@v3
-          with:
-            node-version: ${{ env.NODE_VERSION }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ env.NODE_VERSION }}
 
       - name: Yarn install
-          run: yarn install --check-files
+        run: yarn install --check-files
 
       - name: Run rubocop
-          run: bundle exec rubocop
+        run: bundle exec rubocop
 
       - name: Run ESlint
-          run: yarn run lint:eslint
+        run: yarn run lint:eslint
 
       - name: Run Prettier
-          run: yarn run lint:prettier
+        run: yarn run lint:prettier
 
       - name: Run tests
-          run: bundle exec rspec
+        run: bundle exec rspec
