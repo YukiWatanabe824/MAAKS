@@ -23,7 +23,7 @@ jobs:
           POSTGRES_PASSWORD: password
     steps:
       - name: Check out source code
-          uses: actions/checkout@v4
+          uses: actions/checkout@v3
 
       - name: Install Ruby and gems
         uses: ruby/setup-ruby@v1
