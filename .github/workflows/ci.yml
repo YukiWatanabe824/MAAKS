@@ -39,8 +39,8 @@ jobs:
           bundle config set --local path 'vendor/bundle'
           bundle install --jobs 4 --retry 3
 
-      - name: Set up database schema
-        run: bin/rails db:schema:load
+      - name: DB setup
+        run: bundle exec rails db:setup
 
       - name: Install Node.js
         uses: actions/setup-node@v3
