@@ -61,4 +61,4 @@ jobs:
         run: yarn run lint:prettier
 
       - name: Run tests
-        run: bundle exec rspec
+        run: bin/rails test test/
