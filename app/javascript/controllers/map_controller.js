@@ -86,7 +86,7 @@ export default class extends Controller {
 
   createGeoCorder(map) {
     map.addControl(
-      new MapboxGeocoder({
+      new MapboxGeocoder({ // eslint-disable-line
         accessToken: mapboxgl.accessToken,
         mapboxgl: mapboxgl,
       })

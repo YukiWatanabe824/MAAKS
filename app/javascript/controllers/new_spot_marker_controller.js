@@ -14,7 +14,7 @@ export default class extends Controller {
 
     const changeMenu = () => {
       const url = 'spots/new'
-      Turbo.visit(url, { frame: 'side_menu' })
+      Turbo.visit(url, { frame: 'side_menu' }) // eslint-disable-line
     }
   }
 }
