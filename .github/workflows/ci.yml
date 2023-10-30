@@ -51,6 +51,9 @@ jobs:
       - name: Yarn install
         run: yarn install --check-files
 
+      - name: libvips install
+        run: sudo apt-get install -y libvips
+
       - name: Run rubocop
         run: bundle exec rubocop
 
