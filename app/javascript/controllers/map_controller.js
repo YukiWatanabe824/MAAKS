@@ -13,7 +13,7 @@ export default class extends Controller {
     this.mapTarget.mapbox = new mapboxgl.Map({
       container: "map",
       style: this.mapTarget.dataset.mapboxStyle,
-      center: [139.774375, 35.684420],
+      center: [139.774375, 35.68442],
       zoom: 12,
     });
     this.createGeoCorder(this.mapTarget.mapbox);
@@ -23,10 +23,7 @@ export default class extends Controller {
 
   zoomedMap() {
     this.mapTarget.mapbox.jumpTo({
-      center: [
-        this.mapTarget.newMarker._lngLat.lng,
-        this.mapTarget.newMarker._lngLat.lat,
-      ],
+      center: [this.mapTarget.newMarker._lngLat.lng, this.mapTarget.newMarker._lngLat.lat],
       zoom: this.mapTarget.mapbox.getZoom() + 1,
     });
     document.querySelector("#spot_menu").remove();
@@ -78,15 +75,14 @@ export default class extends Controller {
       el.setAttribute("data-spot-target", "spot");
       el.setAttribute("data-action", "contextmenu->spot#showSpotMenu");
 
-      this.mapTarget.newMarker
-        .setLngLat([e.lngLat.lng, e.lngLat.lat])
-        .addTo(this.mapTarget.mapbox);
+      this.mapTarget.newMarker.setLngLat([e.lngLat.lng, e.lngLat.lat]).addTo(this.mapTarget.mapbox);
     });
   }
 
   createGeoCorder(map) {
     map.addControl(
-      new MapboxGeocoder({ // eslint-disable-line
+      // eslint-disable-next-line
+      new MapboxGeocoder({
         accessToken: mapboxgl.accessToken,
         mapboxgl: mapboxgl,
       })

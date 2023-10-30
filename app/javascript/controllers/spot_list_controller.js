@@ -12,18 +12,10 @@ export default class extends Controller {
     event.target.classList.add("tab-active", "bg-neutral", "text-base-100");
     event.target.classList.remove("bg-primary", "opacity-50", "text-accent");
     event.target.removeAttribute("data-action");
-    const indexActiveTab = Array.from(
-      this.spotListContainerTarget.querySelectorAll(".tab")
-    ).indexOf(activeTab);
-    this.spotListContainerTarget.lastChild.children[
-      indexActiveTab
-    ].classList.add("hidden");
+    const indexActiveTab = Array.from(this.spotListContainerTarget.querySelectorAll(".tab")).indexOf(activeTab);
+    this.spotListContainerTarget.lastChild.children[indexActiveTab].classList.add("hidden");
 
-    const indexTargetTab = Array.from(
-      this.spotListContainerTarget.querySelectorAll(".tab")
-    ).indexOf(event.target);
-    this.spotListContainerTarget.lastChild.children[
-      indexTargetTab
-    ].classList.remove("hidden");
+    const indexTargetTab = Array.from(this.spotListContainerTarget.querySelectorAll(".tab")).indexOf(event.target);
+    this.spotListContainerTarget.lastChild.children[indexTargetTab].classList.remove("hidden");
   }
 }
