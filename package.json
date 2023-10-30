@@ -11,5 +11,9 @@
     "eslint-config-prettier": "^8.8.0",
     "mapbox-gl": "^2.15.0",
     "prettier": "2.8.8"
+  },
+  "scripts": {
+    "lint:eslint": "eslint 'app/javascript/**/*.js' --max-warnings=0",
+    "lint:prettier": "prettier app/javascript/**/*.js --check"
   }
 }

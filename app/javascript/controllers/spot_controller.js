@@ -5,7 +5,7 @@ export default class extends Controller {
 
   setSpotInfoForSideMenu() {
     const url = `spots/${this.spotTarget.id}`;
-    Turbo.visit(url, { frame: "side_menu" });
+    Turbo.visit(url, { frame: "side_menu" }); //eslint-disable-line
   }
 
   showSpotMenu(e) {
