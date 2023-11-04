@@ -15,5 +15,6 @@
   "scripts": {
     "lint:eslint": "eslint 'app/javascript/**/*.js' --max-warnings=0",
     "lint:prettier": "prettier app/javascript/**/*.js --check"
-  }
+  },
+  "packageManager": "yarn@1.22.19"
 }
