@@ -17,10 +17,10 @@ html data-theme='corporate'
     script src='https://unpkg.com/@mapbox/mapbox-sdk/umd/mapbox-sdk.min.js', 'data-turbo-track': 'reload'
     =  favicon_link_tag asset_path('favicon.ico')
 
-  body
-    #flash.w-full
+  body.bg-primary
+    #flash.w-full.mx-auto class="max-w-[1980px]"
       = render 'flash'
-    header.flex.justify-between.items-center.bg-primary
+    header.flex.justify-between.items-center.bg-primary.mx-auto class="max-w-[1980px]"
       .m-2.5.flex.items-end
         h1.font-bold
           = link_to root_path
