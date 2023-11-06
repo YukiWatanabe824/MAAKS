@@ -1,20 +1,20 @@
 footer.w-full.bg-primary.flex.flex-col.pt-16.pb-8.justify-around.h-80
-  .flex.justify-around.w-3/5.mx-auto
+  .flex.justify-around.w-3/5.mx-auto class=" max-w-[480px]"
     .cursor-pointer onclick='terms_of_service_modal.showModal()'
-      p.text-base-100.link.link-hover
+      p.text-base-100.link.link-hover class="hover:opacity-50 transition-all duration-100 m-1"
         = t 'view.terms_of_service'
       dialog id='terms_of_service_modal' class='modal text-base-100'
         = render 'home/modal_box', terms_of_service: true
     .cursor-pointer onclick='privacy_policy_modal.showModal()'
-      p.text-base-100.link.link-hover
+      p.text-base-100.link.link-hover class="hover:opacity-50 transition-all duration-100 m-1"
         = t 'view.privacy_policy'
       dialog id='privacy_policy_modal' class='modal text-base-100'
         = render 'home/modal_box', privacy_policy: true
-    = link_to t('view.developers_blog'), 'https://yukiwatanabe.hatenablog.com/', class: 'link link-hover text-base-100'
+    = link_to t('view.developers_blog'), 'https://yukiwatanabe.hatenablog.com/', class: 'link link-hover text-base-100 hover:opacity-50 transition-all duration-100 m-1'
   .flex.items-center.mx-auto
-    = link_to 'https://twitter.com/Yuki_Watanabe99'
-      = image_tag 'x-twitter-logo.svg', size: '28x28', alt: 'X twitter', class: 'm-2'
+    = link_to 'https://twitter.com/maaks790590'
+      = image_tag 'x-twitter-logo.svg', size: '28x28', alt: 'X twitter', class: 'm-2 hover:opacity-50 transition-all duration-100'
     = link_to 'https://github.com/YukiWatanabe824/MAAKS'
-      = image_tag 'github-mark-white.svg', size: '32x32', alt: 'GitHub', class: 'rounded-full m-2'
+      = image_tag 'github-mark-white.svg', size: '32x32', alt: 'GitHub', class: 'rounded-full m-2 hover:opacity-50 transition-all duration-100'
   p.text-base-100.text-xs.mx-auto
     |  © YukiWatanabe, 2023, All Rights Reserved

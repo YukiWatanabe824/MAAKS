@@ -5,7 +5,7 @@ require 'application_system_test_case'
 class HomeTest < ApplicationSystemTestCase
   test 'visiting the top page' do
     visit '/'
-    assert_equal 'MAAKS サイクリングの危ないスポットを「マークす」る', title
+    assert_equal 'メインページ | MAAKS', title
   end
 
   test 'showing how to modal when first access in day and no show how to modal when after the second access that day' do

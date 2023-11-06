@@ -1,4 +1,6 @@
-section.flex.flex-col.mx-auto.w-full.py-12.mt-4.mb-12.items-center
+= content_for(:title, t('title.user.index'))
+
+section.flex.flex-col.mx-auto.w-full.pt-16.pb-16.items-center.bg-base-100
   .my-8
     h2.text-3xl.font-bold
       = t 'view.show_all_users'
@@ -6,4 +8,4 @@ section.flex.flex-col.mx-auto.w-full.py-12.mt-4.mb-12.items-center
     = render @users
 
     == pagy_nav(@pagy)
-  = link_to t('view.return'), user_path(@user), class: 'btn my-8'
+  = link_to t('view.return'), user_path(@user), class: 'btn my-8 hover:opacity-50 transition-all duration-100'

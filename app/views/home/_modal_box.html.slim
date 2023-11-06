@@ -4,8 +4,8 @@
 
 .modal-box.w-11/12.max-w-4xl.bg-neutral
   form method='dialog'
-    button.close_modal_button.btn.btn-sm.btn-circle.btn-ghost.absolute.right-2.top-2
-      | X
+    button.close_modal_button.btn.btn-sm.btn-circle.btn-ghost.absolute.right-2.top-2.text-base-100
+      | ✕
   = render 'home/how_to_maaks' if how_to_maaks
   = render 'home/terms_of_service' if terms_of_service
   = render 'home/privacy_policy' if privacy_policy
