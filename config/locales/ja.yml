@@ -66,3 +66,13 @@ ja:
     failed_to_updated: 更新できませんでした
     deleted: 削除しました
     failed_to_deleted: 削除できませんでした
+  title:
+    main: メインページ
+    login: ログインページ
+    create_account: アカウント登録ページ
+    user:
+      index: ユーザー一覧
+      edit: ユーザー編集
+    password:
+      confirm: パスワードの確認
+      reset: パスワードリセット

@@ -10,4 +10,10 @@ module ApplicationHelper
   def format_content(text)
     simple_format(html_escape(text))
   end
+
+  def page_title(page_title = '')
+    base_title = 'MAAKS'
+
+    page_title.empty? ? base_title : "#{page_title} | #{base_title}"
+  end
 end
