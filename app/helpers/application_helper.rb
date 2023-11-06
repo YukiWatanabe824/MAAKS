@@ -19,7 +19,7 @@ module ApplicationHelper
 
   def default_meta_tags
     {
-      site: 'MAAKS(マークス)',
+      site: 'MAAKSマークス 安全にサイクリングするためのWEBサービス',
       reverse: false,
       description: '安全にサイクリングをして、無事に帰ってくる。MAAKSはそんな思いから生まれたサービスです。みんなでサイクリング中のヒヤッとした経験や事故に遭った経験をマッピングして共有することで、あぶないスポットを事前に把握。集合知で事故を未然に防ぎます。',
       canonical: request.original_url,
@@ -40,7 +40,7 @@ module ApplicationHelper
 
   def og
     {
-      site_name: 'MAAKS(マークス)',
+      site_name: 'MAAKSマークス 安全にサイクリングするためのWEBサービス',
       description: '安全にサイクリングをして、無事に帰ってくる。MAAKSはそんな思いから生まれたサービスです。みんなでサイクリング中のヒヤッとした経験や事故に遭った経験をマッピングして共有することで、あぶないスポットを事前に把握。集合知で事故を未然に防ぎます。',
       type: 'website',
       url: request.original_url,
