@@ -8,4 +8,4 @@ section.flex.flex-col.mx-auto.w-full.py-12.mt-4.mb-12.items-center
     = render @users
 
     == pagy_nav(@pagy)
-  = link_to t('view.return'), user_path(@user), class: 'btn my-8'
+  = link_to t('view.return'), user_path(@user), class: 'btn my-8 hover:opacity-50 transition-all duration-100'

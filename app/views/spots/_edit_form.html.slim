@@ -15,5 +15,5 @@
     .form_menu.flex.flex-col.my-4
       = f.label :accident_date, class: 'text-base-100'
       = f.date_field :accident_date, value: @spot.accident_date
-    = f.submit t('helpers.submit.update'), data: { turbo_method: :put }, class: 'my-2 btn bg-base-100 text-primary'
-  = link_to t('view.return'), spot_path(@spot), class: 'btn my-2 bg-base-100 text-primary'
+    = f.submit t('helpers.submit.update'), data: { turbo_method: :put }, class: 'my-2 btn bg-base-100 text-primary hover:opacity-50 transition-all duration-100'
+  = link_to t('view.return'), spot_path(@spot), class: 'btn my-2 bg-base-100 text-primary hover:opacity-50 transition-all duration-100'

@@ -31,11 +31,11 @@
           = f.text_field :latitude, readonly: true, class: 'w-full', value: ''
         .hidden_info
           = f.hidden_field :user_id, value: @user.id if current_user
-        = f.submit t('helpers.submit.create'), class: 'my-2 btn bg-base-100 text-primary', data: { action: 'click->side-menu#setCoordinate' }
+        = f.submit t('helpers.submit.create'), class: 'my-2 btn bg-base-100 text-primary hover:opacity-50 transition-all duration-100', data: { action: 'click->side-menu#setCoordinate' }
     - else
       .flex.flex-col
         p.text-base-100.my-2
           = t 'view.user_registration_is_required_to_register_spot'
-        = link_to t('view.create_user_account'), new_user_registration_path, data: { turbo: false }, class: 'btn bg-base-100 text-primary my-2'
+        = link_to t('view.create_user_account'), new_user_registration_path, data: { turbo: false }, class: 'btn bg-base-100 text-primary my-2 hover:opacity-50 transition-all duration-100'
 
-  = link_to t('view.return'), home_aside_index_path, class: 'btn my-2 bg-base-100 text-primary'
+  = link_to t('view.return'), home_aside_index_path, class: 'btn my-2 bg-base-100 text-primary hover:opacity-50 transition-all duration-100'

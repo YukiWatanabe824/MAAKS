@@ -1,6 +1,6 @@
 = turbo_frame_tag 'spot_item' do
   ul
     - spots.each do |spot|
-      li.my-1.inline-block.w-full.link.link-hover data-controller="spots-list-item" data-spots-list-item-target='item' data-spots-list-item-map-outlet='#map' data-longitude="#{spot.longitude}" data-latitude="#{spot.latitude}" data-action='click->spots-list-item#jumpToSpot'
+      li.my-1.inline-block.w-full.link.link-hover class="hover:opacity-50 transition-all duration-100" data-controller="spots-list-item" data-spots-list-item-target='item' data-spots-list-item-map-outlet='#map' data-longitude="#{spot.longitude}" data-latitude="#{spot.latitude}" data-action='click->spots-list-item#jumpToSpot'
         = format_content("#{spot.created_at.month}月#{spot.created_at.day}日 #{spot.title}")
   == pagy_nav(pagy)

@@ -22,7 +22,7 @@ html data-theme='corporate'
       = render 'flash'
     header.flex.justify-between.items-center.bg-primary.mx-auto class="max-w-[1980px]"
       .m-2.5.flex.items-end
-        h1.font-bold
+        h1.font-bold.transition.ease-in-out.delay-150.hover:-translate-y-1.hover:scale-105.duration-300
           = link_to root_path
             = image_tag 'header_service_logo.png', size: '100x53', alt: 'maaks service logo'
         p.text-xs.text-base-100.hidden.lg:flex
@@ -35,27 +35,27 @@ html data-theme='corporate'
             - else
               = render 'layouts/default_user_icon'
             li.m-2
-              = link_to t('view.my_page'), user_path(current_user), class: 'my_page_button btn btn-outline btn-accent'
+              = link_to t('view.my_page'), user_path(current_user), class: 'my_page_button btn btn-outline btn-accent hover:opacity-50 transition-all duration-100'
             li.m-2
-              = link_to t('view.sign_out'), destroy_user_session_path, data: { turbo_method: :delete }, class: 'sign_out_button btn btn-outline btn-accent'
+              = link_to t('view.sign_out'), destroy_user_session_path, data: { turbo_method: :delete }, class: 'sign_out_button btn btn-outline btn-accent hover:opacity-50 transition-all duration-100'
           - else
             li.m-2
-              = link_to t('view.sign_in'), new_user_session_path, class: 'sign_in_button btn btn-outline btn-accent'
+              = link_to t('view.sign_in'), new_user_session_path, class: 'sign_in_button btn btn-outline btn-accent hover:opacity-50 transition-all duration-100'
             li.m-2
-              = link_to t('view.create_user_account'), new_user_registration_path, class: 'create_user_button btn btn-outline btn-accent'
+              = link_to t('view.create_user_account'), new_user_registration_path, class: 'create_user_button btn btn-outline btn-accent hover:opacity-50 transition-all duration-100'
       .dropdown.dropdown-end.m-2.lg:hidden
         label.btn.btn-outline.btn-accent tabindex="0"
           = t 'view.menu'
         ul.menu.dropdown-content.p-2.shadow.bg-base-100.rounded-box.w-52.mt-1.absolute tabindex="0" class="z-[5]"
           - if user_signed_in?
             li.m-2
-              = link_to t('view.my_page'), user_path(current_user)
+              = link_to t('view.my_page'), user_path(current_user), class: 'hover:opacity-50 transition-all duration-100'
             li.m-2
-              = link_to t('view.sign_out'), destroy_user_session_path, data: { turbo_method: :delete }
+              = link_to t('view.sign_out'), destroy_user_session_path, data: { turbo_method: :delete }, class: 'hover:opacity-50 transition-all duration-100'
           - else
             li.m-2
-              = link_to t('view.sign_in'), new_user_session_path
+              = link_to t('view.sign_in'), new_user_session_path, class: 'hover:opacity-50 transition-all duration-100'
             li.m-2
-              = link_to t('view.create_user_account'), new_user_registration_path
+              = link_to t('view.create_user_account'), new_user_registration_path, class: 'hover:opacity-50 transition-all duration-100'
 
     = yield
