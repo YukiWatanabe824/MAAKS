@@ -54,6 +54,9 @@ jobs:
       - name: libvips install
         run: sudo apt-get install -y libvips
 
+      - name: Assets Precompile
+        run: bundle exec rake assets:precompile
+
       - name: Run rubocop
         run: bundle exec rubocop
 
