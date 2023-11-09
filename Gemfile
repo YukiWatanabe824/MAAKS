@@ -48,7 +48,6 @@ gem 'devise-i18n'
 gem 'meta-tags'
 
 group :development, :test do
-  gem 'debug', platforms: %i[mri mingw x64_mingw]
   gem 'rubocop-fjord', require: false
   gem 'rubocop-rails', require: false
   gem 'slim_lint', require: false
