@@ -47,6 +47,8 @@ gem 'devise-i18n'
 
 gem 'meta-tags'
 
+gem 'aws-sdk-s3'
+
 group :development, :test do
   gem 'rubocop-fjord', require: false
   gem 'rubocop-rails', require: false
