@@ -101,5 +101,5 @@ Rails.application.configure do
     authentication:       'login',
     enable_starttls_auto: true
   }
-
+  config.action_mailer.default_url_options = { :host => 'maaks.jp' }
 end
