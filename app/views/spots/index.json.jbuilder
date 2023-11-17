@@ -1,0 +1,1 @@
+json.array! @spots, :id, :longitude, :latitude
