@@ -70,12 +70,11 @@ ja:
     failed_to_deleted: 削除できませんでした
   title:
     main: メインページ
-    login: ログインページ
+    login: ログイン
     create_account: アカウント登録ページ
     user:
       index: ユーザー一覧
       edit: ユーザー編集
     password:
-      confirm: パスワードの確認
       reset: パスワードリセット
       edit: パスワードの変更
