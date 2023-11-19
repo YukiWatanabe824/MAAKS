@@ -121,6 +121,6 @@ class UsersTest < ApplicationSystemTestCase
     visit "users/#{user.id}"
     assert_equal "#{user.name} | MAAKS", page.title
     visit "users/#{user.id}/edit"
-    assert_equal "ユーザー編集 | MAAKS", page.title
+    assert_equal 'ユーザー編集 | MAAKS', page.title
   end
 end
