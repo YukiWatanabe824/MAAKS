@@ -104,4 +104,23 @@ class UsersTest < ApplicationSystemTestCase
     end
     assert_selector('#flash', text: 'ユーザーを削除しました')
   end
+
+  test 'check user page title' do
+    visit root_path
+    assert_equal 'メインページ | MAAKS', page.title
+    visit new_user_session_path
+    assert_equal 'ログイン | MAAKS', page.title
+    visit new_user_registration_path
+    assert_equal 'アカウント登録ページ | MAAKS', page.title
+    visit new_user_password_path
+    assert_equal 'パスワードリセット | MAAKS', page.title
+
+    user = users(:watanabe)
+    sign_in user
+
+    visit "users/#{user.id}"
+    assert_equal "#{user.name} | MAAKS", page.title
+    visit "users/#{user.id}/edit"
+    assert_equal 'ユーザー編集 | MAAKS', page.title
+  end
 end

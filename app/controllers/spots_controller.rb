@@ -6,10 +6,6 @@ class SpotsController < ApplicationController
 
   def index
     @spots = Spot.all
-    respond_to do |format|
-      format.json { render json: @spots }
-      format.html
-    end
   end
 
   def show
