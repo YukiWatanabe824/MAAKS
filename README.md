@@ -1,6 +1,5 @@
-
 # MAAKS
-
+![logo](https://github.com/YukiWatanabe824/MAAKS/assets/69577164/57a50068-5c89-406d-bca2-fc52f633329c)
 
 ## 概要
 MAAKS(マークス)は、サイクリング中の事故を減らための道路上の自転車事故やトラブルを共有するサービスです。
@@ -16,10 +15,13 @@ https://maaks.jp/
 
 ## 使い方
 ### 1. スポットを閲覧する
+<img width="70%" alt="readme_show_spot" src="https://github.com/YukiWatanabe824/MAAKS/assets/69577164/faa5ff0d-98d2-490f-8a49-ce4b1ee21acb">
 
 ### 2. ログインする(サービス内アカウント or Googleアカウントでログイン可能)
+<img width="70%" alt="readme_login" src="https://github.com/YukiWatanabe824/MAAKS/assets/69577164/018cbfa9-2162-4788-8e07-ae520d04d1f4">
 
 ### 3. スポットを登録する
+<img width="70%" alt="readme_create_spot" src="https://github.com/YukiWatanabe824/MAAKS/assets/69577164/d2ee8da4-ac56-403d-814f-d23918d0e082">
 
 ## 開発環境
 - Ruby 3.2.2
