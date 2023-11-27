@@ -6,9 +6,9 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '3.2.2'
 gem 'aws-sdk-s3'
 gem 'bootsnap', require: false
-gem 'devise', '~> 4.9'
+gem 'devise'
 gem 'devise-i18n'
-gem 'image_processing', '~> 1.2'
+gem 'image_processing'
 gem 'importmap-rails'
 gem 'jbuilder'
 gem 'meta-tags'
@@ -36,9 +36,9 @@ end
 
 group :development do
   gem 'bullet'
-  gem 'dockerfile-rails', '>= 1.5'
+  gem 'dockerfile-rails'
   gem 'html2slim'
-  gem 'letter_opener_web', '~> 2.0'
+  gem 'letter_opener_web'
   gem 'web-console'
 end
 
