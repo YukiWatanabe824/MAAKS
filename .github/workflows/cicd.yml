@@ -55,7 +55,9 @@ jobs:
         run: yarn install --check-files
 
       - name: libvips install
-        run: sudo apt-get install -y libvips
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libvips
 
       - name: Assets Precompile
         run: bundle exec rake assets:precompile
