@@ -2,7 +2,6 @@ watanabe:
   name: "yuki"
   email: "xxx@example.jp"
   password: "123456789abc"
-  avatar_url: ""
   admin: true
   updated_at: "2014-01-01 00:00:01"
   created_at: "2014-01-01 00:00:01"
@@ -11,7 +10,6 @@ otameshisan:
   name: "taro"
   email: "otameshi@example.jp"
   password: "123456789abc"
-  avatar_url: ""
   admin: false
   updated_at: "2014-01-01 00:00:01"
   created_at: "2014-01-01 00:00:01"
