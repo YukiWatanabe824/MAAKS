@@ -10,7 +10,6 @@ class User < ApplicationRecord
   end
 
   validates :uid, uniqueness: { scope: :provider }, if: -> { uid.present? }
-  validates :admin, inclusion: [true, false]
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
