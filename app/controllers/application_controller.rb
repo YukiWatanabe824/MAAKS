@@ -2,6 +2,7 @@
 
 class ApplicationController < ActionController::Base
   include Pagy::Backend
+  before_action :authenticate_user!
 
   def redirect_if_different_user
     return if current_user.admin?

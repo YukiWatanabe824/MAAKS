@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
-  before_action :authenticate_user!, only: %i[show]
+  skip_before_action :authenticate_user!, except: %i[show]
   before_action :redirect_if_different_user, only: %i[show]
   before_action :set_user, only: %i[show destroy]
 

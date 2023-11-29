@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class AvatarsController < UsersController
-  before_action :authenticate_user!, only: %i[destroy]
+  skip_before_action :authenticate_user!, except: %i[destroy]
   before_action :redirect_if_different_user, only: %i[destroy]
   before_action :set_user, only: %i[destroy]
 
