@@ -16,7 +16,7 @@ class SpotsController < ApplicationController
 
   def new
     @user = current_user
-    @spot = Spot.new
+    @spot = current_user.spots.new if user_signed_in?
     render partial: 'new_form'
   end
 
@@ -26,7 +26,7 @@ class SpotsController < ApplicationController
   end
 
   def create
-    @spot = Spot.new(spot_params)
+    @spot = current_user.spots.new(spot_params)
     @user = current_user
     respond_to do |format|
       if @spot.save
