@@ -29,8 +29,6 @@
         .form_menu.flex.flex-col.my-4
           = f.label :latitude, class: 'text-base-100'
           = f.text_field :latitude, readonly: true, class: 'w-full', value: ''
-        .hidden_info
-          = f.hidden_field :user_id, value: @user.id if current_user
         = f.submit t('helpers.submit.create'), class: 'my-2 btn bg-base-100 text-primary hover:opacity-50 transition-all duration-100', data: { action: 'click->side-menu#setCoordinate' }
     - else
       .flex.flex-col
