@@ -4,7 +4,7 @@ class SpotsController < ApplicationController
   skip_before_action :authenticate_user!, except: %i[create update destroy]
   before_action :generate_500_error, only: %i[show edit new]
   before_action :set_spot, only: %i[show]
-  before_action :set_own_spot, only: %i[edit update destroy]
+  before_action :set_spot_by_admin_or_own, only: %i[edit update destroy]
 
   def index
     @spots = Spot.all
@@ -72,8 +72,8 @@ class SpotsController < ApplicationController
     @spot = Spot.find(params[:id])
   end
 
-  def set_own_spot
-    @spot = current_user.spots.find(params[:id])
+  def set_spot_by_admin_or_own
+    @spot = current_user.admin? ? set_spot : current_user.spots.find(params[:id])
   end
 
   def spot_params
