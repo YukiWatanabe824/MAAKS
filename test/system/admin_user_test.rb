@@ -45,10 +45,28 @@ class AdminUserTest < ApplicationSystemTestCase
     assert_text user.name
     assert_text user.id
 
-    click_on user.name
-    click_on 'プロフィール編集'
+    find("#edit-#{user.id}", text: '編集').click
     click_on '更新する'
-    assert_selector('#flash', text: 'アカウント情報を変更しました。')
+    assert_selector('#flash', text: '更新しました')
+  end
+
+  test 'edit user_icon by admin' do
+    admin_user = users(:watanabe)
+    user = users(:otameshisan)
+    sign_in admin_user
+
+    visit "/admin/users/#{user.id}/edit"
+    attach_file 'user_avatar', Rails.root.join('test/fixtures/files/user_icon.webp').to_s
+    click_on '更新する'
+
+    assert_selector "img[src*='user_icon.webp']"
+    visit "/admin/users/#{user.id}/edit"
+    page.accept_confirm do
+      find('button.link', text: '画像を削除').click
+    end
+    assert_selector('#flash', text: '削除しました')
+    assert_no_selector "img[src*='user_icon.webp']"
+    assert_selector '.user_default_icon', text: 't'
   end
 
   test 'destroy user by admin' do
@@ -56,15 +74,13 @@ class AdminUserTest < ApplicationSystemTestCase
     user = users(:otameshisan)
     sign_in admin_user
     visit 'admin/users'
-    click_on user.name.to_s
-    click_on 'プロフィール編集'
     accept_confirm do
-      find('button.delete_account_button', text: 'アカウントを削除する').click
+      find("#del-#{user.id}", text: '削除').click
     end
     assert_selector('#flash', text: 'ユーザーを削除しました')
   end
 
-  test 'Routing error screen when accessing the users page without admin' do
+  test 'routing error screen when accessing the users page without admin' do
     user = users(:otameshisan)
     sign_in user
     visit 'admin/users'

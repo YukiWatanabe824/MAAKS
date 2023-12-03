@@ -75,8 +75,8 @@ class UsersTest < ApplicationSystemTestCase
     click_on('マイページ')
     assert_selector "img[src*='user_icon.webp']"
     click_on('プロフィール編集')
-    accept_confirm do
-      click_button('画像を削除')
+    page.accept_confirm do
+      find('button.link', text: '画像を削除').click
     end
     assert_selector('#flash', text: '削除しました')
     assert_no_selector "img[src*='user_icon.webp']"
