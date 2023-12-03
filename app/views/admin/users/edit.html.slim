@@ -1,0 +1,28 @@
+= content_for(:title, t('title.user.edit'))
+
+main.flex.flex-col.mx-auto.w-full.pt-16.pb-16.items-center.bg-base-100
+  .my-8
+    h2.text-3xl.font-bold
+      = t 'view.edit_this_user'
+  = render 'users/user_icon', edited_user: true
+  = form_with(model: @user, url: admin_user_path(@user), class: 'flex flex-col items-center') do |f|
+    .user_avatar.mb-8
+      = f.label :avatar, class: 'flex flex-col items-center'
+        .my-2
+          p
+            = t 'view.upload_to_new_image'
+          = f.file_field :avatar, class: 'file-input file-input-bordered file-input-sm w-xs'
+
+    .my-3
+      p
+        = t 'view.user_name'
+      = f.text_field :name, autocomplete: html_escape(@user.name), class: 'input input-bordered w-xs'
+    .my-3
+      p
+        = t 'view.mail_address'
+      = f.email_field :email, autocomplete: html_escape(@user.email), class: 'input input-bordered w-xs'
+    = f.submit t('helpers.submit.update'), class: 'btn my-5 hover:opacity-50 transition-all duration-100'
+
+  = link_to t('view.return'), admin_users_path, class: 'btn my-8 hover:opacity-50 transition-all duration-100'
+
+= render 'users/footer'
