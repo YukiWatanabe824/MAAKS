@@ -3,13 +3,7 @@
 class UsersController < ApplicationController
   before_action :redirect_if_different_user, only: %i[show]
   before_action :set_user, only: %i[show destroy]
-
-  def index
-    raise ActionController::RoutingError.new('Not Found') if !current_user.admin?
-
-    @user = current_user
-    @pagy, @users = pagy(User.includes(avatar_attachment: :blob), items: 50)
-  end
+  before_action :authenticate_admin, only: %i[destroy]
 
   def show; end
 
@@ -34,6 +28,6 @@ class UsersController < ApplicationController
   def authenticate_admin(user = @user)
     return if current_user == user
 
-    redirect_to root_path, alert: t('controller.you_do_not_have_administrative_privileges') if !current_user.admin?
+    raise(ActionController::RoutingError, 'Not Found') if !current_user.admin?
   end
 end
