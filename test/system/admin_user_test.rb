@@ -55,10 +55,19 @@ class AdminUserTest < ApplicationSystemTestCase
     admin_user = users(:watanabe)
     user = users(:otameshisan)
     sign_in admin_user
-    visit "users/#{user.id}/edit"
+    visit "admin/users"
+    click_on "#{user.name}"
+    click_on 'プロフィール編集'
     accept_confirm do
       find('button.delete_account_button', text: 'アカウントを削除する').click
     end
     assert_selector('#flash', text: 'ユーザーを削除しました')
+  end
+
+  test 'Routing error screen when accessing the users page without admin' do
+    user = users(:otameshisan)
+    sign_in user
+    visit 'admin/users'
+    assert_text 'Not Found'
   end
 end
