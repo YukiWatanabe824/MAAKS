@@ -42,5 +42,4 @@ class Admin::UsersController < Admin::ApplicationController
       :name, :email, :avatar
     )
   end
-
 end

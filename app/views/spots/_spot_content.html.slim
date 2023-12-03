@@ -17,4 +17,7 @@ ul.flex.flex-col.flex-wrap
 - if @spot.try(:owned_by?, current_user) || current_user.try(:admin?)
   .my-3
     = link_to t('view.edit'), edit_spot_path(@spot), class: 'my-2 btn bg-base-100 text-primary hover:opacity-50 transition-all duration-100'
-    = button_to t('view.destroy'), spot_path(@spot), method: :delete, form: { data: { turbo_confirm: t('view.do_you_really_want_to_remove_it?'), turbo_frame: '_top' } }, class: 'my-2 btn btn-outline btn-accent hover:opacity-50 transition-all duration-100'
+    - if current_user.admin?
+      = button_to t('view.destroy'), admin_spot_path(@spot), method: :delete, form: { data: { turbo_confirm: t('view.do_you_really_want_to_remove_it?'), turbo_frame: '_top' } }, class: 'my-2 btn btn-outline btn-accent hover:opacity-50 transition-all duration-100'
+    - else
+      = button_to t('view.destroy'), spot_path(@spot), method: :delete, form: { data: { turbo_confirm: t('view.do_you_really_want_to_remove_it?'), turbo_frame: '_top' } }, class: 'my-2 btn btn-outline btn-accent hover:opacity-50 transition-all duration-100'
