@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   end
 
   resources :spots
-  resources :users, only: [:show, :index, :destroy] do
+  resources :users, only: [:show, :destroy] do
     resources :avatars, only: [:destroy]
   end
 
@@ -21,5 +21,9 @@ Rails.application.routes.draw do
   resources :home_aside, only: [:index]
 
   root to: "home#index"
+
+  namespace :admin do
+    resources :users, only: [:index]
+  end
 
 end
