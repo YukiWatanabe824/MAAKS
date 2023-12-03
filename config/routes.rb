@@ -23,7 +23,7 @@ Rails.application.routes.draw do
   root to: "home#index"
 
   namespace :admin do
-    resources :users, only: [:index, :destroy]
+    resources :users, only: [:index, :edit, :update, :destroy]
   end
 
 end

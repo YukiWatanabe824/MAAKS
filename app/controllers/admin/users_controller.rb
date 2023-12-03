@@ -6,6 +6,23 @@ class Admin::UsersController < Admin::ApplicationController
     @pagy, @users = pagy(User.includes(avatar_attachment: :blob), items: 50)
   end
 
+  def edit
+    @user = User.find(params[:id])
+  end
+
+  def update
+    @user = User.find(params[:id])
+    respond_to do |format|
+      if @user.update(user_params)
+        format.html { redirect_to admin_users_path, notice: t('controller.updated') }
+      else
+        format.html do
+          redirect_to edit_admin_user_path(@user), status: :unprocessable_entity, alert: t('controller.failed_to_updated')
+        end
+      end
+    end
+  end
+
   def destroy
     user = User.find(params[:id])
 
@@ -16,6 +33,14 @@ class Admin::UsersController < Admin::ApplicationController
         format.html { redirect_to admin_users_path, status: :unprocessable_entity }
       end
     end
+  end
+
+  private
+
+  def user_params
+    params.require(:user).permit(
+      :name, :email
+    )
   end
 
 end
