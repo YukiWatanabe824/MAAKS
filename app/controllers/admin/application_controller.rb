@@ -4,6 +4,6 @@ class Admin::ApplicationController < ApplicationController
   before_action :raise_permission_error
 
   def raise_permission_error
-    raise ActionController::RoutingError.new('Not Found') if !current_user.admin?
+    raise(ActionController::RoutingError, 'Not Found') if !current_user.admin?
   end
 end

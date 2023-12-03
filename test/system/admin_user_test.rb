@@ -55,8 +55,8 @@ class AdminUserTest < ApplicationSystemTestCase
     admin_user = users(:watanabe)
     user = users(:otameshisan)
     sign_in admin_user
-    visit "admin/users"
-    click_on "#{user.name}"
+    visit 'admin/users'
+    click_on user.name.to_s
     click_on 'プロフィール編集'
     accept_confirm do
       find('button.delete_account_button', text: 'アカウントを削除する').click
