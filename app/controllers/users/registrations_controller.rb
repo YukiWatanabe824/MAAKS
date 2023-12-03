@@ -2,6 +2,7 @@
 
 class Users::RegistrationsController < Devise::RegistrationsController
   before_action :redirect_if_different_user, only: %i[update destroy] # rubocop:disable all
+  before_action :configure_account_update_params, only: [:update] # rubocop:disable all
   before_action :configure_sign_up_params, only: [:create] # rubocop:disable all
 
   def new
