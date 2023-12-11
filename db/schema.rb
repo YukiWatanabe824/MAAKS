@@ -42,11 +42,6 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_29_074516) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
-  create_table "maps", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "spots", force: :cascade do |t|
     t.string "title", null: false
     t.string "accident_type", null: false
@@ -63,6 +58,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_29_074516) do
   create_table "users", force: :cascade do |t|
     t.string "name", null: false
     t.string "password"
+    t.string "avatar_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "email", default: "", null: false
@@ -70,7 +66,6 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_29_074516) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.string "avatar"
     t.string "provider"
     t.string "uid"
     t.boolean "admin", default: false, null: false
