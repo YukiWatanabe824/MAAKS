@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class Users::RegistrationsController < Devise::RegistrationsController
-  skip_before_action :authenticate_user!, except: %i[destroy update] # rubocop:disable all
   before_action :redirect_if_different_user, only: %i[update destroy] # rubocop:disable all
   before_action :set_user, only: %i[update edit]
   before_action :configure_account_update_params, only: [:update]

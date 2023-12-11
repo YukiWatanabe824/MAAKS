@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class SpotsController < ApplicationController
-  skip_before_action :authenticate_user!, except: %i[create update destroy]
+  skip_before_action :authenticate_user!, only: %i[index show new]
   before_action :generate_500_error, only: %i[show edit new]
   before_action :set_spot, only: %i[show]
   before_action :set_spot_by_admin_or_own, only: %i[edit update destroy]
