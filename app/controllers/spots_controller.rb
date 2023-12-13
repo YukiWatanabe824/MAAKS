@@ -1,8 +1,10 @@
 # frozen_string_literal: true
 
 class SpotsController < ApplicationController
+  skip_before_action :authenticate_user!, only: %i[index show new]
   before_action :generate_500_error, only: %i[show edit new]
-  before_action :set_spot, only: %i[show edit update destroy]
+  before_action :set_spot, only: %i[show]
+  before_action :set_spot_by_admin_or_own, only: %i[edit update destroy]
 
   def index
     @spots = Spot.all
@@ -14,7 +16,7 @@ class SpotsController < ApplicationController
 
   def new
     @user = current_user
-    @spot = Spot.new
+    @spot = current_user.spots.new if user_signed_in?
     render partial: 'new_form'
   end
 
@@ -24,7 +26,7 @@ class SpotsController < ApplicationController
   end
 
   def create
-    @spot = Spot.new(spot_params)
+    @spot = current_user.spots.new(spot_params)
     @user = current_user
     respond_to do |format|
       if @spot.save
@@ -70,10 +72,13 @@ class SpotsController < ApplicationController
     @spot = Spot.find(params[:id])
   end
 
+  def set_spot_by_admin_or_own
+    @spot = current_user.admin? ? set_spot : current_user.spots.find(params[:id])
+  end
+
   def spot_params
     params.require(:spot).permit(
-      :title, :accident_type, :contents,
-      :accident_date, :longitude, :latitude, :user_id
+      :title, :accident_type, :contents, :accident_date, :longitude, :latitude
     )
   end
 

@@ -67,7 +67,7 @@ class SpotsTest < ApplicationSystemTestCase
     sign_in user
     visit_root_closed_modal
 
-    find(".spot-#{user.spot[0].id}", visible: false).click(x: 0, y: -5)
+    find(".spot-#{user.spots[0].id}", visible: false).click(x: 0, y: -5)
     click_on '編集'
     fill_in('タイトル', with: 'edited test')
     select('物損事故', from: 'spot_accident_type')
@@ -82,7 +82,7 @@ class SpotsTest < ApplicationSystemTestCase
     sign_in user
     visit_root_closed_modal
 
-    find(".spot-#{user.spot[0].id}", visible: false).click(x: 0, y: -5)
+    find(".spot-#{user.spots[0].id}", visible: false).click(x: 0, y: -5)
     accept_confirm do
       click_on '削除'
     end

@@ -15,8 +15,8 @@ section.flex.flex-col.mx-auto.w-full.pt-16.pb-16.items-center.bg-base-100
   .my-3
     p
       = t 'view.number_of_spots_registered'
-      - if @user.spot.present?
-        |  : #{ @user.spot.length }
+      - if @user.spots.exists?
+        |  : #{ @user.spots.length }
       - else
         |  : 0
   = link_to t('view.edit_this_user'), { controller: 'users/registrations', action: 'edit' }, class: 'btn my-3 hover:opacity-50 transition-all duration-100'

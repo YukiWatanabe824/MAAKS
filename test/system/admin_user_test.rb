@@ -5,11 +5,11 @@ require 'application_system_test_case'
 class AdminUserTest < ApplicationSystemTestCase
   test 'edit spot by admin' do
     admin_user = users(:watanabe)
-    user = users(:test01)
+    user = users(:otameshisan)
     sign_in admin_user
     visit_root_closed_modal
 
-    find(".spot-#{user.spot[0].id}", visible: false).click(x: 0, y: -5)
+    find(".spot-#{user.spots[0].id}", visible: false).click(x: 0, y: -5)
     click_on '編集'
     fill_in('タイトル', with: 'edited test')
     select('物損事故', from: 'spot_accident_type')
@@ -21,11 +21,11 @@ class AdminUserTest < ApplicationSystemTestCase
 
   test 'destroy spot by admin' do
     admin_user = users(:watanabe)
-    user = users(:test01)
+    user = users(:otameshisan)
     sign_in admin_user
     visit_root_closed_modal
 
-    find(".spot-#{user.spot[0].id}", visible: false).click(x: 0, y: -5)
+    find(".spot-#{user.spots[0].id}", visible: false).click(x: 0, y: -5)
     accept_confirm do
       click_on '削除'
     end
@@ -35,7 +35,7 @@ class AdminUserTest < ApplicationSystemTestCase
 
   test 'edit user by admin' do
     admin_user = users(:watanabe)
-    user = users(:test01)
+    user = users(:otameshisan)
     sign_in admin_user
     visit "users/#{admin_user.id}/"
 
@@ -53,7 +53,7 @@ class AdminUserTest < ApplicationSystemTestCase
 
   test 'destroy user by admin' do
     admin_user = users(:watanabe)
-    user = users(:test01)
+    user = users(:otameshisan)
     sign_in admin_user
     visit "users/#{user.id}/edit"
     accept_confirm do

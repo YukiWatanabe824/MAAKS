@@ -30,8 +30,8 @@ class UsersTest < ApplicationSystemTestCase
     visit '/users/sign_up'
     fill_in('ユーザー名', with: 'test')
     fill_in('メールアドレス', with: 'test@example.com')
-    fill_in('パスワード', with: '123456')
-    fill_in('user[password_confirmation]', with: '123456')
+    fill_in('パスワード', with: '123456789abc')
+    fill_in('user[password_confirmation]', with: '123456789abc')
     click_on('アカウント登録')
     assert_selector('#flash', text: 'アカウント登録が完了しました。')
 
@@ -47,7 +47,7 @@ class UsersTest < ApplicationSystemTestCase
 
     visit '/users/sign_in'
     fill_in('メールアドレス', with: 'test@example.com')
-    fill_in('パスワード', with: '123456')
+    fill_in('パスワード', with: '123456789abc')
     click_on('commit')
     assert_selector('#flash', text: 'ログインしました。')
   end
@@ -67,8 +67,8 @@ class UsersTest < ApplicationSystemTestCase
     attach_file 'user_avatar', Rails.root.join('test/fixtures/files/user_icon.webp').to_s
     fill_in('ユーザー名', with: 'test')
     fill_in('メールアドレス', with: 'test@example.com')
-    fill_in('パスワード', with: '123456')
-    fill_in('user[password_confirmation]', with: '123456')
+    fill_in('パスワード', with: '123456789abc')
+    fill_in('user[password_confirmation]', with: '123456789abc')
     click_on('アカウント登録')
 
     find('.close_modal_button').click
