@@ -3,7 +3,7 @@
 class SpotsController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show new]
   before_action :generate_500_error, only: %i[show edit new]
-  before_action :set_spot, only: %i[show edit update destroy]
+  before_action :set_spot, only: %i[show edit]
 
   def index
     @spots = Spot.all
@@ -41,6 +41,7 @@ class SpotsController < ApplicationController
   end
 
   def update
+    @spot = current_user.spots.find(params[:id])
     @user = current_user
     respond_to do |format|
       if @spot.update(spot_params)
@@ -56,6 +57,7 @@ class SpotsController < ApplicationController
   end
 
   def destroy
+    @spot = current_user.spots.find(params[:id])
     respond_to do |format|
       if @spot.destroy
         format.html { redirect_to root_path, notice: t('controller.deleted'), status: :see_other }
