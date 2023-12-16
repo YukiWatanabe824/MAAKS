@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Admin::UsersController < Admin::ApplicationController
+class Admins::UsersController < Admins::ApplicationController
   def index
     @user = current_user
     @pagy, @users = pagy(User.includes(avatar_attachment: :blob), items: 50)
@@ -14,10 +14,10 @@ class Admin::UsersController < Admin::ApplicationController
     @user = User.find(params[:id])
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to admin_users_path, notice: t('controller.updated') }
+        format.html { redirect_to admins_users_path, notice: t('controller.updated') }
       else
         format.html do
-          redirect_to edit_admin_user_path(@user), status: :unprocessable_entity, alert: t('controller.failed_to_updated')
+          redirect_to edit_admins_user_path(@user), status: :unprocessable_entity, alert: t('controller.failed_to_updated')
         end
       end
     end
@@ -28,9 +28,9 @@ class Admin::UsersController < Admin::ApplicationController
 
     respond_to do |format|
       if user.destroy
-        format.html { redirect_to admin_users_path, notice: t('controller.user_was_successfully_destroyed'), status: :see_other }
+        format.html { redirect_to admins_users_path, notice: t('controller.user_was_successfully_destroyed'), status: :see_other }
       else
-        format.html { redirect_to admin_users_path, status: :unprocessable_entity }
+        format.html { redirect_to admins_users_path, status: :unprocessable_entity }
       end
     end
   end

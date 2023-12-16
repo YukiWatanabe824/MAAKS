@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Admin::SpotsController < Admin::ApplicationController
+class Admins::SpotsController < Admins::ApplicationController
   before_action :set_spot, only: %i[update destroy]
 
   def update

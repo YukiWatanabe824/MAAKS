@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Admin::AvatarsController < Admin::ApplicationController
+class Admins::AvatarsController < Admins::ApplicationController
   before_action :set_user, only: %i[destroy]
 
   def destroy
@@ -9,7 +9,7 @@ class Admin::AvatarsController < Admin::ApplicationController
       if @user.avatar.attached?
         format.html { render :show, status: :unprocessable_entity, alert: t('controller.failed_to_deleted') }
       else
-        format.html { redirect_to edit_admin_user_path(@user), notice: t('controller.deleted') }
+        format.html { redirect_to edit_admins_user_path(@user), notice: t('controller.deleted') }
       end
     end
   end

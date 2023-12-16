@@ -55,12 +55,12 @@ class AdminUserTest < ApplicationSystemTestCase
     user = users(:otameshisan)
     sign_in admin_user
 
-    visit "/admin/users/#{user.id}/edit"
+    visit "/admins/users/#{user.id}/edit"
     attach_file 'user_avatar', Rails.root.join('test/fixtures/files/user_icon.webp').to_s
     click_on '更新する'
 
     assert_selector "img[src*='user_icon.webp']"
-    visit "/admin/users/#{user.id}/edit"
+    visit "/admins/users/#{user.id}/edit"
     page.accept_confirm do
       find('#avatar_del_link', text: '画像を削除').click
     end
@@ -73,7 +73,7 @@ class AdminUserTest < ApplicationSystemTestCase
     admin_user = users(:watanabe)
     user = users(:otameshisan)
     sign_in admin_user
-    visit 'admin/users'
+    visit 'admins/users'
     accept_confirm do
       find("#del-#{user.id}", text: '削除').click
     end
@@ -83,7 +83,7 @@ class AdminUserTest < ApplicationSystemTestCase
   test 'routing error screen when accessing the users page without admin' do
     user = users(:otameshisan)
     sign_in user
-    visit 'admin/users'
+    visit 'admins/users'
     assert_text 'Not Found'
   end
 end

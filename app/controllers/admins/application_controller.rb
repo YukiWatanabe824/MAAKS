@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Admin::ApplicationController < ApplicationController
+class Admins::ApplicationController < ApplicationController
   before_action :raise_permission_error
 
   def raise_permission_error
