@@ -1,17 +1,15 @@
 # frozen_string_literal: true
 
 class Admins::UsersController < Admins::ApplicationController
+  before_action :set_user, only: %i[edit update destroy]
   def index
     @user = current_user
     @pagy, @users = pagy(User.includes(avatar_attachment: :blob), items: 50)
   end
 
-  def edit
-    @user = User.find(params[:id])
-  end
+  def edit; end
 
   def update
-    @user = User.find(params[:id])
     respond_to do |format|
       if @user.update(user_params)
         format.html { redirect_to admins_users_path, notice: t('controller.updated') }
@@ -24,10 +22,8 @@ class Admins::UsersController < Admins::ApplicationController
   end
 
   def destroy
-    user = User.find(params[:id])
-
     respond_to do |format|
-      if user.destroy
+      if @user.destroy
         format.html { redirect_to admins_users_path, notice: t('controller.user_was_successfully_destroyed'), status: :see_other }
       else
         format.html { redirect_to admins_users_path, status: :unprocessable_entity }
@@ -36,6 +32,10 @@ class Admins::UsersController < Admins::ApplicationController
   end
 
   private
+
+  def set_user
+    @user = User.find(params[:id])
+  end
 
   def user_params
     params.require(:user).permit(
