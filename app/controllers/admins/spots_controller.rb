@@ -12,7 +12,7 @@ class Admins::SpotsController < Admins::ApplicationController
         format.html { redirect_to root_path, notice: t('controller.updated') }
       else
         format.html do
-          render partial: 'edit_form', locals: { spot: @spot, user: @user }, status: :unprocessable_entity, alert: t('controller.failed_to_updated')
+          render partial: 'spots/edit_form', locals: { spot: @spot, user: @user }, status: :unprocessable_entity, alert: t('controller.failed_to_updated')
         end
       end
     end

@@ -4,7 +4,7 @@
   - if edited_user && current_user == @user
     = button_to t('view.delete_for_image'), user_avatar_path(@user), method: :delete, data: { confirm: t('view.do_you_really_want_to_remove_it?'), turbo_confirm: t('view.do_you_really_want_to_remove_it?') }, class: 'link link-hover my-2 hover:opacity-50 transition-all duration-100', id: 'avatar_del_link'
   - elsif edited_user && current_user.admin? && current_user != @user
-    = button_to t('view.delete_for_image'), admin_user_avatar_path(@user), method: :delete, data: { confirm: t('view.do_you_really_want_to_remove_it?'), turbo_confirm: t('view.do_you_really_want_to_remove_it?') }, class: 'link link-hover my-2 hover:opacity-50 transition-all duration-100', id: 'avatar_del_link'
+    = button_to t('view.delete_for_image'), admins_user_avatar_path(@user), method: :delete, data: { confirm: t('view.do_you_really_want_to_remove_it?'), turbo_confirm: t('view.do_you_really_want_to_remove_it?') }, class: 'link link-hover my-2 hover:opacity-50 transition-all duration-100', id: 'avatar_del_link'
 - else
   .avatar.placeholder.user_default_icon
     .bg-secondary-focus.text-neutral-content.rounded-full.w-24

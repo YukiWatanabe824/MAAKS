@@ -2,7 +2,7 @@
   h2.my-2.text-xl.font-bold.text-base-100
     = t 'view.edit_this_spot'
   - if current_user.admin?
-    = form_with model: @spot, url: admin_spot_path do |f|
+    = form_with model: @spot, url: admins_spot_path do |f|
       = render 'shared/error_messages', object: f.object
       .form_menu.flex.flex-col.my-4
         = f.label :title, class: 'text-base-100'
