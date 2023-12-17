@@ -7,8 +7,7 @@ class Admins::SpotsController < Admins::ApplicationController
     @user = @spot.user
     respond_to do |format|
       if @spot.update(spot_params)
-        flash.now.notice = t('controller.updated')
-        format.turbo_stream
+        format.turbo_stream { flash.now[:notice] = t('controller.updated') }
         format.html { redirect_to root_path, notice: t('controller.updated') }
       else
         format.html do
