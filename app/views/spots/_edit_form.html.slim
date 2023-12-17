@@ -1,37 +1,23 @@
 = turbo_frame_tag 'side_menu' do
   h2.my-2.text-xl.font-bold.text-base-100
     = t 'view.edit_this_spot'
-  - if current_user.admin?
-    = form_with model: @spot, url: admins_spot_path do |f|
-      = render 'shared/error_messages', object: f.object
-      .form_menu.flex.flex-col.my-4
-        = f.label :title, class: 'text-base-100'
-        = f.text_field :title, class: 'input input-bordered w-full', value: html_escape(@spot.title)
-      .form_menu.flex.flex-col.my-4
-        = f.label :accident_type, class: 'text-base-100'
-        = f.select :accident_type, [['物損事故', '物損事故'], ['人身事故', '人身事故'], ['ヒヤリ・ハット', 'ヒヤリ・ハット'], ['その他', 'その他']], include_blank: true, value: @spot.accident_type, class: 'select select-bordered w-full max-w-xs'
-      .form_menu.flex.flex-col.my-4
-        = f.label :contents, class: 'text-base-100'
-        = f.text_area :contents, class: 'textarea textarea-bordered h-52', value: html_escape(@spot.contents)
-      .form_menu.flex.flex-col.my-4
-        = f.label :accident_date, class: 'text-base-100'
-        = f.date_field :accident_date, value: @spot.accident_date
-      = f.submit t('helpers.submit.update'), data: { turbo_method: :put }, class: 'my-2 btn bg-base-100 text-primary hover:opacity-50 transition-all duration-100'
-  - else
-    = form_with model: @spot, url: spot_path do |f|
-      = render 'shared/error_messages', object: f.object
-      .form_menu.flex.flex-col.my-4
-        = f.label :title, class: 'text-base-100'
-        = f.text_field :title, class: 'input input-bordered w-full', value: html_escape(@spot.title)
-      .form_menu.flex.flex-col.my-4
-        = f.label :accident_type, class: 'text-base-100'
-        = f.select :accident_type, [['物損事故', '物損事故'], ['人身事故', '人身事故'], ['ヒヤリ・ハット', 'ヒヤリ・ハット'], ['その他', 'その他']], include_blank: true, value: @spot.accident_type, class: 'select select-bordered w-full max-w-xs'
-      .form_menu.flex.flex-col.my-4
-        = f.label :contents, class: 'text-base-100'
-        = f.text_area :contents, class: 'textarea textarea-bordered h-52', value: html_escape(@spot.contents)
-      .form_menu.flex.flex-col.my-4
-        = f.label :accident_date, class: 'text-base-100'
-        = f.date_field :accident_date, value: @spot.accident_date
-      = f.submit t('helpers.submit.update'), data: { turbo_method: :put }, class: 'my-2 btn bg-base-100 text-primary hover:opacity-50 transition-all duration-100'
+
+  - form_path = current_user.admin? ? admins_spot_path : spot_path
+
+  = form_with model: @spot, url: form_path do |f|
+    = render 'shared/error_messages', object: f.object
+    .form_menu.flex.flex-col.my-4
+      = f.label :title, class: 'text-base-100'
+      = f.text_field :title, class: 'input input-bordered w-full', value: html_escape(@spot.title)
+    .form_menu.flex.flex-col.my-4
+      = f.label :accident_type, class: 'text-base-100'
+      = f.select :accident_type, [['物損事故', '物損事故'], ['人身事故', '人身事故'], ['ヒヤリ・ハット', 'ヒヤリ・ハット'], ['その他', 'その他']], include_blank: true, value: @spot.accident_type, class: 'select select-bordered w-full max-w-xs'
+    .form_menu.flex.flex-col.my-4
+      = f.label :contents, class: 'text-base-100'
+      = f.text_area :contents, class: 'textarea textarea-bordered h-52', value: html_escape(@spot.contents)
+    .form_menu.flex.flex-col.my-4
+      = f.label :accident_date, class: 'text-base-100'
+      = f.date_field :accident_date, value: @spot.accident_date
+    = f.submit t('helpers.submit.update'), data: { turbo_method: :put }, class: 'my-2 btn bg-base-100 text-primary hover:opacity-50 transition-all duration-100'
 
   = link_to t('view.return'), spot_path(@spot), class: 'btn my-2 bg-base-100 text-primary hover:opacity-50 transition-all duration-100'
