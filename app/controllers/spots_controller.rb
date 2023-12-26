@@ -60,6 +60,8 @@ class SpotsController < ApplicationController
     @spot = current_user.spots.find(params[:id])
     respond_to do |format|
       if @spot.destroy
+        set_paging
+        format.turbo_stream { flash.now[:notice] = t('controller.deleted') }
         format.html { redirect_to root_path, notice: t('controller.deleted'), status: :see_other }
       else
         format.html { redirect_to root_path, status: :unprocessable_entity, alert: t('controller.failed_to_deleted') }
@@ -71,6 +73,11 @@ class SpotsController < ApplicationController
 
   def set_spot
     @spot = Spot.find(params[:id])
+  end
+
+  def set_paging
+    @spots_pagy, @spots = pagy(Spot.order(created_at: :desc))
+    @my_spots_pagy, @my_spots = pagy(current_user.spots.order(created_at: :desc)) if user_signed_in?
   end
 
   def spot_params
