@@ -2,7 +2,7 @@
 
 = turbo_frame_tag 'side_menu', class: 'flex flex-col h-full' do
   - if spot_deleted
-    div data-controller="spot-deletion" data-showing-spot-menu-map-outlet="#map" data-showing-spot-menu-target="SpotDetailObject" data-id="#{spot.id}"
+    div data-controller="spot-deletion" data-spot-deletion-map-outlet="#map" data-spot-deletion-target="SpotDetailObject" data-id="#{spot.id}"
 
   .how_to_service.mb-5.mt-2
     button.w-full.btn.bg-base-100.text-primary onclick='how_to_maaks_modal.showModal()'
