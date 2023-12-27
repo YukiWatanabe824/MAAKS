@@ -11,6 +11,6 @@ export default class extends Controller {
   }
 
   delete_map_pin(spot) {
-    document.querySelector(`.spot-${spot.id}`).remove()
+    document.getElementById(`${spot.id}`).remove()
   }
 }
