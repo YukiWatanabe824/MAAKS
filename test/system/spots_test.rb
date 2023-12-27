@@ -12,13 +12,13 @@ class SpotsTest < ApplicationSystemTestCase
     visit_root_closed_modal
     find('#map').click
     find('#new_spot_marker').right_click
-    assert_selector('#spot_menu')
+    assert_selector '#spot_menu'
   end
 
   test 'showing spot info in side menu by not signed in' do
     visit_root_closed_modal
-    assert_selector('#map')
-    assert_selector('.mapboxgl-canvas-container')
+    assert_selector '#map'
+    assert_selector '.mapboxgl-canvas-container'
 
     spot = spots(:one)
 
@@ -51,11 +51,11 @@ class SpotsTest < ApplicationSystemTestCase
 
   test 'create a spot but a warning appears if you are not logged in' do
     visit_root_closed_modal
-    assert_selector('#map')
+    assert_selector '#map'
 
     find('#map').click
 
-    assert_selector('#new_spot_marker')
+    assert_selector '#new_spot_marker'
     find('#new_spot_marker').right_click
     click_on('スポットを作成する')
 

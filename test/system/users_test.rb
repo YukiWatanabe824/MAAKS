@@ -78,7 +78,7 @@ class UsersTest < ApplicationSystemTestCase
     page.accept_confirm do
       find('#avatar_del_link', text: '画像を削除').click
     end
-    assert_selector('#flash', text: '削除しました')
+    assert_selector '#flash', text: '削除しました'
     assert_no_selector "img[src*='user_icon.webp']"
     assert_selector '.user_default_icon', text: 't'
   end
@@ -91,8 +91,8 @@ class UsersTest < ApplicationSystemTestCase
     fill_in('user[name]', with: 'test')
     fill_in('user[email]', with: 'zzz@example.com')
     click_on('更新する')
-    assert_selector('#flash', text: 'アカウント情報を変更しました。')
-    assert_selector('p', text: 'test')
+    assert_selector '#flash', text: 'アカウント情報を変更しました。'
+    assert_selector 'p', text: 'test'
   end
 
   test 'delete user' do
@@ -102,7 +102,7 @@ class UsersTest < ApplicationSystemTestCase
     accept_confirm do
       find('button.delete_account_button', text: 'アカウントを削除する').click
     end
-    assert_selector('#flash', text: 'ユーザーを削除しました')
+    assert_selector '#flash', text: 'ユーザーを削除しました'
   end
 
   test 'check user page title' do

@@ -47,7 +47,7 @@ class AdminUserTest < ApplicationSystemTestCase
 
     find("#edit-#{user.id}", text: '編集').click
     click_on '更新する'
-    assert_selector('#flash', text: '更新しました')
+    assert_selector '#flash', text: '更新しました'
   end
 
   test 'edit user_icon by admin' do
@@ -64,7 +64,7 @@ class AdminUserTest < ApplicationSystemTestCase
     page.accept_confirm do
       find('#avatar_del_link', text: '画像を削除').click
     end
-    assert_selector('#flash', text: '削除しました')
+    assert_selector '#flash', text: '削除しました'
     assert_no_selector "img[src*='user_icon.webp']"
     assert_selector '.user_default_icon', text: 't'
   end
@@ -77,7 +77,7 @@ class AdminUserTest < ApplicationSystemTestCase
     accept_confirm do
       find("#del-#{user.id}", text: '削除').click
     end
-    assert_selector('#flash', text: 'ユーザーを削除しました')
+    assert_selector '#flash', text: 'ユーザーを削除しました'
   end
 
   test 'routing error screen when accessing the users page without admin' do
