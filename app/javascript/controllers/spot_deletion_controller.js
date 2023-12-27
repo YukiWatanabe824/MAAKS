@@ -6,11 +6,11 @@ export default class extends Controller {
 
   connect() {
     const spotObject = this.SpotDetailObjectTarget.dataset;
-    console.log(spotObject)
+    console.log(spotObject);
     this.delete_map_pin(spotObject);
   }
 
   delete_map_pin(spot) {
-    document.getElementById(`${spot.id}`).remove()
+    document.getElementById(`${spot.id}`).remove();
   }
 }
