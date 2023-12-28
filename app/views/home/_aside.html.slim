@@ -8,7 +8,7 @@
     button.w-full.btn.bg-base-100.text-primary onclick='how_to_maaks_modal.showModal()'
       .text-left.text-xl.font-medium.mr-auto
         = t 'view.how_to_use'
-  - if @first_access && !@signed_out
+  - if first_access && !signed_out
     dialog id='how_to_maaks_modal' class='modal' open='true'
       = render 'home/modal_box', how_to_maaks: true
   - else
