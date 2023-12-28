@@ -24,15 +24,15 @@
           = t 'view.my_post'
       .contents
         .bg-base-100.rounded-b.rounded-r.p-4.text-primary class="min-h-[24rem]"
-          = render 'home/aside_latest_spot_list'
+          = render partial: 'home/aside_latest_spot_list', locals: { spots: @spots, spots_pagy: @spots_pagy }
         .bg-base-100.rounded-b.rounded-r.p-4.text-primary.hidden class="min-h-[24rem]"
-          = render 'home/aside_my_spot_list'
+          = render partial: 'home/aside_my_spot_list', locals: { my_spots: @my_spots, my_spots_pagy: @my_spots_pagy }
     - else
       .tabs
         a.tab.tab-bordered.tab-active.tab-lg.text-xl.text-base-100.bg-neutral.rounded-none.rounded-t
           = t 'view.latest_post'
       .contents
         .bg-base-100.rounded-b-lg.rounded-r-lg.p-4.text-primary class="min-h-[24rem]"
-          = render 'home/aside_latest_spot_list'
+          = render partial: 'home/aside_latest_spot_list', locals: { spots: @spots, spots_pagy: @spots_pagy }
 
   = render 'home/aside_footer'

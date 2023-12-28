@@ -5,4 +5,4 @@ main.w-full.mx-auto.lg:flex-row-reverse.lg:flex class="h-[calc(100vh-65px)] max-
 
   aside.bg-neutral.mr-0.5.p-3.lg:basis-3/12 data-side-menu-map-outlet='#map' class="min-w-[20rem]"
     = turbo_frame_tag 'side_menu' do
-      = render 'aside'
+      = render partial: 'aside', locals: { first_access: @first_access, signed_out: @signed_out, spots: @spots, spots_pagy: @spots_pagy, my_spots_pagy: @my_spots_pagy, my_spots: @my_spots }

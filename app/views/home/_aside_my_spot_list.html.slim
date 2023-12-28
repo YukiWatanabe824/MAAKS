@@ -1,5 +1,5 @@
-- if @my_spots.present?
-  = render partial: 'home/spot_item', locals: { spots: @my_spots, pagy: @my_spots_pagy }
+- if my_spots.present?
+  = render partial: 'home/spot_item', locals: { spots: my_spots, pagy: my_spots_pagy }
 - else
   ul
     li
