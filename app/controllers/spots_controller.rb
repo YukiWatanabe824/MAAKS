@@ -22,7 +22,7 @@ class SpotsController < ApplicationController
   def edit
     @user = current_user
     @spot = current_user.admin? ? Spot.find(params[:id]) : current_user.spot.find(params[:id])
-    render partial: 'edit_form', locals: { spot: @spot, user: @user }
+    render partial: 'edit_form', locals: { spot: @spot, user: @user }, locals: { spot: @spot, user: @user }
   end
 
   def create
