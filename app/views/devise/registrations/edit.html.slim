@@ -4,7 +4,7 @@ main.flex.flex-col.mx-auto.w-full.pt-16.pb-16.items-center.bg-base-100
   .my-8
     h2.text-3xl.font-bold
       = t 'view.edit_this_user'
-  = render 'users/user_icon', edited_user: true
+  = render partial: 'users/user_icon', locals: { user: @user, edited_user: true }
   = form_with(model: @user, class: 'flex flex-col items-center') do |f|
     = render 'devise/shared/error_messages', resource:
     .user_avatar.mb-8
