@@ -4,14 +4,14 @@ require 'application_system_test_case'
 
 class HomeTest < ApplicationSystemTestCase
   test 'visiting the top page' do
-    visit '/'
+    visit root_path
     assert_equal 'メインページ | MAAKS', title
   end
 
   test 'showing how to modal when first access in day and no show how to modal when after the second access that day' do
-    visit '/'
+    visit root_path
     assert_selector '#how_to_maaks_modal', visible: :visible
-    visit '/'
+    visit root_path
     assert_no_selector '#how_to_maaks_modal', visible: :visible
   end
 
@@ -33,7 +33,7 @@ class HomeTest < ApplicationSystemTestCase
 
     user = users(:watanabe)
     sign_in user
-    visit '/'
+    visit root_path
 
     find('a.tab.opacity-50').click
     assert_no_selector 'a.tab.tab-active', text: '最新の投稿'
