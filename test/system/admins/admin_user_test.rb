@@ -85,5 +85,14 @@ class AdminUserTest < ApplicationSystemTestCase
     sign_in user
     visit 'admins/users'
     assert_text 'Not Found'
+
+  end
+
+  test 'error if not admin' do
+    user = users(:otameshisan)
+
+    sign_in user
+    visit 'admins/users'
+    assert_text 'Not Found'
   end
 end
