@@ -29,8 +29,7 @@ class SpotsController < ApplicationController
     @user = current_user
     respond_to do |format|
       if @spot.save
-        flash.now.notice = t('controller.spot_created!')
-        format.turbo_stream
+        format.turbo_stream { flash.now[:notice] = t('controller.spot_created!') }
         format.html { redirect_to root_path, notice: t('controller.spot_created!') }
       else
         format.html do
@@ -45,8 +44,7 @@ class SpotsController < ApplicationController
     @user = current_user
     respond_to do |format|
       if @spot.update(spot_params)
-        flash.now.notice = t('controller.updated')
-        format.turbo_stream
+        format.turbo_stream { flash.now[:notice] = t('controller.updated') }
         format.html { redirect_to root_path, notice: t('controller.updated') }
       else
         format.html do
