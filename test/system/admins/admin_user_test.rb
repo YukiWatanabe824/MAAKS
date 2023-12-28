@@ -85,7 +85,6 @@ class AdminUserTest < ApplicationSystemTestCase
     sign_in user
     visit admins_users_path
     assert_text 'Not Found'
-
   end
 
   test 'error if not admin' do
