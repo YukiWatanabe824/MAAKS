@@ -18,23 +18,6 @@ main.flex.flex-col.mx-auto.w-full.pt-16.pb-16.items-center.bg-base-100
       p
         = t 'view.user_name'
       = f.text_field :name, autocomplete: html_escape(@user.name), class: 'input input-bordered w-xs'
-    .my-3
-      p
-        = t 'view.mail_address'
-      = f.email_field :email, autocomplete: html_escape(@user.email), class: 'input input-bordered w-xs'
-    - unless @user.provider.presence
-      .my-3
-        p
-          = t 'view.new_password'
-        = f.password_field :password, autocomplete: '新しいパスワード', class: 'input input-bordered w-xs'
-      .my-3
-        p
-          = t 'view.re-enter_new_password_for_confirmation'
-        = f.password_field :password_confirmation, autocomplete: '確認用再入力', class: 'input input-bordered w-xs'
-      .my-3
-        p
-          = t 'view.current_password'
-        = f.password_field :current_password, autocomplete: '現在のパスワード', class: 'input input-bordered w-xs'
     = f.submit t('helpers.submit.update'), class: 'btn my-5 hover:opacity-50 transition-all duration-100'
   = button_to t('view.destroy_this_user'), user_path(@user), method: :delete, data: { confirm: t('view.do_you_really_want_to_remove_it?'), turbo_confirm: t('view.do_you_really_want_to_remove_it?') }, class: 'delete_account_button link link-hover text-neutral hover:opacity-50 transition-all duration-100'
 

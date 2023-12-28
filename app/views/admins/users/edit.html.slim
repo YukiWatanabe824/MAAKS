@@ -17,10 +17,6 @@ main.flex.flex-col.mx-auto.w-full.pt-16.pb-16.items-center.bg-base-100
       p
         = t 'view.user_name'
       = f.text_field :name, autocomplete: html_escape(@user.name), class: 'input input-bordered w-xs'
-    .my-3
-      p
-        = t 'view.mail_address'
-      = f.email_field :email, autocomplete: html_escape(@user.email), class: 'input input-bordered w-xs'
     = f.submit t('helpers.submit.update'), class: 'btn my-5 hover:opacity-50 transition-all duration-100'
 
   = link_to t('view.return'), admins_users_path, class: 'btn my-8 hover:opacity-50 transition-all duration-100'
