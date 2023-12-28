@@ -5,7 +5,7 @@ main.flex.flex-col.mx-auto.w-full.pt-16.pb-16.items-center.bg-base-100
     h2.text-3xl.font-bold
       = t 'devise.registrations.new.sign_up'
   - resource_class.omniauth_providers.each do |provider|
-    = button_to omniauth_authorize_path(resource_name, provider), data: { turbo: false }, class: 'btn'
+    = button_to omniauth_authorize_path(resource_name, provider), data: { turbo: false }, class: 'link link-hover'
       .flex.items-center
         = image_tag 'icon_google.svg', alt: "Sign in with #{OmniAuth::Utils.camelize(provider)}", size: '18x18'
         p.ml-2.font-bold
