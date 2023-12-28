@@ -16,7 +16,7 @@ class SpotsController < ApplicationController
   def new
     @user = current_user
     @spot = current_user.spots.new if user_signed_in?
-    render partial: 'new_form'
+    render partial: 'new_form', locals: { spot: @spot, user: @user }
   end
 
   def edit
