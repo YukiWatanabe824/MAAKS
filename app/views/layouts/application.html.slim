@@ -37,10 +37,10 @@ html data-theme='corporate'
             li.m-2
               = link_to t('view.my_page'), user_path(current_user), class: 'my_page_button btn btn-outline btn-accent hover:opacity-50 transition-all duration-100'
             li.m-2
-              = link_to t('view.sign_out'), users_sign_out_path, data: { turbo_method: :delete }, class: 'sign_out_button btn btn-outline btn-accent hover:opacity-50 transition-all duration-100'
+              = link_to t('view.sign_out'), destroy_user_session_path, data: { turbo_method: :delete }, class: 'sign_out_button btn btn-outline btn-accent hover:opacity-50 transition-all duration-100'
           - else
             li.m-2
-              = link_to t('view.create_user_account'), users_sign_up_path, class: 'create_user_button btn btn-outline btn-accent hover:opacity-50 transition-all duration-100'
+              = link_to t('view.sign_in'), new_user_session_path, class: 'sign_in_button btn btn-outline btn-accent hover:opacity-50 transition-all duration-100'
       .dropdown.dropdown-end.m-2.lg:hidden
         label.btn.btn-outline.btn-accent tabindex="0"
           = t 'view.menu'
@@ -49,9 +49,9 @@ html data-theme='corporate'
             li.m-2
               = link_to t('view.my_page'), user_path(current_user), class: 'hover:opacity-50 transition-all duration-100'
             li.m-2
-              = link_to t('view.sign_out'), users_sign_out_path, data: { turbo_method: :delete }, class: 'hover:opacity-50 transition-all duration-100'
+              = link_to t('view.sign_out'), destroy_user_session_path, data: { turbo_method: :delete }, class: 'hover:opacity-50 transition-all duration-100'
           - else
             li.m-2
-              = link_to t('view.create_user_account'), users_sign_up_path, class: 'hover:opacity-50 transition-all duration-100'
+              = link_to t('view.sign_in'), new_user_session_path, class: 'hover:opacity-50 transition-all duration-100'
 
     = yield

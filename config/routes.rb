@@ -1,15 +1,14 @@
 Rails.application.routes.draw do
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
 
-  devise_for :users, skip: [ :registrations, :sessions, :password ], controllers: {
+  devise_for :users, skip: [ :registrations, :password ], controllers: {
     omniauth_callbacks: "users/omniauth_callbacks"
   }
 
   devise_scope :user do
-    get '/users/:id/edit', to: 'users/registrations#edit'
-    patch '/users/:id', to: 'users/registrations#update'
-    delete '/users/sign_out', to: 'users/sessions#destroy'
-    get '/users/sign_up', to: 'devise/registrations#new'
+    get '/users/:id/edit', to: 'users/registrations#edit', as: 'edit_user_registration'
+    patch '/users/:id', to: 'users/registrations#update', as: 'user_registration'
+    get '/users/sign_up', to: 'devise/registrations#new', as: 'new_user_registration'
   end
 
   resources :spots
