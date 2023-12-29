@@ -15,8 +15,8 @@ class AuthorizationIntegrationTest < ApplicationSystemTestCase
 
   test 'authorizes and sets user currently in database with Google OAuth' do
     visit user_session_path
-    assert page.has_content? 'GOOGLEアカウントでログイン'
-    click_on 'Googleアカウントでログイン'
+    assert page.has_content? 'Googleでログイン'
+    click_on 'Googleでログイン'
     assert_selector '#flash', text: 'Google アカウントによる認証に成功しました。'
   end
 
