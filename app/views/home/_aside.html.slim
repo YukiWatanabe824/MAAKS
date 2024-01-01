@@ -5,11 +5,11 @@
     div data-controller="spot-deletion" data-spot-deletion-id-value="#{spot.id}" data-id="#{spot.id}"
 
   .how_to_service.mb-5.mt-2
-    button.w-full.btn.bg-base-100.text-primary onclick='how_to_maaks_modal.showModal()'
+    button#how_to_modal_button.w-full.btn.bg-base-100.text-primary onclick='how_to_maaks_modal.showModal()'
       .text-left.text-xl.font-medium.mr-auto
         = t 'view.how_to_use'
-  - if first_access && !signed_out
-    dialog id='how_to_maaks_modal' class='modal' open='true'
+  - if first_access
+    dialog id='how_to_maaks_modal' class='modal' data-controller='how-to-modal' data-how-to-modal-target='HowToModal'
       = render 'home/modal_box', how_to_maaks: true
   - else
     dialog id='how_to_maaks_modal' class='modal'

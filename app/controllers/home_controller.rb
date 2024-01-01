@@ -9,7 +9,6 @@ class HomeController < ApplicationController
     @spots_pagy, @spots = pagy(Spot.order(created_at: :desc).limit(50))
     @my_spots_pagy, @my_spots = pagy(current_user.spots.order(created_at: :desc)) if user_signed_in?
 
-    check_signed_out_session
     check_first_access_session
   end
 
