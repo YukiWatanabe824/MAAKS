@@ -1,6 +1,6 @@
 - edited_user ||= false
 - if user.avatar.attached?
-  = image_tag user.avatar.variant(resize_to_limit: [200, 200]), class: 'user_icon rounded-full w-24 h-24', alt: 'user icon'
+  = image_tag user.avatar.variant(resize_to_limit: [200, 200]), class: 'user_icon rounded-full object-cover w-24 h-24', alt: 'user icon'
   - if edited_user
     = button_to t('view.delete_for_image'), current_user.admin? ? admins_user_avatar_path(user) : user_avatar_path(user), method: :delete, data: { confirm: t('view.do_you_really_want_to_remove_it?'), turbo_confirm: t('view.do_you_really_want_to_remove_it?') }, class: 'link link-hover my-2 hover:opacity-50 transition-all duration-100', id: 'avatar_del_link'
 - else
