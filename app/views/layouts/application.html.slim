@@ -36,10 +36,10 @@ html data-theme='corporate'
               - else
                 = render 'layouts/default_user_icon'
             li.m-2
-              = link_to t('view.sign_out'), destroy_user_session_path, data: { turbo_method: :delete }, class: 'sign_out_button btn btn-outline btn-accent hover:opacity-50 transition-all duration-100'
+              = link_to t('view.sign_out'), destroy_user_session_path, data: { turbo_method: :delete }, class: 'sign_out_button btn btn-outline btn-accent hover:opacity-50 transition-all duration-100 btn-sm'
           - else
             li.m-2
-              = link_to t('view.sign_in'), new_user_session_path, class: 'sign_in_button btn btn-outline btn-accent hover:opacity-50 transition-all duration-100'
+              = link_to t('view.sign_in'), new_user_session_path, class: 'sign_in_button btn btn-sm btn-warning hover:opacity-50 transition-all duration-100'
       .dropdown.dropdown-end.m-2.lg:hidden
         label.btn.btn-outline.btn-accent tabindex="0"
           = t 'view.menu'
