@@ -5,6 +5,6 @@ export default class extends Controller {
   connect() {
     setTimeout(() => {
       this.flashTarget.remove();
-    }, "5000");
+    }, "3000");
   }
 }

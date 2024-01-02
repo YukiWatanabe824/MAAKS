@@ -1,7 +1,11 @@
-.flash_component data-controller="flash" data-flash-target="flash"
-  .bg-emerald-200.w-full
-    p.rails_notice.text-center.leading-loose
-      = notice
-  .bg-orange-200.w-full
-    p.rails_alert.mx-auto.text-center.leading-loose
-      = alert
+.absolute.flash_component.top-16.z-50 data-controller="flash" data-flash-target="flash"
+  - if notice
+    .bg-emerald-200.w-full.m-3.rounded.p-2.flex
+      span.loading.loading-spinner.loading-md.mx-1
+      p.rails_notice.text-center.leading-loose
+        = notice
+  - elsif alert
+    .bg-orange-200.w-full.m-3.rounded.p-2.flex
+      span.loading.loading-spinner.loading-md.mx-1
+      p.rails_alert.mx-auto.text-center.leading-loose
+        = alert

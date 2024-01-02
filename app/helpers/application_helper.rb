@@ -4,7 +4,7 @@ module ApplicationHelper
   include Pagy::Frontend
 
   def turbo_stream_flash
-    turbo_stream.update 'flash', partial: 'flash'
+    turbo_stream.update 'flash', partial: 'application/flash'
   end
 
   def format_content(text)
