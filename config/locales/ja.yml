@@ -25,6 +25,7 @@ ja:
     return: 戻る
     return_to_mypage: マイページに戻る
     return_to_userlist: ユーザー一覧に戻る
+    return_to_top: トップに戻る
     show_all_users: ユーザー一覧
     edit_this_user: プロフィール編集
     edit_this_spot: スポットの編集
