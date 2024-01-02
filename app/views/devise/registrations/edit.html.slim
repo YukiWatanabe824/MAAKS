@@ -5,22 +5,22 @@ main.flex.flex-col.mx-auto.w-full.pt-16.pb-16.items-center.bg-base-100
     h2.text-3xl.font-bold.text-primary
       = t 'view.edit_this_user'
   = render partial: 'users/user_icon', locals: { user: @user, edited_user: true }
-  = form_with(model: @user, class: 'flex flex-col items-center') do |f|
+  = form_with(model: @user, class: 'flex flex-col') do |f|
     = render 'devise/shared/error_messages', resource:
-    .user_avatar.mb-8
+    .user_avatar.my-3
       = f.label :avatar, class: 'flex flex-col items-center'
         .my-2
           p
             = t 'view.upload_to_new_image'
-          = f.file_field :avatar, class: 'file-input file-input-bordered file-input-sm w-xs'
+          = f.file_field :avatar, class: 'file-input file-input-md w-xs rounded'
 
     .my-3
       p
         = t 'view.user_name'
-      = f.text_field :name, autocomplete: html_escape(@user.name), class: 'input input-bordered w-xs'
-    = f.submit t('helpers.submit.update'), class: 'btn my-5 hover:opacity-50 transition-all duration-100'
-  = button_to t('view.destroy_this_user'), user_path(@user), method: :delete, data: { confirm: t('view.do_you_really_want_to_remove_it?'), turbo_confirm: t('view.do_you_really_want_to_remove_it?') }, class: 'delete_account_button link link-hover text-neutral hover:opacity-50 transition-all duration-100'
+      = f.text_field :name, autocomplete: html_escape(@user.name), class: 'input input-bordered w-full rounded'
+    = f.submit t('helpers.submit.update'), class: 'btn my-5 btn-neutral hover:opacity-50 transition-all duration-100 w-8/12 self-center'
+  = button_to t('view.destroy_this_user'), user_path(@user), method: :delete, data: { confirm: t('view.do_you_really_want_to_remove_it?'), turbo_confirm: t('view.do_you_really_want_to_remove_it?') }, class: 'delete_account_button link link-hover text-neutral-400 hover:opacity-50 transition-all duration-100 underline'
 
-  = link_to t('view.return'), user_path(@user), class: 'btn my-8 hover:opacity-50 transition-all duration-100'
+  = link_to t('view.return_to_mypage'), user_path(@user), class: 'btn my-8 hover:opacity-50 transition-all duration-100'
 
 = render 'users/footer'
