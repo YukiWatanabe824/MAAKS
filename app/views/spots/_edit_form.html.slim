@@ -9,9 +9,23 @@
     .form_menu.flex.flex-col.my-4
       = f.label :title, class: 'text-base-100'
       = f.text_field :title, class: 'input input-bordered w-full', value: html_escape(spot.title)
-    .form_menu.flex.flex-col.my-4
+    .form_menu.flex.flex-col.my-4.text-base-100
       = f.label :accident_type, class: 'text-base-100'
-      = f.select :accident_type, [['物損事故', '物損事故'], ['人身事故', '人身事故'], ['ヒヤリ・ハット', 'ヒヤリ・ハット'], ['その他', 'その他']], include_blank: true, value: spot.accident_type, class: 'select select-bordered w-full max-w-xs'
+      .flex
+        .flex.flex-col.mr-2
+          label.mr-2
+            = f.radio_button :accident_type, '物損事故', class: ''
+            | 物損事故
+          label.mr-2
+            = f.radio_button :accident_type, '人身事故', class: ''
+            | 人身事故
+        .flex.flex-col.mr-2
+          label.mr-2
+            = f.radio_button :accident_type, 'ヒヤリ・ハット', class: ''
+            | ヒヤリ・ハット
+          label.mr-2
+            = f.radio_button :accident_type, 'その他', class: ''
+            | その他
     .form_menu.flex.flex-col.my-4
       = f.label :contents, class: 'text-base-100'
       = f.text_area :contents, class: 'textarea textarea-bordered h-52', value: html_escape(spot.contents)
