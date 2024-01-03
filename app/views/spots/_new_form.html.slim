@@ -4,7 +4,6 @@
       | スポットの登録
     - if user_signed_in?
       = form_with model: spot, url: spots_path do |f|
-        = render 'shared/error_messages', object: f.object
         .form_menu.flex.flex-col.my-4
           = f.label :title, class: 'text-base-100'
           = f.text_field :title, class: 'input input-bordered w-full', placeholder: '段差にハンドルを取られて落車'
@@ -43,6 +42,7 @@
         .form_menu.flex.flex-col.my-4
           = f.label :latitude, class: 'text-base-100'
           = f.text_field :latitude, readonly: true, class: 'w-full', value: ''
+        = render 'shared/error_messages', object: f.object
         = f.submit t('helpers.submit.create'), class: 'my-2 btn bg-base-100 text-primary hover:opacity-50 transition-all duration-100', data: { action: 'click->side-menu#setCoordinate' }
     - else
       .flex.flex-col

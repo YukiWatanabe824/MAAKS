@@ -5,7 +5,6 @@
   - form_path = current_user.admin? ? admins_spot_path : spot_path
 
   = form_with model: spot, url: form_path do |f|
-    = render 'shared/error_messages', object: f.object
     .form_menu.flex.flex-col.my-4
       = f.label :title, class: 'text-base-100'
       = f.text_field :title, class: 'input input-bordered w-full', value: html_escape(spot.title)
@@ -32,6 +31,7 @@
     .form_menu.flex.flex-col.my-4
       = f.label :accident_date, class: 'text-base-100'
       = f.date_field :accident_date, value: spot.accident_date
+    = render 'shared/error_messages', object: f.object
     = f.submit t('helpers.submit.update'), data: { turbo_method: :put }, class: 'my-2 btn bg-base-100 text-primary hover:opacity-50 transition-all duration-100'
 
   = link_to t('view.cancel'), spot_path(spot), class: 'my-2 text-base-100 hover:opacity-50 transition-all duration-100 underline'
