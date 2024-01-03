@@ -10,14 +10,28 @@
           = f.text_field :title, class: 'input input-bordered w-full', placeholder: '段差にハンドルを取られて落車'
           p.text-xs.text-base-100
             | 概要を簡潔に書いてください
-        .form_menu.flex.flex-col.my-4
+        .form_menu.flex.flex-col.my-4.text-base-100
           = f.label :accident_type, class: 'text-base-100'
-          = f.select :accident_type, [['物損事故', '物損事故'], ['人身事故', '人身事故'], ['ヒヤリ・ハット', 'ヒヤリ・ハット'], ['その他', 'その他']], include_blank: true, class: 'select select-bordered w-full'
+          .flex
+            .flex.flex-col.mr-2
+              label.mr-2
+                = f.radio_button :accident_type, '物損事故', class: ''
+                | 物損事故
+              label.mr-2
+                = f.radio_button :accident_type, '人身事故', class: ''
+                | 人身事故
+            .flex.flex-col.mr-2
+              label.mr-2
+                = f.radio_button :accident_type, 'ヒヤリ・ハット', class: ''
+                | ヒヤリ・ハット
+              label.mr-2
+                = f.radio_button :accident_type, 'その他', class: ''
+                | その他
           p.text-xs.text-base-100
             | トラブルのカテゴリーを選んでください。「ヒヤリ・ハット」とは事故に満たないヒヤっとする体験やハッとさせられた体験のことです。一つの事故にはその裏に300件のヒヤリ・ハットがあると言われています。
         .form_menu.flex.flex-col.my-4
           = f.label :contents, class: 'text-base-100'
-          = f.text_area :contents, class: 'textarea textarea-bordered h-52 w-full', placeholder: '車道の舗装が乱れており、深くえぐれた箇所に車輪が引っかかってしまい転倒した。救急車に搬送された。'
+          = f.text_area :contents, class: 'textarea textarea-bordered h-52 w-full text-base leading-normal', placeholder: '車道の舗装が乱れており、深くえぐれた箇所に車輪が引っかかってしまい転倒した。救急車に搬送された。'
           p.text-xs.text-base-100
             | トラブルの内容を詳細に書いてください。現場の地理上の問題と思われる点や救急搬送の所要時間など現地特有の項目を記入すると、よりほかの方の役に立ちます。
         .form_menu.flex.flex-col.my-4
