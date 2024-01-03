@@ -1,40 +1,44 @@
 = turbo_frame_tag 'side_menu' do
   div data-controller='created-spot-side-menu' data-created-spot-side-menu-map-outlet='#map'
     h2.my-2.text-xl.font-bold.text-base-100
-      | スポットの登録
+      = t 'view.create_spot'
     - if user_signed_in?
       = form_with model: spot, url: spots_path do |f|
         .form_menu.flex.flex-col.my-4
           = f.label :title, class: 'text-base-100'
+            = t 'view.spot_title'
           = f.text_field :title, class: 'input input-bordered w-full', placeholder: '段差にハンドルを取られて落車'
           p.text-xs.text-base-100.mt-1
             | 概要を簡潔に書いてください
         .form_menu.flex.flex-col.my-4.text-base-100
           = f.label :accident_type, class: 'text-base-100'
+            = t 'view.spot_accident_type'
           .flex
-            .flex.flex-col.mr-2
-              label.mr-2
-                = f.radio_button :accident_type, '物損事故', class: ''
-                | 物損事故
-              label.mr-2
-                = f.radio_button :accident_type, '人身事故', class: ''
-                | 人身事故
-            .flex.flex-col.mr-2
-              label.mr-2
-                = f.radio_button :accident_type, 'ヒヤリ・ハット', class: ''
-                | ヒヤリ・ハット
-              label.mr-2
-                = f.radio_button :accident_type, 'その他', class: ''
-                | その他
+            .flex.flex-col.mr-3
+              label
+                = f.radio_button :accident_type, '物損事故', class: 'mr-1'
+                = t 'view.spot_accident_category_property'
+              label
+                = f.radio_button :accident_type, '人身事故', class: 'mr-1'
+                = t 'view.spot_accident_category_injury'
+            .flex.flex-col.mr-3
+              label
+                = f.radio_button :accident_type, 'ヒヤリ・ハット', class: 'mr-1'
+                = t 'view.spot_accident_category_nearmiss'
+              label
+                = f.radio_button :accident_type, 'その他', class: 'mr-1'
+                = t 'view.spot_accident_category_other'
           p.text-xs.text-base-100.mt-1
-            | トラブルのカテゴリーを選んでください。「ヒヤリ・ハット」とは事故に満たないヒヤっとする体験やハッとさせられた体験のことです。一つの事故にはその裏に300件のヒヤリ・ハットがあると言われています。
+            | 事故のカテゴリーを選んでください。「ヒヤリ・ハット」とは事故に満たないヒヤっとする体験のことです。事故の裏に多数のヒヤリ・ハットがあると言われています。
         .form_menu.flex.flex-col.my-4
           = f.label :contents, class: 'text-base-100'
-          = f.text_area :contents, class: 'textarea textarea-bordered h-52 w-full text-base leading-normal', placeholder: '車道の舗装が乱れており、深くえぐれた箇所に車輪が引っかかってしまい転倒した。救急車に搬送された。'
+            = t 'view.spot_contents'
+          = f.text_area :contents, class: 'textarea textarea-bordered h-40 w-full text-base leading-normal', placeholder: '車道の舗装が乱れており、深くえぐれた箇所に車輪が引っかかってしまい転倒した。救急車に搬送された。'
           p.text-xs.text-base-100.mt-1
-            | トラブルの内容を詳細に書いてください。現場の地理上の問題と思われる点や救急搬送の所要時間など現地特有の項目を記入すると、よりほかの方の役に立ちます。
+            | 事故の概要を書いてください。地理上の問題点や救急搬送の所要時間など現場特有の項目を記入すると、よりほかの方の役に立ちます。
         .form_menu.flex.flex-col.my-4
           = f.label :accident_date, class: 'text-base-100'
+            = t 'view.spot_accident_date'
           = f.date_field :accident_date, class: 'w-full', placeholder: spot.accident_date
         .form_menu.flex.flex-col.my-4
           = f.label :longitude, class: 'text-base-100'
