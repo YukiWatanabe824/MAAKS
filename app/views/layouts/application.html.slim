@@ -1,3 +1,5 @@
+- @first_access ||= false
+
 doctype html
 html data-theme='corporate'
 
@@ -27,7 +29,7 @@ html data-theme='corporate'
             = image_tag 'service_logo.png', size: '100x53', alt: 'maaks service logo'
         p.text-xs.text-base-100.hidden.lg:flex
           | サイクリングの危ないスポットをマークする
-      .user_header.flex
+      .user_header.flex.ml-auto
         ul.w-auto.items-center.hidden.lg:flex
           - if user_signed_in?
             = link_to user_path(current_user)
@@ -52,5 +54,21 @@ html data-theme='corporate'
           - else
             li.m-2
               = link_to t('view.sign_in'), new_user_session_path, class: 'hover:opacity-50 transition-all duration-100'
+
+      .m-2.h-full.border-neutral.border-s-4.pl-4.pr-2.flex.flex-col.justify-center
+        .how_to_service
+          button#how_to_modal_button onclick='how_to_maaks_modal.showModal()'
+            .text-left.text-xl.font-medium.mr-auto
+              .flex.flex-col
+                span.text-accent.text-3xl.self-center
+                  | ？
+                span.text-accent.text-xs
+                  = t 'view.how_to_use'
+        - if @first_access
+          dialog id='how_to_maaks_modal' class='modal' data-controller='how-to-modal' data-how-to-modal-target='HowToModal'
+            = render 'home/modal_box', how_to_maaks: true
+        - else
+          dialog id='how_to_maaks_modal' class='modal'
+            = render 'home/modal_box', how_to_maaks: true
 
     = yield

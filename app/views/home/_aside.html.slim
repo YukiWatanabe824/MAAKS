@@ -1,20 +1,8 @@
 - spot_deleted ||= false
-- first_access ||= false
 
 = turbo_frame_tag 'side_menu', class: 'flex flex-col h-full' do
   - if spot_deleted
     div data-controller="spot-deletion" data-spot-deletion-id-value="#{spot.id}" data-id="#{spot.id}"
-
-  .how_to_service.mb-5.mt-2
-    button#how_to_modal_button.w-full.btn.bg-base-100.text-primary onclick='how_to_maaks_modal.showModal()'
-      .text-left.text-xl.font-medium.mr-auto
-        = t 'view.how_to_use'
-  - if first_access
-    dialog id='how_to_maaks_modal' class='modal' data-controller='how-to-modal' data-how-to-modal-target='HowToModal'
-      = render 'home/modal_box', how_to_maaks: true
-  - else
-    dialog id='how_to_maaks_modal' class='modal'
-      = render 'home/modal_box', how_to_maaks: true
 
   section#spot_list data-controller="spot-list" data-spot-list-target="spotListContainer"
     - if user_signed_in?
