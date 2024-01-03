@@ -19,6 +19,6 @@ main.flex.flex-col.mx-auto.w-full.pt-16.pb-16.items-center.bg-base-100
       = f.text_field :name, autocomplete: html_escape(@user.name), class: 'input input-bordered w-full rounded'
     = f.submit t('helpers.submit.update'), class: 'btn my-5 btn-neutral hover:opacity-50 transition-all duration-100 w-8/12 self-center'
 
-  = link_to t('view.return_to_userlist'), admins_users_path, class: 'btn my-8 hover:opacity-50 transition-all duration-100'
+  = link_to t('view.return_to_userlist'), admins_users_path, class: 'my-8 hover:opacity-50 transition-all duration-100 underline'
 
 = render 'users/footer'

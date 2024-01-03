@@ -22,6 +22,7 @@ ja:
         password: パスワード
         password_confimation: パスワード確認用再入力
   view:
+    cancel: キャンセル
     return: 戻る
     return_to_mypage: マイページに戻る
     return_to_userlist: ユーザー一覧に戻る

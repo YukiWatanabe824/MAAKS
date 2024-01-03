@@ -21,6 +21,6 @@ main.flex.flex-col.mx-auto.w-full.pt-16.pb-16.items-center.bg-base-100
     = f.submit t('helpers.submit.update'), class: 'btn my-5 btn-neutral hover:opacity-50 transition-all duration-100 w-8/12 self-center'
   = button_to t('view.destroy_this_user'), user_path(@user), method: :delete, data: { confirm: t('view.do_you_really_want_to_remove_it?'), turbo_confirm: t('view.do_you_really_want_to_remove_it?') }, class: 'delete_account_button link link-hover text-neutral-400 hover:opacity-50 transition-all duration-100 underline'
 
-  = link_to t('view.return_to_mypage'), user_path(@user), class: 'btn my-8 hover:opacity-50 transition-all duration-100'
+  = link_to t('view.return_to_mypage'), user_path(@user), class: 'my-8 hover:opacity-50 transition-all duration-100 underline'
 
 = render 'users/footer'
