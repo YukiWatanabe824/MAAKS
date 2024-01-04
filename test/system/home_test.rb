@@ -17,7 +17,7 @@ class HomeTest < ApplicationSystemTestCase
 
   test 'open and close three modal' do
     visit_root_closed_modal
-    find_button('このサービスの使い方').click
+    find_button('使い方').click
     assert_text '安全にサイクリングをして、無事に帰ってくる。'
     find('.close_modal_button').click
     find('.terms_of_service').click
@@ -29,15 +29,15 @@ class HomeTest < ApplicationSystemTestCase
 
   test 'latest spot list tab is displayed' do
     visit_root_closed_modal
-    assert_selector 'a.tab.tab-active', text: '最新の投稿'
+    assert_selector 'a.tab.active-tab', text: '最新の投稿'
 
     user = users(:watanabe)
     sign_in user
     visit root_path
 
-    find('a.tab.opacity-50').click
-    assert_no_selector 'a.tab.tab-active', text: '最新の投稿'
-    assert_selector 'a.tab.tab-active', text: '自分の投稿'
+    find('a.tab.text-primary').click
+    assert_no_selector 'a.tab.active-tab', text: '最新の投稿'
+    assert_selector 'a.tab.active-tab', text: '自分の投稿'
   end
 
   test 'showing map' do

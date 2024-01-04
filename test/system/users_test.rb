@@ -13,7 +13,7 @@ class UsersTest < ApplicationSystemTestCase
     visit root_path
 
     assert_selector('.sign_out_button')
-    assert_selector('.my_page_button')
+    assert_selector('.my_page_link')
   end
 
   test 'user signed out flash message' do
@@ -32,7 +32,7 @@ class UsersTest < ApplicationSystemTestCase
     user_created_spots = Spot.where(user_id: user.id)
     assert_selector 'p', text: user.name
     assert_text "アカウント作成日 : #{user.created_at.year}年#{user.created_at.month}月#{user.created_at.day}日"
-    assert_text "登録したスポットの数 : #{user_created_spots.length}"
+    assert_text "登録した事故スポットの数 : #{user_created_spots.length}"
   end
 
   test 'upload user_icon image file' do

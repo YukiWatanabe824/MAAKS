@@ -40,9 +40,9 @@ class SpotsTest < ApplicationSystemTestCase
     click_on('スポットを作成する')
 
     fill_in('タイトル', with: 'test')
-    select('物損事故', from: '種別')
-    fill_in('詳細', with: 'test')
-    fill_in '発生日', with: Date.new(2021, 1, 1)
+    choose('spot_accident_type_物損事故')
+    fill_in('事故の概要', with: 'test')
+    fill_in '事故の発生日', with: Date.new(2021, 1, 1)
     click_on('登録する')
     assert_selector '.spot_title', text: 'test'
     assert_selector '.spot_accident_type', text: '物損事故'
@@ -62,6 +62,22 @@ class SpotsTest < ApplicationSystemTestCase
     assert_text 'スポットの登録にはユーザー登録が必要です'
   end
 
+  test 'error message is displayedcreate when create spot' do
+    user = users(:watanabe)
+    sign_in user
+    visit_root_closed_modal
+    assert_selector '#map'
+
+    find('#map').click
+
+    assert_selector '#new_spot_marker'
+    find('#new_spot_marker').right_click
+    click_on('スポットを作成する')
+
+    click_on('登録する')
+    assert_text '入力内容に不備があり、登録できませんでした'
+  end
+
   test 'edit spot' do
     user = users(:watanabe)
     sign_in user
@@ -70,7 +86,7 @@ class SpotsTest < ApplicationSystemTestCase
     find(".spot-#{user.spots[0].id}", visible: false).click(x: 0, y: -5)
     click_on '編集'
     fill_in('タイトル', with: 'edited test')
-    select('物損事故', from: 'spot_accident_type')
+    choose('spot_accident_type_物損事故')
     click_button '更新する'
 
     assert_selector '#flash', text: '更新しました'

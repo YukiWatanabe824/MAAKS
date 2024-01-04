@@ -32,7 +32,7 @@ html data-theme='corporate'
       .user_header.flex.ml-auto
         ul.w-auto.items-center.hidden.lg:flex
           - if user_signed_in?
-            = link_to user_path(current_user)
+            = link_to user_path(current_user), class: 'my_page_link'
               - if current_user.avatar.attached?
                 = image_tag current_user.avatar.variant(resize_to_limit: [192, 100]), class: 'rounded-full m-2 bg-base-100 object-cover	w-12 h-12', alt: 'user icon'
               - else
