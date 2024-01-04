@@ -49,7 +49,7 @@ class UsersTest < ApplicationSystemTestCase
     end
     assert_selector '#flash', text: '削除しました'
     assert_no_selector "img[src*='user_icon.webp']"
-    assert_selector '.user_default_icon', text: 'y'
+    assert_selector '.user_default_icon', text: 'Y'
   end
 
   test 'edit user' do

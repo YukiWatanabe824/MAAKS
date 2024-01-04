@@ -66,7 +66,7 @@ class AdminUserTest < ApplicationSystemTestCase
     end
     assert_selector '#flash', text: '削除しました'
     assert_no_selector "img[src*='user_icon.webp']"
-    assert_selector '.user_default_icon', text: 't'
+    assert_selector '.user_default_icon', text: 'T'
   end
 
   test 'destroy user by admin' do
