@@ -55,6 +55,14 @@ header {
 .input::placeholder {
   opacity: 75%;
 }
+
 .textarea::placeholder {
   opacity: 75%;
+}
+
+input#spot_longitude {
+  filter: brightness(0.8)
+}
+input#spot_latitude {
+  filter: brightness(0.8)
 }
