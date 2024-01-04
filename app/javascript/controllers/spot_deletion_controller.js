@@ -6,10 +6,10 @@ export default class extends Controller {
   };
 
   connect() {
-    this.delete_map_pin(this.idValue);
+    this.deleteMapPin(this.idValue);
   }
 
-  delete_map_pin(spotId) {
+  deleteMapPin(spotId) {
     document.getElementById(spotId).remove();
   }
 }
