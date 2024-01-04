@@ -1,16 +1,15 @@
 import { Controller } from "@hotwired/stimulus";
 
 export default class extends Controller {
-  static targets = ["SpotDetailObject"];
-  static outlets = ["map"];
+  static values = {
+    id: String,
+  };
 
   connect() {
-    const spotObject = this.SpotDetailObjectTarget.dataset;
-    console.log(spotObject);
-    this.delete_map_pin(spotObject);
+    this.delete_map_pin(this.idValue);
   }
 
-  delete_map_pin(spot) {
-    document.getElementById(`${spot.id}`).remove();
+  delete_map_pin(spotId) {
+    document.getElementById(spotId).remove();
   }
 }
