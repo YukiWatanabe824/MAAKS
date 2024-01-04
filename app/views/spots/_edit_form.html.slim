@@ -7,29 +7,33 @@
   = form_with model: spot, url: form_path do |f|
     .form_menu.flex.flex-col.my-4
       = f.label :title, class: 'text-base-100'
+        = t 'view.spot_title'
       = f.text_field :title, class: 'input input-bordered w-full', value: html_escape(spot.title)
     .form_menu.flex.flex-col.my-4.text-base-100
       = f.label :accident_type, class: 'text-base-100'
+        = t 'view.spot_accident_type'
       .flex
-        .flex.flex-col.mr-2
-          label.mr-2
-            = f.radio_button :accident_type, '物損事故', class: ''
-            | 物損事故
-          label.mr-2
-            = f.radio_button :accident_type, '人身事故', class: ''
-            | 人身事故
-        .flex.flex-col.mr-2
-          label.mr-2
-            = f.radio_button :accident_type, 'ヒヤリ・ハット', class: ''
-            | ヒヤリ・ハット
-          label.mr-2
-            = f.radio_button :accident_type, 'その他', class: ''
-            | その他
+        .flex.flex-col.mr-3
+          label
+            = f.radio_button :accident_type, '物損事故', class: 'mr-1'
+            = t 'view.spot_accident_category_property'
+          label
+            = f.radio_button :accident_type, '人身事故', class: 'mr-1'
+            = t 'view.spot_accident_category_injury'
+        .flex.flex-col.mr-3
+          label
+            = f.radio_button :accident_type, 'ヒヤリ・ハット', class: 'mr-1'
+            = t 'view.spot_accident_category_nearmiss'
+          label
+            = f.radio_button :accident_type, 'その他', class: 'mr-1'
+            = t 'view.spot_accident_category_other'
     .form_menu.flex.flex-col.my-4
       = f.label :contents, class: 'text-base-100'
+        = t 'view.spot_contents'
       = f.text_area :contents, class: 'textarea textarea-bordered h-52', value: html_escape(spot.contents)
     .form_menu.flex.flex-col.my-4
       = f.label :accident_date, class: 'text-base-100'
+        = t 'view.spot_accident_date'
       = f.date_field :accident_date, value: spot.accident_date
     = render 'shared/error_messages', object: f.object
     = f.submit t('helpers.submit.update'), data: { turbo_method: :put }, class: 'my-2 btn bg-base-100 text-primary hover:opacity-50 transition-all duration-100'
