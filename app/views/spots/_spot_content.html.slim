@@ -1,5 +1,5 @@
 h2.my-2.text-xl.font-bold.spot_title
-  = format_content(spot.title)
+  = format_content(spot.address)
 ul.flex.flex-col.flex-wrap
   li.spot_accident_date
     = t 'activerecord.attributes.spot.accident_date'
@@ -8,7 +8,10 @@ ul.flex.flex-col.flex-wrap
     = t 'activerecord.attributes.spot.accident_type'
     |  : #{spot.accident_type}
   li.my-2.leading-6.spot_content
-    = format_content(spot.contents)
+    = t 'activerecord.attributes.spot.contents'
+    |  :
+    p
+      = format_content(spot.contents)
   li.spot_created_at
     = t 'activerecord.attributes.spot.created_at'
     |  : #{spot.created_at.year}年#{spot.created_at.month}月#{spot.created_at.day}日
