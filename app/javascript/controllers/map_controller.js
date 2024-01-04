@@ -94,7 +94,7 @@ export default class extends Controller {
       new MapboxGeocoder({
         accessToken: mapboxgl.accessToken,
         mapboxgl: mapboxgl,
-        placeholder: "マップを検索する"
+        placeholder: "マップを検索する",
       })
     );
   }
