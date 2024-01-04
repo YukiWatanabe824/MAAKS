@@ -46,6 +46,7 @@
         .form_menu.flex.flex-col.my-4
           = f.label :latitude, class: 'text-base-100'
           = f.text_field :latitude, readonly: true, class: 'w-full', value: ''
+        = f.hidden_field :address, value: ''
         = render 'shared/error_messages', object: f.object
         = f.submit t('helpers.submit.create'), class: 'my-2 btn bg-base-100 text-primary hover:opacity-50 transition-all duration-100'
     - else
