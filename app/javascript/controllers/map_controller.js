@@ -77,7 +77,7 @@ export default class extends Controller {
 
       this.mapTarget.newMarker.setLngLat([e.lngLat.lng, e.lngLat.lat]).addTo(this.mapTarget.mapbox);
 
-      if (document.querySelector('[data-controller="created-spot-side-menu"]')) {
+      if (document.querySelector('[data-controller="side-menu-for-register-new-spot"]')) {
         this.setCoordinateForForm(e.lngLat.lng, e.lngLat.lat);
       }
     });
