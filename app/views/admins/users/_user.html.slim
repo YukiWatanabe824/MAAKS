@@ -6,7 +6,7 @@ div id=user.id class='flex justify-start items-center m-3'
       .avatar.placeholder
         .bg-secondary-focus.text-neutral-content.rounded-full.w-12
           span.text-4xl
-            = user.name[0, 1]
+            = user.name[0, 1].upcase
   ul.flex.flex-col.mr-5
     li
       = link_to user.name, user, class: 'link hover:opacity-50 transition-all duration-100'
