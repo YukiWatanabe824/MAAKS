@@ -3,7 +3,7 @@
 class SpotsController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show new]
   before_action :generate_500_error, only: %i[show edit new]
-  before_action :set_spot, only: %i[show edit]
+  before_action :set_spot, only: %i[show]
 
   def index
     @spots = Spot.all
@@ -21,6 +21,7 @@ class SpotsController < ApplicationController
 
   def edit
     @user = current_user
+    @spot = current_user.admin? ? Spot.find(params[:id]) : current_user.spot.find(params[:id])
     render partial: 'edit_form'
   end
 
