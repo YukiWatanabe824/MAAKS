@@ -35,7 +35,7 @@ ja:
     created_at: 作成日
     number_of_spots_registered: 登録した事故スポットの数
     delete_for_image: 画像を削除
-    upload_to_new_image: 新しい画像をアップロード
+    upload_to_new_image: 新しいアイコンをアップロード
     user_name: ユーザー名
     mail_address: メールアドレス
     new_password: 新しいパスワード
