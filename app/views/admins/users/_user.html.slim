@@ -12,3 +12,5 @@ div id=user.id class='flex justify-start items-center m-3'
       = link_to user.name, user, class: 'link hover:opacity-50 transition-all duration-100'
     li
       | ID : #{user.id}
+  = link_to t('view.edit'), edit_admins_user_path(user), class: 'mr-5 link link-hover hover:opacity-50 transition-all duration-100', id: "edit-#{user.id}"
+  = button_to t('view.destroy'), admins_user_path(user), method: :delete, data: { confirm: t('view.do_you_really_want_to_remove_it?'), turbo_confirm: t('view.do_you_really_want_to_remove_it?') }, class: 'delete_account_button link link-hover hover:opacity-50 transition-all duration-100', id: "del-#{user.id}"

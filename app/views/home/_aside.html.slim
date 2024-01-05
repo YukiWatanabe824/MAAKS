@@ -1,4 +1,9 @@
+- spot_deleted ||= false
+
 = turbo_frame_tag 'side_menu', class: 'flex flex-col h-full' do
+  - if spot_deleted
+    div data-controller="spot-deletion" data-spot-deletion-id-value="#{spot.id}" data-id="#{spot.id}"
+
   .how_to_service.mb-5.mt-2
     button.w-full.btn.bg-base-100.text-primary onclick='how_to_maaks_modal.showModal()'
       .text-left.text-xl.font-medium.mr-auto

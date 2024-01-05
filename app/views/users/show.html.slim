@@ -1,4 +1,4 @@
-= content_for(:title, "#{@user.name}")
+= content_for(:title, @user.name.to_s)
 
 section.flex.flex-col.mx-auto.w-full.pt-16.pb-16.items-center.bg-base-100
   .my-8
@@ -19,9 +19,14 @@ section.flex.flex-col.mx-auto.w-full.pt-16.pb-16.items-center.bg-base-100
         |  : #{ @user.spots.length }
       - else
         |  : 0
-  = link_to t('view.edit_this_user'), { controller: 'users/registrations', action: 'edit' }, class: 'btn my-3 hover:opacity-50 transition-all duration-100'
-  - if current_user.admin?
-    = link_to t('view.show_all_users'), users_path, id: @user.id, class: 'btn my-3 hover:opacity-50 transition-all duration-100', data: { turbo: false }
+  - if current_user.admin? && current_user == @user
+    = link_to t('view.edit_this_user'), { controller: 'users/registrations', action: 'edit' }, class: 'btn my-3 hover:opacity-50 transition-all duration-100'
+    = link_to t('view.show_all_users'), admins_users_path, id: @user.id, class: 'btn my-3 hover:opacity-50 transition-all duration-100', data: { turbo: false }
+  - elsif current_user.admin?
+    = link_to t('view.edit_this_user'), edit_admins_user_path(@user), class: 'btn my-3 hover:opacity-50 transition-all duration-100'
+    = link_to t('view.show_all_users'), admins_users_path, id: @user.id, class: 'btn my-3 hover:opacity-50 transition-all duration-100', data: { turbo: false }
+  - else
+    = link_to t('view.edit_this_user'), { controller: 'users/registrations', action: 'edit' }, class: 'btn my-3 hover:opacity-50 transition-all duration-100'
 
   = link_to t('view.return'), root_path, class: 'btn my-8 hover:opacity-50 transition-all duration-100'
 

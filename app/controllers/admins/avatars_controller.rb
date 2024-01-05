@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
-class AvatarsController < UsersController
-  before_action :redirect_if_different_user, only: %i[destroy]
+class Admins::AvatarsController < Admins::ApplicationController
   before_action :set_user, only: %i[destroy]
 
   def destroy
@@ -10,7 +9,7 @@ class AvatarsController < UsersController
       if @user.avatar.attached?
         format.html { render :show, status: :unprocessable_entity, alert: t('controller.failed_to_deleted') }
       else
-        format.html { redirect_to "/users/#{@user.id}/edit", notice: t('controller.deleted') }
+        format.html { redirect_to edit_admins_user_path(@user), notice: t('controller.deleted') }
       end
     end
   end
@@ -19,9 +18,5 @@ class AvatarsController < UsersController
 
   def set_user
     @user = User.find(params[:user_id])
-  end
-
-  def redirect_if_different_user
-    redirect_to root_path, alert: t('controller.failed_to_deleted') if current_user != User.find(params[:user_id])
   end
 end

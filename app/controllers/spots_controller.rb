@@ -4,7 +4,6 @@ class SpotsController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show new]
   before_action :generate_500_error, only: %i[show edit new]
   before_action :set_spot, only: %i[show]
-  before_action :set_spot_by_admin_or_own, only: %i[edit update destroy]
 
   def index
     @spots = Spot.all
@@ -22,6 +21,7 @@ class SpotsController < ApplicationController
 
   def edit
     @user = current_user
+    @spot = current_user.admin? ? Spot.find(params[:id]) : current_user.spot.find(params[:id])
     render partial: 'edit_form'
   end
 
@@ -30,8 +30,7 @@ class SpotsController < ApplicationController
     @user = current_user
     respond_to do |format|
       if @spot.save
-        flash.now.notice = t('controller.spot_created!')
-        format.turbo_stream
+        format.turbo_stream { flash.now[:notice] = t('controller.spot_created!') }
         format.html { redirect_to root_path, notice: t('controller.spot_created!') }
       else
         format.html do
@@ -42,11 +41,11 @@ class SpotsController < ApplicationController
   end
 
   def update
+    @spot = current_user.spots.find(params[:id])
     @user = current_user
     respond_to do |format|
       if @spot.update(spot_params)
-        flash.now.notice = t('controller.updated')
-        format.turbo_stream
+        format.turbo_stream { flash.now[:notice] = t('controller.updated') }
         format.html { redirect_to root_path, notice: t('controller.updated') }
       else
         format.html do
@@ -57,8 +56,11 @@ class SpotsController < ApplicationController
   end
 
   def destroy
+    @spot = current_user.spots.find(params[:id])
     respond_to do |format|
       if @spot.destroy
+        set_paging
+        format.turbo_stream { flash.now[:notice] = t('controller.deleted') }
         format.html { redirect_to root_path, notice: t('controller.deleted'), status: :see_other }
       else
         format.html { redirect_to root_path, status: :unprocessable_entity, alert: t('controller.failed_to_deleted') }
@@ -72,8 +74,9 @@ class SpotsController < ApplicationController
     @spot = Spot.find(params[:id])
   end
 
-  def set_spot_by_admin_or_own
-    @spot = current_user.admin? ? set_spot : current_user.spots.find(params[:id])
+  def set_paging
+    @spots_pagy, @spots = pagy(Spot.order(created_at: :desc))
+    @my_spots_pagy, @my_spots = pagy(current_user.spots.order(created_at: :desc)) if user_signed_in?
   end
 
   def spot_params

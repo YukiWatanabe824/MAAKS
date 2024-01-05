@@ -22,7 +22,7 @@ main.flex.flex-col.mx-auto.w-full.pt-16.pb-16.items-center.bg-base-100
       p
         = t 'view.mail_address'
       = f.email_field :email, autocomplete: html_escape(@user.email), class: 'input input-bordered w-xs'
-    - unless @user.provider.presence || current_user.admin?
+    - unless @user.provider.presence
       .my-3
         p
           = t 'view.new_password'
