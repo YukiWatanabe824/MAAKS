@@ -8,7 +8,7 @@
     button.w-full.btn.bg-base-100.text-primary onclick='how_to_maaks_modal.showModal()'
       .text-left.text-xl.font-medium.mr-auto
         = t 'view.how_to_use'
-  - if @first_access && !@signed_out
+  - if first_access && !signed_out
     dialog id='how_to_maaks_modal' class='modal' open='true'
       = render 'home/modal_box', how_to_maaks: true
   - else
@@ -24,15 +24,15 @@
           = t 'view.my_post'
       .contents
         .bg-base-100.rounded-b.rounded-r.p-4.text-primary class="min-h-[24rem]"
-          = render 'home/aside_latest_spot_list'
+          = render partial: 'home/aside_latest_spot_list', locals: { spots: @spots, spots_pagy: @spots_pagy }
         .bg-base-100.rounded-b.rounded-r.p-4.text-primary.hidden class="min-h-[24rem]"
-          = render 'home/aside_my_spot_list'
+          = render partial: 'home/aside_my_spot_list', locals: { my_spots: @my_spots, my_spots_pagy: @my_spots_pagy }
     - else
       .tabs
         a.tab.tab-bordered.tab-active.tab-lg.text-xl.text-base-100.bg-neutral.rounded-none.rounded-t
           = t 'view.latest_post'
       .contents
         .bg-base-100.rounded-b-lg.rounded-r-lg.p-4.text-primary class="min-h-[24rem]"
-          = render 'home/aside_latest_spot_list'
+          = render partial: 'home/aside_latest_spot_list', locals: { spots: @spots, spots_pagy: @spots_pagy }
 
   = render 'home/aside_footer'

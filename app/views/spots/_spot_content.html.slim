@@ -1,20 +1,20 @@
 h2.my-2.text-xl.font-bold.spot_title
-  = format_content(@spot.title)
+  = format_content(spot.title)
 ul.flex.flex-col.flex-wrap
   li.spot_accident_date
     = t 'activerecord.attributes.spot.accident_date'
-    |  : #{@spot.accident_date.year}年#{@spot.accident_date.month}月#{@spot.accident_date.day}日
+    |  : #{spot.accident_date.year}年#{spot.accident_date.month}月#{spot.accident_date.day}日
   li.spot_accident_type
     = t 'activerecord.attributes.spot.accident_type'
-    |  : #{@spot.accident_type}
+    |  : #{spot.accident_type}
   li.my-2.leading-6.spot_content
-    = format_content(@spot.contents)
+    = format_content(spot.contents)
   li.spot_created_at
     = t 'activerecord.attributes.spot.created_at'
-    |  : #{@spot.created_at.year}年#{@spot.created_at.month}月#{@spot.created_at.day}日
+    |  : #{spot.created_at.year}年#{spot.created_at.month}月#{spot.created_at.day}日
   li.text-xs.spot_id
-    | ID: #{@spot.id}
-- if @spot.try(:owned_by?, current_user) || current_user.try(:admin?)
+    | ID: #{spot.id}
+- if spot.try(:owned_by?, current_user) || current_user.try(:admin?)
   .my-3
-    = link_to t('view.edit'), edit_spot_path(@spot), class: 'my-2 btn bg-base-100 text-primary hover:opacity-50 transition-all duration-100'
-    = button_to t('view.destroy'), current_user.admin? ? admins_spot_path(@spot) : spot_path(@spot), method: :delete, form: { data: { turbo_confirm: t('view.do_you_really_want_to_remove_it?'), turbo_frame: '_top' } }, class: 'my-2 btn btn-outline btn-accent hover:opacity-50 transition-all duration-100'
+    = link_to t('view.edit'), edit_spot_path(spot), class: 'my-2 btn bg-base-100 text-primary hover:opacity-50 transition-all duration-100'
+    = button_to t('view.destroy'), current_user.admin? ? admins_spot_path(spot) : spot_path(spot), method: :delete, form: { data: { turbo_confirm: t('view.do_you_really_want_to_remove_it?'), turbo_frame: '_top' } }, class: 'my-2 btn btn-outline btn-accent hover:opacity-50 transition-all duration-100'

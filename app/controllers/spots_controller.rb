@@ -16,13 +16,13 @@ class SpotsController < ApplicationController
   def new
     @user = current_user
     @spot = current_user.spots.new if user_signed_in?
-    render partial: 'new_form'
+    render partial: 'new_form', locals: { spot: @spot, user: @user }
   end
 
   def edit
     @user = current_user
     @spot = current_user.admin? ? Spot.find(params[:id]) : current_user.spot.find(params[:id])
-    render partial: 'edit_form'
+    render partial: 'edit_form', locals: { spot: @spot, user: @user }
   end
 
   def create
@@ -60,6 +60,8 @@ class SpotsController < ApplicationController
     respond_to do |format|
       if @spot.destroy
         set_paging
+        check_signed_out_session
+        check_first_access_session
         format.turbo_stream { flash.now[:notice] = t('controller.deleted') }
         format.html { redirect_to root_path, notice: t('controller.deleted'), status: :see_other }
       else
