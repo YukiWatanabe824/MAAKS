@@ -1,9 +1,7 @@
 # frozen_string_literal: true
 
 class User < ApplicationRecord
-  devise :database_authenticatable, :registerable, :timeoutable,
-         :recoverable, :rememberable, :validatable,
-         :omniauthable, omniauth_providers: %i[google_oauth2]
+  devise :database_authenticatable, :registerable, :timeoutable, :omniauthable, omniauth_providers: %i[google_oauth2]
   has_many :spots, dependent: :destroy
   has_one_attached :avatar, dependent: :destroy do |attachable|
     attachable.variant :thumb, resize_to_limit: [100, 100]

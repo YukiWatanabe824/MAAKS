@@ -7,7 +7,6 @@ class UsersTest < ApplicationSystemTestCase
     visit_root_closed_modal
 
     assert_selector('.sign_in_button')
-    assert_selector('.create_user_button')
 
     user = users(:watanabe)
     sign_in user
@@ -26,32 +25,6 @@ class UsersTest < ApplicationSystemTestCase
     assert_selector('#flash', text: 'ログアウトしました。')
   end
 
-  test 'sign-in and sign-up and associated flash messages' do
-    visit new_user_registration_path
-    fill_in('ユーザー名', with: 'test')
-    fill_in('メールアドレス', with: 'test@example.com')
-    fill_in('パスワード', with: '123456789abc')
-    fill_in('user[password_confirmation]', with: '123456789abc')
-    click_on('アカウント登録')
-    assert_selector('#flash', text: 'アカウント登録が完了しました。')
-
-    find('.close_modal_button').click
-    click_on('ログアウト')
-    assert_selector('#flash', text: 'ログアウトしました。')
-
-    visit new_user_session_path
-    fill_in('メールアドレス', with: 'test@example.com')
-    fill_in('パスワード', with: '12345678')
-    click_on('commit')
-    assert_selector('#flash', text: 'メールアドレスまたはパスワードが違います。')
-
-    visit new_user_session_path
-    fill_in('メールアドレス', with: 'test@example.com')
-    fill_in('パスワード', with: '123456789abc')
-    click_on('commit')
-    assert_selector('#flash', text: 'ログインしました。')
-  end
-
   test 'showing user mypage' do
     user = users(:watanabe)
     sign_in user
@@ -63,16 +36,12 @@ class UsersTest < ApplicationSystemTestCase
   end
 
   test 'upload user_icon image file' do
-    visit new_user_registration_path
+    user = users(:watanabe)
+    sign_in user
+    visit edit_user_registration_path(user)
     attach_file 'user_avatar', Rails.root.join('test/fixtures/files/user_icon.webp').to_s
-    fill_in('ユーザー名', with: 'test')
-    fill_in('メールアドレス', with: 'test@example.com')
-    fill_in('パスワード', with: '123456789abc')
-    fill_in('user[password_confirmation]', with: '123456789abc')
-    click_on('アカウント登録')
+    click_on('更新する')
 
-    find('.close_modal_button').click
-    click_on('マイページ')
     assert_selector "img[src*='user_icon.webp']"
     click_on('プロフィール編集')
     page.accept_confirm do
@@ -80,7 +49,7 @@ class UsersTest < ApplicationSystemTestCase
     end
     assert_selector '#flash', text: '削除しました'
     assert_no_selector "img[src*='user_icon.webp']"
-    assert_selector '.user_default_icon', text: 't'
+    assert_selector '.user_default_icon', text: 'y'
   end
 
   test 'edit user' do
@@ -89,7 +58,6 @@ class UsersTest < ApplicationSystemTestCase
     visit edit_user_registration_path(user)
 
     fill_in('user[name]', with: 'test')
-    fill_in('user[email]', with: 'zzz@example.com')
     click_on('更新する')
     assert_selector '#flash', text: 'アカウント情報を変更しました。'
     assert_selector 'p', text: 'test'
@@ -110,10 +78,6 @@ class UsersTest < ApplicationSystemTestCase
     assert_equal 'メインページ | MAAKS', page.title
     visit new_user_session_path
     assert_equal 'ログイン | MAAKS', page.title
-    visit new_user_registration_path
-    assert_equal 'アカウント登録ページ | MAAKS', page.title
-    visit new_user_password_path
-    assert_equal 'パスワードリセット | MAAKS', page.title
 
     user = users(:watanabe)
     sign_in user
