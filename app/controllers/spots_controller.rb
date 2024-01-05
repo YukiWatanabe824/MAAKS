@@ -27,6 +27,7 @@ class SpotsController < ApplicationController
 
   def create
     @spot = current_user.spots.new(spot_params)
+    @spot.address = get_address(@spot.longitude, @spot.latitude)
     @user = current_user
     respond_to do |format|
       if @spot.save
@@ -82,11 +83,37 @@ class SpotsController < ApplicationController
 
   def spot_params
     params.require(:spot).permit(
-      :title, :accident_type, :contents, :accident_date, :longitude, :latitude
+      :title, :accident_type, :contents, :accident_date, :longitude, :latitude, :address
     )
   end
 
   def generate_500_error
     raise StandardError unless turbo_frame_request?
+  end
+
+  def get_address(lng, lat)
+    access_token = Rails.application.credentials.mapbox.access_token
+
+    uri = URI.parse('https://api.mapbox.com')
+
+    http_client = Net::HTTP.new(uri.host, uri.port)
+    http_client.use_ssl = true
+
+    request = Net::HTTP::Get.new(
+      "/geocoding/v5/mapbox.places/#{lng},#{lat}.json?access_token=#{access_token}",
+      { 'Referer' => 'https://maaks.jp/' }
+    )
+    response = http_client.request(request)
+    location_data = JSON.parse(response.body)
+
+    create_address(location_data)
+  end
+
+  def create_address(location_data)
+    prefecture = location_data['features'][3]['text']
+    locality = location_data['features'][2]['text']
+    address = location_data['features'][0]['text']
+
+    "#{prefecture}#{locality}#{address}"
   end
 end

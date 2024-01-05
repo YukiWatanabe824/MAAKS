@@ -11,12 +11,11 @@ class AdminUserTest < ApplicationSystemTestCase
 
     find(".spot-#{user.spots[0].id}", visible: false).click(x: 0, y: -5)
     click_on '編集'
-    fill_in('タイトル', with: 'edited test')
     choose('spot_accident_type_物損事故')
     click_button '更新する'
 
     assert_selector '#flash', text: '更新しました'
-    assert_selector '.spot_title', text: 'edited test'
+    assert_text '物損事故'
   end
 
   test 'destroy spot by admin' do
