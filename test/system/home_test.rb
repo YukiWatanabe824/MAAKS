@@ -4,15 +4,15 @@ require 'application_system_test_case'
 
 class HomeTest < ApplicationSystemTestCase
   test 'visiting the top page' do
-    visit '/'
+    visit root_path
     assert_equal 'メインページ | MAAKS', title
   end
 
   test 'showing how to modal when first access in day and no show how to modal when after the second access that day' do
-    visit '/'
-    assert_selector('#how_to_maaks_modal', visible: :visible)
-    visit '/'
-    assert_no_selector('#how_to_maaks_modal', visible: :visible)
+    visit root_path
+    assert_selector '#how_to_maaks_modal', visible: :visible
+    visit root_path
+    assert_no_selector '#how_to_maaks_modal', visible: :visible
   end
 
   test 'open and close three modal' do
@@ -33,7 +33,7 @@ class HomeTest < ApplicationSystemTestCase
 
     user = users(:watanabe)
     sign_in user
-    visit '/'
+    visit root_path
 
     find('a.tab.opacity-50').click
     assert_no_selector 'a.tab.tab-active', text: '最新の投稿'
@@ -42,14 +42,14 @@ class HomeTest < ApplicationSystemTestCase
 
   test 'showing map' do
     visit_root_closed_modal
-    assert_selector('.mapboxgl-map')
+    assert_selector '.mapboxgl-map'
   end
 
   test 'showing developpers sns' do
     visit_root_closed_modal
-    assert_selector('.developers_sns_x')
-    assert_selector('.x_logo_mark')
-    assert_selector('.developers_github')
-    assert_selector('.github_logo_mark')
+    assert_selector '.developers_sns_x'
+    assert_selector '.x_logo_mark'
+    assert_selector '.developers_github'
+    assert_selector '.github_logo_mark'
   end
 end
