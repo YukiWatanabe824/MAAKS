@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_27_090158) do
+ActiveRecord::Schema[7.1].define(version: 2024_01_04_061715) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -42,13 +42,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_27_090158) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
-  create_table "maps", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "spots", force: :cascade do |t|
-    t.string "title", null: false
+    t.string "title"
     t.string "accident_type", null: false
     t.text "contents", null: false
     t.date "accident_date", null: false
@@ -57,6 +52,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_27_090158) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id", null: false
+    t.string "address"
+    t.index ["user_id"], name: "index_spots_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -74,6 +71,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_27_090158) do
     t.string "uid"
     t.boolean "admin", default: false, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["provider", "uid"], name: "index_users_on_provider_and_uid", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
   end

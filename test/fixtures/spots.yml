@@ -10,7 +10,7 @@ one:
   updated_at: "2014-01-01 00:00:01"
 
 two:
-  user: test01
+  user: otameshisan
   title: "自動車との接触"
   accident_type: "人身"
   contents: "testtesttest"

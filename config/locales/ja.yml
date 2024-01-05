@@ -22,16 +22,20 @@ ja:
         password: パスワード
         password_confimation: パスワード確認用再入力
   view:
+    cancel: キャンセル
     return: 戻る
+    return_to_mypage: マイページに戻る
+    return_to_userlist: ユーザー一覧に戻る
+    return_to_top: トップに戻る
     show_all_users: ユーザー一覧
     edit_this_user: プロフィール編集
-    edit_this_spot: スポットの編集
+    edit_this_spot: 事故スポットの編集
     my_page: マイページ
     account: アカウント
     created_at: 作成日
-    number_of_spots_registered: 登録したスポットの数
+    number_of_spots_registered: 登録した事故スポットの数
     delete_for_image: 画像を削除
-    upload_to_new_image: 新しい画像をアップロード
+    upload_to_new_image: 新しいアイコンをアップロード
     user_name: ユーザー名
     mail_address: メールアドレス
     new_password: 新しいパスワード
@@ -42,23 +46,32 @@ ja:
     edit: 編集
     destroy: 削除
     do_you_really_want_to_remove_it?: 本当に削除しますか？
-    user_registration_is_required_to_register_spot: スポットの登録にはユーザー登録が必要です
+    create_spot: 事故スポットの登録
+    user_registration_is_required_to_register_spot: 事故スポットの登録にはユーザー登録が必要です
     create_user_account: ユーザー登録
     sign_out: ログアウト
     sign_in: ログイン
     sign_up: ユーザー登録
     menu: メニュー
-    how_to_use: このサービスの使い方
+    how_to_use: 使い方
     latest_post: 最新の投稿
     my_post: 自分の投稿
     terms_of_service: 利用規約
     privacy_policy: プライバシーポリシー
     developers_blog: 開発者のブログ
-    sign_in_with_google: Googleアカウントでログイン
+    sign_in_with_google: Googleでログイン
     this_mail_address_used: このメールアドレスは登録済みです
     send_me_reset_password_instructions: パスワードリセットメールを送信する
     change_my_password: パスワードを変更する
     change_password: パスワード変更
+    spot_title: 事故スポットのタイトル
+    spot_accident_date: 事故の発生日
+    spot_accident_type: 事故の種類
+    spot_contents: 事故の概要
+    spot_accident_category_property: 物損事故
+    spot_accident_category_injury: 人身事故
+    spot_accident_category_nearmiss: ヒヤリ・ハット
+    spot_accident_category_other: その他
   controller:
     user_was_successfully_destroyed: ユーザーを削除しました
     you_do_not_have_administrative_privileges: 管理権限がありません

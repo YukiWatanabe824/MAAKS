@@ -1,0 +1,4 @@
+= turbo_stream.replace 'side_menu' do
+  = render partial: 'home/aside', locals: { spot: @spot, spot_deleted: true, first_access: @first_access, signed_out: @signed_out }
+
+= turbo_stream_flash

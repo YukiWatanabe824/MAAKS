@@ -3,9 +3,9 @@
 = turbo_frame_tag 'side_menu', class: 'py-3' do
   - if spot_created
     #spot_detail.flex.flex-col.flex-wrap.text-base-100 data-controller="showing-spot-menu" data-showing-spot-menu-map-outlet="#map" data-showing-spot-menu-target="SpotDetailPanel" data-id="#{@spot.id}" data-longitude="#{@spot.longitude}" data-latitude="#{@spot.latitude}"
-      = render 'spots/spot_content'
+      = render partial: 'spots/spot_content', locals: { spot: @spot }
   - else
     .flex.flex-col.flex-wrap.text-base-100
-      = render 'spots/spot_content'
+      = render partial: 'spots/spot_content', locals: { spot: @spot }
 
   = link_to t('view.return'), home_aside_index_path, class: 'btn my-2 bg-base-100 text-primary hover:opacity-50 transition-all duration-100'

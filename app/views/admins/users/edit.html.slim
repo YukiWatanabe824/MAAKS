@@ -1,0 +1,21 @@
+= content_for(:title, t('title.user.edit'))
+
+main.flex.flex-col.mx-auto.w-full.pt-16.pb-16.items-center.bg-base-100
+  .my-8
+    h2.text-3xl.font-bold.text-primary
+      = t 'view.edit_this_user'
+  = render partial: 'users/user_icon', locals: { user: @user, edited_user: true }
+  = form_with(model: @user, url: admins_user_path(@user), class: 'flex flex-col') do |f|
+    .user_avatar.my-3.flex.flex-col
+      = f.label :avatar, class: ''
+        = t 'view.upload_to_new_image'
+      = f.file_field :avatar, class: 'file-input file-input-md w-xs rounded'
+    .my-3
+      = f.label :name, class: ''
+        = t 'view.user_name'
+      = f.text_field :name, autocomplete: html_escape(@user.name), class: 'input input-bordered w-full rounded'
+    = f.submit t('helpers.submit.update'), class: 'btn my-5 btn-neutral hover:opacity-50 transition-all duration-100 w-8/12 self-center'
+
+  = link_to t('view.return_to_userlist'), admins_users_path, class: 'my-8 hover:opacity-50 transition-all duration-100 underline'
+
+= render 'users/footer'

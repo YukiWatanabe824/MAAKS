@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class AvatarsController < UsersController
-  before_action :authenticate_user!, only: %i[destroy]
   before_action :redirect_if_different_user, only: %i[destroy]
   before_action :set_user, only: %i[destroy]
 
@@ -23,8 +22,6 @@ class AvatarsController < UsersController
   end
 
   def redirect_if_different_user
-    return if current_user.admin?
-
-    redirect_to root_path if current_user != User.find(params[:user_id])
+    redirect_to root_path, alert: t('controller.failed_to_deleted') if current_user != User.find(params[:user_id])
   end
 end
