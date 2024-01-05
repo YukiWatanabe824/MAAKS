@@ -2,10 +2,10 @@
 
 section.flex.flex-col.mx-auto.w-full.pt-16.pb-16.items-center.bg-base-100
   .my-8
-    h2.text-3xl.font-bold
+    h2.text-3xl.font-bold.text-primary
       = t 'view.show_all_users'
   #users.min-w-full.h-auto.flex.flex-col.items-center
     = render @users
 
     == pagy_nav(@pagy)
-  = link_to t('view.return'), user_path(@user), class: 'btn my-8 hover:opacity-50 transition-all duration-100'
+  = link_to t('view.return_to_mypage'), user_path(@user), class: 'my-8 hover:opacity-50 transition-all duration-100 underline'

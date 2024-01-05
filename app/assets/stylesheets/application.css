@@ -51,3 +51,10 @@ header {
 .btn {
   font-weight: normal;
 }
+
+.input::placeholder {
+  opacity: 75%;
+}
+.textarea::placeholder {
+  opacity: 75%;
+}

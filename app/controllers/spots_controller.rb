@@ -60,7 +60,6 @@ class SpotsController < ApplicationController
     respond_to do |format|
       if @spot.destroy
         set_paging
-        check_signed_out_session
         check_first_access_session
         format.turbo_stream { flash.now[:notice] = t('controller.deleted') }
         format.html { redirect_to root_path, notice: t('controller.deleted'), status: :see_other }

@@ -76,7 +76,16 @@ export default class extends Controller {
       el.setAttribute("data-action", "contextmenu->spot#showSpotMenu");
 
       this.mapTarget.newMarker.setLngLat([e.lngLat.lng, e.lngLat.lat]).addTo(this.mapTarget.mapbox);
+
+      if (document.querySelector('[data-controller="created-spot-side-menu"]')) {
+        this.setCoordinateForForm(e.lngLat.lng, e.lngLat.lat);
+      }
     });
+  }
+
+  setCoordinateForForm(lng, lat) {
+    document.getElementById("spot_longitude").value = lng;
+    document.getElementById("spot_latitude").value = lat;
   }
 
   createGeoCorder(map) {
@@ -85,6 +94,7 @@ export default class extends Controller {
       new MapboxGeocoder({
         accessToken: mapboxgl.accessToken,
         mapboxgl: mapboxgl,
+        placeholder: "マップを検索する",
       })
     );
   }
