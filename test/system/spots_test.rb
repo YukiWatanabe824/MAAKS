@@ -46,6 +46,23 @@ class SpotsTest < ApplicationSystemTestCase
     assert_selector '.spot_content', text: 'test'
   end
 
+  test 'unknown accident date' do
+    user = users(:watanabe)
+    sign_in user
+    visit_root_closed_modal
+
+    find('#map').click
+    find('#new_spot_marker').right_click
+    click_on('スポットを作成する')
+
+    choose('spot_accident_type_物損事故')
+    fill_in '事故の概要', with: 'test'
+    fill_in '事故の発生日', with: Date.new(2021, 1, 1)
+    check '正確な日付がわからない'
+    click_on('登録する')
+    assert_selector '.spot_accident_date', text: '発生日 : 2021年1月1日 ごろ'
+  end
+
   test 'create a spot but a warning appears if you are not logged in' do
     visit_root_closed_modal
     assert_selector '#map'
