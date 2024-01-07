@@ -15,17 +15,17 @@ https://maaks.jp/
 
 ## 使い方
 ### 1. スポットを閲覧する
-<img width="70%" alt="readme_show_spot" src="https://github.com/YukiWatanabe824/MAAKS/assets/69577164/faa5ff0d-98d2-490f-8a49-ce4b1ee21acb">
+<img width="70%" alt="readme_show_spot" src="https://github.com/YukiWatanabe824/MAAKS/assets/69577164/8aaff52f-ae60-4b44-a9fc-66eba489ae42">
 
-### 2. ログインする(サービス内アカウント or Googleアカウントでログイン可能)
-<img width="70%" alt="readme_login" src="https://github.com/YukiWatanabe824/MAAKS/assets/69577164/018cbfa9-2162-4788-8e07-ae520d04d1f4">
+### 2. ログインする(Googleアカウントでログイン可能)
+<img width="70%" alt="readme_login" src="https://github.com/YukiWatanabe824/MAAKS/assets/69577164/d3237146-e471-4a8f-a7f7-b77a7914c77a">
 
 ### 3. スポットを登録する
-<img width="70%" alt="readme_create_spot" src="https://github.com/YukiWatanabe824/MAAKS/assets/69577164/d2ee8da4-ac56-403d-814f-d23918d0e082">
+<img width="70%" alt="readme_create_spot" src="https://github.com/YukiWatanabe824/MAAKS/assets/69577164/3f7d60b0-0a54-47ef-bc4e-b45988721b68">
 
 ## 開発環境
 - Ruby 3.2.2
-- Ruby on Rails 7.0.5
+- Ruby on Rails 7.1.2
 - Hotwire
 - Node.js 18.12.1
 - yarn 1.22.19
@@ -47,8 +47,6 @@ $ bin/dev
 | google.client_secret | Googleクライアント シークレット |
 | mapbox.access_token | MapBoxアクセストークン |
 | mapbox.style | MapBoxスタイル情報 |
-| gmail.user_name | gmailユーザー名 |
-| gmail.password | gmailパスワード |
 
 ## Lint/Test
 ### Lint
