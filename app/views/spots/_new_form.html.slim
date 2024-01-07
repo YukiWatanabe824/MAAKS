@@ -27,7 +27,7 @@
         .form_menu.flex.flex-col.my-4
           = f.label :contents, class: 'text-base-100'
             = t 'view.spot_contents'
-          = f.text_area :contents, class: 'textarea textarea-bordered h-40 w-full text-base leading-normal', placeholder: '車道の舗装が乱れており、深くえぐれた箇所に車輪が引っかかってしまい転倒した。救急車に搬送された。'
+          = f.text_area :contents, class: 'textarea textarea-bordered h-40 w-full text-base leading-normal', placeholder: '車道の舗装の深くえぐれた箇所に車輪が引っかかってしまい転倒した。救急車に搬送された。'
           p.text-xs.text-base-100.mt-1
             | 事故の概要を書いてください。原因や気をつけることを記入すると、ほかの方の役に立ちます。
         .form_menu.flex.flex-col.my-4
@@ -36,7 +36,7 @@
           label.my-1
             = f.check_box :unknown_accident_date, {}, true, false
             span.ml-1.text-base-100
-              | 正確な日付が不明
+              = t 'view.unknown_accident_date'
           = f.date_field :accident_date, class: 'w-full', placeholder: spot.accident_date, max: Time.zone.today
           p.text-xs.text-base-100.mt-1
             | 正確な日付がわからない場合は、もっとも近い日付を選んでください。
