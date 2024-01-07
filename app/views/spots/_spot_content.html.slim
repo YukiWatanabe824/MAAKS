@@ -3,7 +3,10 @@ h2.my-2.text-xl.font-bold.spot_title
 ul.flex.flex-col.flex-wrap
   li.spot_accident_date
     = t 'activerecord.attributes.spot.accident_date'
-    |  : #{spot.accident_date.year}年#{spot.accident_date.month}月#{spot.accident_date.day}日
+    - if spot.unknown_accident_date?
+      |  : #{spot.accident_date.year}年#{spot.accident_date.month}月#{spot.accident_date.day}日 ごろ
+    - else
+      |  : #{spot.accident_date.year}年#{spot.accident_date.month}月#{spot.accident_date.day}日
   li.spot_accident_type
     = t 'activerecord.attributes.spot.accident_type'
     |  : #{spot.accident_type}

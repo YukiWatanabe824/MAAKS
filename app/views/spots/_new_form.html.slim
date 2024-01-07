@@ -33,7 +33,13 @@
         .form_menu.flex.flex-col.my-4
           = f.label :accident_date, class: 'text-base-100'
             = t 'view.spot_accident_date'
-          = f.date_field :accident_date, class: 'w-full', placeholder: spot.accident_date
+          label.my-1
+            = f.check_box :unknown_accident_date, {}, true, false
+            span.ml-1.text-base-100
+              | 正確な日付が不明
+          = f.date_field :accident_date, class: 'w-full', placeholder: spot.accident_date, max: Time.zone.today
+          p.text-xs.text-base-100.mt-1
+            | 正確な日付がわからない場合は、もっとも近い日付を選んでください。
         .form_menu.flex.flex-col.my-4
           = f.label :longitude, class: 'text-base-100'
           = f.text_field :longitude, readonly: true, class: 'w-full', value: ''
