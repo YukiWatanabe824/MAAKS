@@ -1,11 +1,11 @@
 .absolute.flash_component.top-16.z-50 data-controller="flash" data-flash-target="flash"
   - if notice
-    .bg-emerald-400.w-full.m-3.rounded.p-2.flex
+    .bg-emerald-400.m-3.rounded.p-2.flex.max-w-60
       span.loading.loading-spinner.loading-md.mx-1
-      p.rails_notice.text-center.leading-loose
+      p.rails_notice.text-center.leading-loose.text-pretty
         = notice
   - elsif alert
-    .bg-orange-200.w-full.m-3.rounded.p-2.flex
+    .bg-orange-200.m-3.rounded.p-2.flex.max-w-60
       span.loading.loading-spinner.loading-md.mx-1
-      p.rails_alert.mx-auto.text-center.leading-loose
+      p.rails_alert.mx-auto.text-center.leading-loose.text-pretty
         = alert
