@@ -3,7 +3,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '3.2.2'
+ruby '3.3.0'
 gem 'aws-sdk-s3'
 gem 'bootsnap', require: false
 gem 'devise'
@@ -17,7 +17,7 @@ gem 'omniauth-rails_csrf_protection'
 gem 'pagy'
 gem 'pg'
 gem 'puma'
-gem 'rails', '7.1.2'
+gem 'rails', '7.1.3'
 gem 'rails-i18n'
 gem 'redis'
 gem 'sentry-rails'
