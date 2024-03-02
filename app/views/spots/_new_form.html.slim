@@ -10,20 +10,20 @@
           .flex
             .flex.flex-col.mr-3
               label
-                = f.radio_button :accident_type, '物損事故', class: 'mr-1'
+                = f.radio_button :accident_type, 'ケガのない物損事故', class: 'mr-1'
                 = t 'view.spot_accident_category_property'
               label
-                = f.radio_button :accident_type, '人身事故', class: 'mr-1'
+                = f.radio_button :accident_type, 'ケガをともなう人身事故', class: 'mr-1'
                 = t 'view.spot_accident_category_injury'
             .flex.flex-col.mr-3
               label
-                = f.radio_button :accident_type, 'ヒヤリ・ハット', class: 'mr-1'
+                = f.radio_button :accident_type, '事故に至らないヒヤッとしたトラブル', class: 'mr-1'
                 = t 'view.spot_accident_category_nearmiss'
               label
                 = f.radio_button :accident_type, 'その他', class: 'mr-1'
                 = t 'view.spot_accident_category_other'
           p.text-xs.text-base-100.mt-1
-            | 事故のカテゴリーを選んでください。「物損事故」はケガのない落車などの事故。「人身事故」はケガの伴う事故、「ヒヤリ・ハット」は事故に満たないヒヤっとする体験のことです。事故の裏に多数のヒヤリ・ハットがあると言われています。
+            | 事故のカテゴリーを選んでください。
         .form_menu.flex.flex-col.my-4
           = f.label :contents, class: 'text-base-100'
             = t 'view.spot_contents'
