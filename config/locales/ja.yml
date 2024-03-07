@@ -68,9 +68,9 @@ ja:
     spot_accident_date: 事故の発生日
     spot_accident_type: 事故の種類
     spot_contents: 事故の概要
-    spot_accident_category_property: 物損事故
-    spot_accident_category_injury: 人身事故
-    spot_accident_category_nearmiss: ヒヤリ・ハット
+    spot_accident_category_property: ケガのない物損事故
+    spot_accident_category_injury: ケガをした人身事故
+    spot_accident_category_nearmiss: ヒヤッとしたレベル
     spot_accident_category_other: その他
     unknown_accident_date: 正確な日付がわからない
   controller:
