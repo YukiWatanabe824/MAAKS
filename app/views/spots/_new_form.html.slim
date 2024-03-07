@@ -7,23 +7,26 @@
         .form_menu.flex.flex-col.my-4.text-base-100
           = f.label :accident_type, class: 'text-base-100'
             = t 'view.spot_accident_type'
+          p.text-xs.text-base-100.mb-1
+            | 事故のカテゴリーを選んでください。
           .flex
             .flex.flex-col.mr-3
-              label
-                = f.radio_button :accident_type, 'ケガのない物損事故', class: 'mr-1'
-                = t 'view.spot_accident_category_property'
-              label
-                = f.radio_button :accident_type, 'ケガをともなう人身事故', class: 'mr-1'
-                = t 'view.spot_accident_category_injury'
-            .flex.flex-col.mr-3
-              label
-                = f.radio_button :accident_type, '事故に至らないヒヤッとしたトラブル', class: 'mr-1'
-                = t 'view.spot_accident_category_nearmiss'
-              label
+              div
+                = f.radio_button :accident_type, '物損事故', class: 'mr-1'
+                = f.label :accident_type_物損事故
+                  = t 'view.spot_accident_category_property'
+              div
+                = f.radio_button :accident_type, '人身事故', class: 'mr-1'
+                = f.label :accident_type_人身事故
+                  = t 'view.spot_accident_category_injury'
+              div
+                = f.radio_button :accident_type, 'ヒヤリ・ハット', class: 'mr-1'
+                = f.label :accident_type_ヒヤリハット
+                  = t 'view.spot_accident_category_nearmiss'
+              div
                 = f.radio_button :accident_type, 'その他', class: 'mr-1'
-                = t 'view.spot_accident_category_other'
-          p.text-xs.text-base-100.mt-1
-            | 事故のカテゴリーを選んでください。
+                = f.label :accident_type_その他
+                  = t 'view.spot_accident_category_other'
         .form_menu.flex.flex-col.my-4
           = f.label :contents, class: 'text-base-100'
             = t 'view.spot_contents'
