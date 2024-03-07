@@ -30,24 +30,28 @@
         .form_menu.flex.flex-col.my-4
           = f.label :contents, class: 'text-base-100'
             = t 'view.spot_contents'
-          = f.text_area :contents, class: 'textarea textarea-bordered h-40 w-full text-base leading-normal', placeholder: '車道の舗装の深くえぐれた箇所に車輪が引っかかってしまい転倒した。救急車に搬送された。'
-          p.text-xs.text-base-100.mt-1
-            | 事故の概要を書いてください。原因や気をつけることを記入すると、ほかの方の役に立ちます。
+          p.text-xs.text-base-100.mb-1
+            | 任意で追加の情報を書いてください。トラブルの原因や気をつけることを記入するとほかの方の役に立ちます。
+          = f.text_area :contents, class: 'textarea textarea-bordered h-40 w-full text-base leading-normal', placeholder: '車道の凹んだ箇所に車輪が引っかかってしまい転倒した。救急車に搬送された。'
         .form_menu.flex.flex-col.my-4
           = f.label :accident_date, class: 'text-base-100'
             = t 'view.spot_accident_date'
+          p.text-xs.text-base-100.mb-1
+            | 正確な日付がわからない場合は、もっとも近い日付を選んでください。
           label.my-1
             = f.check_box :unknown_accident_date, {}, true, false
             span.ml-1.text-base-100
               = t 'view.unknown_accident_date'
           = f.date_field :accident_date, class: 'w-full', placeholder: spot.accident_date, max: Time.zone.today
-          p.text-xs.text-base-100.mt-1
-            | 正確な日付がわからない場合は、もっとも近い日付を選んでください。
         .form_menu.flex.flex-col.my-4
           = f.label :longitude, class: 'text-base-100'
+          span.text-xs.text-base-100.mb-1
+            | ピンを立てた地点の経度が自動で入力されます。
           = f.text_field :longitude, readonly: true, class: 'w-full', value: ''
         .form_menu.flex.flex-col.my-4
           = f.label :latitude, class: 'text-base-100'
+          p.text-xs.text-base-100.mb-1
+            | ピンを立てた地点の緯度が自動で入力されます。
           = f.text_field :latitude, readonly: true, class: 'w-full', value: ''
         = f.hidden_field :address, value: ''
         = render 'shared/error_messages', object: f.object

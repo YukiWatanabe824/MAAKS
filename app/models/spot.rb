@@ -4,7 +4,7 @@ class Spot < ApplicationRecord
   belongs_to :user
   validates :accident_date, presence: true
   validates :accident_type, presence: true
-  validates :contents, presence: true
+  validates :contents
   validates :longitude, presence: true
   validates :latitude, presence: true
 

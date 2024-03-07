@@ -67,12 +67,12 @@ ja:
     spot_title: 事故スポットのタイトル
     spot_accident_date: 事故の発生日
     spot_accident_type: 事故の種類
-    spot_contents: 事故の概要
+    spot_contents: 追加情報
     spot_accident_category_property: ケガのない物損事故
     spot_accident_category_injury: ケガをした人身事故
     spot_accident_category_nearmiss: ヒヤッとしたレベル
     spot_accident_category_other: その他
-    unknown_accident_date: 正確な日付がわからない
+    unknown_accident_date: 正確な日付がわからないときはチェック
   controller:
     user_was_successfully_destroyed: ユーザーを削除しました
     you_do_not_have_administrative_privileges: 管理権限がありません
