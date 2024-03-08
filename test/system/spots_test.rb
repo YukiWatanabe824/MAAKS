@@ -39,7 +39,7 @@ class SpotsTest < ApplicationSystemTestCase
     click_on('スポットを作成する')
 
     choose('spot_accident_type_物損事故')
-    fill_in('事故の概要', with: 'test')
+    fill_in('追加情報', with: 'test')
     fill_in '事故の発生日', with: Date.new(2021, 1, 1)
     click_on('登録する')
     assert_selector '.spot_accident_type', text: '物損事故'
@@ -56,7 +56,7 @@ class SpotsTest < ApplicationSystemTestCase
     click_on('スポットを作成する')
 
     choose('spot_accident_type_物損事故')
-    fill_in '事故の概要', with: 'test'
+    fill_in '追加情報', with: 'test'
     fill_in '事故の発生日', with: Date.new(2021, 1, 1)
     check '正確な日付がわからない'
     click_on('登録する')
