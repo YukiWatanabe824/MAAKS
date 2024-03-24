@@ -74,6 +74,8 @@ class SpotsTest < ApplicationSystemTestCase
     click_on('スポットを作成する')
 
     assert_text 'スポットの登録にはユーザー登録が必要です'
+    find('.spot-creating-required-logged-in').click
+    assert_text 'ログイン'
   end
 
   test 'error message is displayedcreate when create spot' do
