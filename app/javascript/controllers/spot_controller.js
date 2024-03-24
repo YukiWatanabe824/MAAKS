@@ -4,7 +4,7 @@ export default class extends Controller {
   static targets = ["spot"];
 
   setSpotInfoForSideMenu(event) {
-    event.stopPropagation()
+    event.stopPropagation();
     const url = `spots/${this.spotTarget.id}`;
     Turbo.visit(url, { frame: "side_menu" }); //eslint-disable-line
   }
