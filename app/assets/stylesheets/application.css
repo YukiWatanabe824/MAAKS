@@ -66,3 +66,7 @@ input#spot_longitude {
 input#spot_latitude {
   filter: brightness(0.8)
 }
+
+.spot_marker {
+  z-index: 3;
+}

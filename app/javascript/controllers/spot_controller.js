@@ -3,7 +3,8 @@ import { Controller } from "@hotwired/stimulus";
 export default class extends Controller {
   static targets = ["spot"];
 
-  setSpotInfoForSideMenu() {
+  setSpotInfoForSideMenu(event) {
+    event.stopPropagation()
     const url = `spots/${this.spotTarget.id}`;
     Turbo.visit(url, { frame: "side_menu" }); //eslint-disable-line
   }
