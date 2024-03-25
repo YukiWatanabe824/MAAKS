@@ -10,7 +10,9 @@ class SpotsTest < ApplicationSystemTestCase
 
   test 'showing spot menu by right click on spot marker' do
     visit_root_closed_modal
-    find('#map').click
+    spot = spots(:one)
+
+    find(".spot-#{spot.id}", visible: false).click(x: 50, y: 50)
     find('#new_spot_marker').right_click
     assert_selector '#spot_menu'
   end
@@ -34,7 +36,9 @@ class SpotsTest < ApplicationSystemTestCase
     sign_in user
     visit_root_closed_modal
 
-    find('#map').click
+    spot = spots(:one)
+
+    find(".spot-#{spot.id}", visible: false).click(x: 50, y: 50)
     find('#new_spot_marker').right_click
     click_on('スポットを作成する')
 
@@ -51,7 +55,9 @@ class SpotsTest < ApplicationSystemTestCase
     sign_in user
     visit_root_closed_modal
 
-    find('#map').click
+    spot = spots(:one)
+
+    find(".spot-#{spot.id}", visible: false).click(x: 50, y: 50)
     find('#new_spot_marker').right_click
     click_on('スポットを作成する')
 
@@ -67,13 +73,17 @@ class SpotsTest < ApplicationSystemTestCase
     visit_root_closed_modal
     assert_selector '#map'
 
-    find('#map').click
+    spot = spots(:one)
+
+    find(".spot-#{spot.id}", visible: false).click(x: 50, y: 50)
 
     assert_selector '#new_spot_marker'
     find('#new_spot_marker').right_click
     click_on('スポットを作成する')
 
     assert_text 'スポットの登録にはユーザー登録が必要です'
+    find('.spot-creating-required-logged-in').click
+    assert_text 'ログイン'
   end
 
   test 'error message is displayedcreate when create spot' do
@@ -82,7 +92,9 @@ class SpotsTest < ApplicationSystemTestCase
     visit_root_closed_modal
     assert_selector '#map'
 
-    find('#map').click
+    spot = spots(:one)
+
+    find(".spot-#{spot.id}", visible: false).click(x: 50, y: 50)
 
     assert_selector '#new_spot_marker'
     find('#new_spot_marker').right_click

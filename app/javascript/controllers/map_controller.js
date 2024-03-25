@@ -34,17 +34,14 @@ export default class extends Controller {
       .then((response) => response.json())
       .then((spots) => {
         for (const spot of spots) {
-          const el = document.createElement("div");
-          el.id = spot.id;
-          el.className = `spot-${spot.id} spot_marker color_palette solid_icon`;
-          el.setAttribute("data-controller", "spot");
-          el.setAttribute("data-spot-target", "spot");
-          el.setAttribute("data-action", "click->spot#setSpotInfoForSideMenu");
-          new mapboxgl.Marker({
-            element: el,
-          })
-            .setLngLat([spot.longitude, spot.latitude])
-            .addTo(map);
+          const marker = new mapboxgl.Marker({});
+          marker.getElement().id = `${spot.id}`;
+          marker.getElement().classList.add(`spot-${spot.id}`, "spot_marker");
+          marker.getElement().setAttribute("data-controller", "spot");
+          marker.getElement().setAttribute("data-spot-target", "spot");
+          marker.getElement().setAttribute("data-action", "click->spot#setSpotInfoForSideMenu");
+
+          marker.setLngLat([spot.longitude, spot.latitude]).addTo(map);
         }
       });
   }
