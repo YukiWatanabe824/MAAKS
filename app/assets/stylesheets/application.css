@@ -70,3 +70,18 @@ input#spot_latitude {
 .spot_marker {
   z-index: 3;
 }
+
+.aside_for_reg {
+  display: block;
+  position: absolute;
+  left: 0;
+  translate: -100%;
+  transition: 0.2s ease-in-out;
+  z-index: 3;
+  width: 26vw;
+
+}
+
+.display {
+  translate: 0%;
+}
