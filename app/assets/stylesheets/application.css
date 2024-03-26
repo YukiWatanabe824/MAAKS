@@ -71,17 +71,35 @@ input#spot_latitude {
   z-index: 3;
 }
 
-.aside_for_reg {
-  display: block;
-  position: absolute;
-  left: 0;
-  translate: -100%;
-  transition: 0.2s ease-in-out;
-  z-index: 3;
-  width: 26vw;
+@media (min-width: 1024px) {
+  .aside_for_reg {
+    display: block;
+    position: absolute;
+    left: 0;
+    translate: -100%;
+    transition: 0.2s ease-in-out;
+    z-index: 3;
+    width: 26vw;
+  }
 
+  .display {
+    translate: 0%;
+  }
 }
 
-.display {
-  translate: 0%;
+@media (max-width: 1023px){
+  .aside_for_reg {
+    position: relative;
+    z-index: 3;
+    height: 0;
+    transform: translateY(100%);
+    transition: transform 0.25s, height 0.25s;
+    overflow: hidden;
+  }
+
+  .display {
+    height: 640px;
+    transform: translateY(-120%);
+    padding: 36px;
+  }
 }
