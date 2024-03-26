@@ -79,11 +79,14 @@ input#spot_latitude {
     translate: -100%;
     transition: 0.2s ease-in-out;
     z-index: 3;
-    width: 26vw;
+    width: 28vw;
+    overflow: auto;
+    height: calc(100vh - 65px);
   }
 
   .display {
     translate: 0%;
+    padding: 24px;
   }
 }
 
@@ -98,8 +101,8 @@ input#spot_latitude {
   }
 
   .display {
-    height: 640px;
-    transform: translateY(-120%);
+    height: 60rem;
+    transform: translateY(-90%);
     padding: 36px;
   }
 }

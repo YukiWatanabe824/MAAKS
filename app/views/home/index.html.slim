@@ -8,4 +8,5 @@ main.w-full.mx-auto.lg:flex-row-reverse.lg:flex class="h-[calc(100vh-65px)] max-
     = turbo_frame_tag 'side_menu' do
       = render partial: 'aside', locals: { signed_out: @signed_out, spots: @spots, spots_pagy: @spots_pagy, my_spots_pagy: @my_spots_pagy, my_spots: @my_spots }
 
-  aside.aside_for_reg.bg-accent.mr-0.5.w-full.lg:h-full data-side-menu-map-outlet='#map' class="min-w-[20rem]"
+  aside.aside_for_reg.bg-primary.mr-0.5.w-full.lg:h-full data-side-menu-map-outlet='#map' class="min-w-[20rem]"
+    = turbo_frame_tag 'spot_regist_window' do

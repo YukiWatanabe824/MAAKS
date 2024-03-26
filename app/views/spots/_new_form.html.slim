@@ -1,4 +1,4 @@
-= turbo_frame_tag 'side_menu' do
+= turbo_frame_tag 'spot_regist_window' do
   div data-controller="side-menu-for-register-new-spot" data-side-menu-for-register-new-spot-map-outlet='#map'
     h2.my-2.text-xl.font-bold.text-base-100
       = t 'view.create_spot'
@@ -60,6 +60,6 @@
       .flex.flex-col
         p.text-base-100.my-2
           = t 'view.user_registration_is_required_to_register_spot'
-        = link_to t('view.create_user_account'), new_user_session_path, data: { turbo: false }, class: 'btn bg-base-100 text-primary my-2 hover:opacity-50 transition-all duration-100 spot-creating-required-logged-in'
+        = link_to t('view.create_user_account'), new_user_session_path, data: { turbo: false }, class: 'btn bg-base-100 text-primary my-2 hover:opacity-50 transition-all duration-100 spot-creating-required-logged-in max-w-52'
 
-  = link_to t('view.cancel'), home_aside_index_path, class: 'my-2 text-base-100 hover:opacity-50 transition-all duration-100 underline'
+    = link_to t('view.cancel'), home_aside_index_path, class: 'my-2 text-base-100 hover:opacity-50 transition-all duration-100 underline'
