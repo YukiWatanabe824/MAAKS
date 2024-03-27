@@ -7,12 +7,12 @@ export default class extends Controller {
     event.stopPropagation();
     const url = `spots/${this.spotTarget.id}`;
     Turbo.visit(url, { frame: "side_menu" }); //eslint-disable-line
-    this.hiddenForRegWindow()
+    this.hiddenForRegWindow();
   }
 
-  hiddenForRegWindow(){
-    const el = document.querySelector(".aside_for_reg")
-    el.classList.remove("display")
+  hiddenForRegWindow() {
+    const el = document.querySelector(".aside_for_reg");
+    el.classList.remove("display");
   }
 
   showSpotMenu(e) {
