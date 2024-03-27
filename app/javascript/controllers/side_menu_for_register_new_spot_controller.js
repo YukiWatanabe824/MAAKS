@@ -8,6 +8,10 @@ export default class extends Controller {
     this.fillCoordinatesForField();
   }
 
+  slideOut() {
+    document.querySelector(".aside_for_reg").classList.remove("display");
+  }
+
   removeMenu() {
     if (document.querySelector("#spot_menu")) {
       document.querySelector("#spot_menu").remove();
