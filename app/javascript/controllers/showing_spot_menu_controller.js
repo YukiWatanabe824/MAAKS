@@ -8,6 +8,11 @@ export default class extends Controller {
   connect() {
     const spotObject = this.SpotDetailPanelTarget.dataset;
     this.addSpot(spotObject);
+    this.regWindowSlideOut();
+  }
+
+  regWindowSlideOut() {
+    document.querySelector(".aside_for_reg").classList.remove("display");
   }
 
   addSpot(spot) {
