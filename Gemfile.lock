@@ -133,6 +133,11 @@ GEM
     drb (2.2.0)
       ruby2_keywords
     erubi (1.12.0)
+    factory_bot (6.4.5)
+      activesupport (>= 5.0.0)
+    factory_bot_rails (6.4.3)
+      factory_bot (~> 6.4)
+      railties (>= 5.0.0)
     faraday (2.9.0)
       faraday-net_http (>= 2.0, < 3.2)
     faraday-net_http (3.1.0)
@@ -446,6 +451,7 @@ DEPENDENCIES
   devise
   devise-i18n
   dockerfile-rails
+  factory_bot_rails
   html2slim
   image_processing
   importmap-rails
