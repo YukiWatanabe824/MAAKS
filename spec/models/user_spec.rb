@@ -2,8 +2,8 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
   it 'adminかどうか' do
-    admin_user = User.new(name: '', email: '', encrypted_password: '', admin: true)
-    not_admin_user = User.new(name: '', email: '', encrypted_password: '')
+    admin_user = FactoryBot.create(:admin_user)
+    not_admin_user = FactoryBot.create(:not_admin_user)
 
     expect(admin_user.admin?).to be_truthy
     expect(not_admin_user.admin?).to be_falsey
