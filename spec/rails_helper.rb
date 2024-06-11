@@ -3,6 +3,7 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 require 'spec_helper'
 require 'factory_bot_rails'
+require 'selenium-webdriver'
 
 ENV['RAILS_ENV'] = 'test'
 require_relative '../config/environment'
@@ -68,5 +69,16 @@ RSpec.configure do |config|
   # config.filter_gems_from_backtrace("gem name")
 
   # using devise (auth) helper
-  config.include Devise::Test::IntegrationHelpers, type: :request
+  config.include Devise::Test::ControllerHelpers, type: :controller
+  config.include Devise::Test::IntegrationHelpers, type: :system
+
+  # setup using selenium-webdriver
+  config.before(:each, type: :system, js: true) do
+    driven_by :selenium_chrome_headless
+  end
+
+  def visit_root_closed_modal
+    visit '/'
+    find('.close_modal_button').click
+  end
 end
