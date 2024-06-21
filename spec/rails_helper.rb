@@ -34,6 +34,9 @@ begin
 rescue ActiveRecord::PendingMigrationError => e
   abort e.to_s.strip
 end
+# Log output for STDOUT
+# Rails.logger = Logger.new(STDOUT)
+
 RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_paths = [
@@ -70,6 +73,7 @@ RSpec.configure do |config|
 
   # using devise (auth) helper
   config.include Devise::Test::ControllerHelpers, type: :controller
+  # config.include Devise::Test::ControllerHelpers, type: :system
   config.include Devise::Test::IntegrationHelpers, type: :system
 
   # helper methods
