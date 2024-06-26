@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-RSpec.describe "Spots", type: :system do
+RSpec.describe 'Spots', type: :system do
   before do
     driven_by(:selenium_chrome_headless)
   end
@@ -19,7 +21,7 @@ RSpec.describe "Spots", type: :system do
   scenario 'Right-clicking on a spot marker should bring up the spot menu' do
     visit_root_closed_modal
 
-    find(".mapboxgl-map").click(x: 50, y: 50)
+    find('.mapboxgl-map').click(x: 50, y: 50)
     find('#new_spot_marker').right_click
     expect(page).to have_selector '#spot_menu'
   end
@@ -76,7 +78,6 @@ RSpec.describe "Spots", type: :system do
     visit_root_closed_modal
     expect(page).to have_selector '#map'
 
-
     find(".spot-#{spot.id}", visible: false).click(x: 50, y: 50)
 
     expect(page).to have_selector '#new_spot_marker'
@@ -93,7 +94,6 @@ RSpec.describe "Spots", type: :system do
     sign_in user
     visit_root_closed_modal
     expect(page).to have_selector '#map'
-
 
     find(".spot-#{spot.id}", visible: false).click(x: 50, y: 50)
 

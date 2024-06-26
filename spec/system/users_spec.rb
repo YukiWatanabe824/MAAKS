@@ -1,12 +1,14 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-RSpec.describe "Users", type: :system do
+RSpec.describe 'Users', type: :system do
   before do
     driven_by(:selenium_chrome_headless)
   end
 
-  let(:user) { FactoryBot.create(:user, :admin_user)}
-  let(:user_spot) { FactoryBot.create(:spot, :make_by_admin_user)}
+  let(:user) { FactoryBot.create(:user, :admin_user) }
+  let(:user_spot) { FactoryBot.create(:spot, :make_by_admin_user) }
 
   scenario 'user sign in, create, sign out, my page button is show' do
     visit_root_closed_modal
@@ -34,7 +36,7 @@ RSpec.describe "Users", type: :system do
     visit user_path(user)
     expect(page).to have_selector 'p', text: user.name
     assert_text "アカウント作成日 : #{user.created_at.year}年#{user.created_at.month}月#{user.created_at.day}日"
-    assert_text "登録した事故スポットの数 : 0"
+    assert_text '登録した事故スポットの数 : 0'
   end
 
   scenario 'upload user_icon image file' do

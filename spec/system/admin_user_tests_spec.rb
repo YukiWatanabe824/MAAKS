@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-RSpec.describe "AdminUserTests", type: :system do
+RSpec.describe 'AdminUserTests', type: :system do
   before do
     driven_by(:selenium_chrome_headless)
   end
@@ -38,7 +40,7 @@ RSpec.describe "AdminUserTests", type: :system do
   end
 
   scenario 'adminなら他のユーザーを編集できる' do
-    spot = make_by_standard_spot
+    make_by_standard_spot
     user = not_admin_user
     sign_in admin_user
     visit user_path(admin_user)
