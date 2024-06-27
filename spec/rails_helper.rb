@@ -5,8 +5,13 @@ require 'spec_helper'
 require 'factory_bot_rails'
 require 'selenium-webdriver'
 
+# coverage checker
+require 'simplecov'
+SimpleCov.start
+
 ENV['RAILS_ENV'] = 'test'
 require_relative '../config/environment'
+
 # Prevent database truncation if the environment is production
 abort('The Rails environment is running in production mode!') if Rails.env.production?
 require 'rspec/rails'
@@ -34,6 +39,9 @@ begin
 rescue ActiveRecord::PendingMigrationError => e
   abort e.to_s.strip
 end
+# Log output for STDOUT
+# Rails.logger = Logger.new(STDOUT)
+
 RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_paths = [
@@ -70,13 +78,10 @@ RSpec.configure do |config|
 
   # using devise (auth) helper
   config.include Devise::Test::ControllerHelpers, type: :controller
+  # config.include Devise::Test::ControllerHelpers, type: :system
   config.include Devise::Test::IntegrationHelpers, type: :system
 
-  # setup using selenium-webdriver
-  config.before(:each, type: :system, js: true) do
-    driven_by :selenium_chrome_headless
-  end
-
+  # helper methods
   def visit_root_closed_modal
     visit '/'
     find('.close_modal_button').click
