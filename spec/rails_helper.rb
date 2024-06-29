@@ -78,8 +78,8 @@ RSpec.configure do |config|
 
   # using devise (auth) helper
   config.include Devise::Test::ControllerHelpers, type: :controller
-  # config.include Devise::Test::ControllerHelpers, type: :system
   config.include Devise::Test::IntegrationHelpers, type: :system
+  config.include Devise::Test::IntegrationHelpers, type: :request
 
   # helper methods
   def visit_root_closed_modal
