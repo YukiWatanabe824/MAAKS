@@ -2,5 +2,5 @@ inherit_gem:
   rubocop-fjord:
     - "config/rubocop.yml"
     - "config/rails.yml"
-  require:
-    - rubocop-rspec
+require:
+  - rubocop-rspec
