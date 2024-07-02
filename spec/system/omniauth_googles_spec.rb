@@ -15,7 +15,7 @@ RSpec.describe 'OmniauthGoogles', type: :system do
     OmniAuth.config.test_mode = false
   end
 
-  let 'google_oauth2_mock' do
+  let :google_oauth2_mock do
     OmniAuth.config.mock_auth[:google_oauth2] = OmniAuth::AuthHash.new({
                                                                          provider: 'google_oauth2',
                                                                          uid: '12345678910',
@@ -32,10 +32,11 @@ RSpec.describe 'OmniauthGoogles', type: :system do
                                                                        })
   end
 
-  scenario 'authorizes and sets user currently in database with Google OAuth' do
-    visit user_session_path
-    expect(page).to have_text 'Googleでログイン'
-    click_on 'Googleでログイン'
-    expect(page).to have_selector '#flash', text: 'Google アカウントによる認証に成功しました。'
+  context 'when user log in' do
+    it 'authorizes and sets user currently in database with Google OAuth' do
+      visit user_session_path
+      click_on 'Googleでログイン'
+      expect(page).to have_selector '#flash', text: 'Google アカウントによる認証に成功しました。'
+    end
   end
 end

@@ -11,7 +11,7 @@ RSpec.describe 'AdminUserAuthorizations', type: :request do
     it 'regular user cant access to editer for admin' do
       sign_in regular_user
       get edit_admins_user_path(regular_user)
-      expect(response).to have_http_status '404'
+      expect(response).to have_http_status :not_found
     end
   end
 
@@ -19,7 +19,7 @@ RSpec.describe 'AdminUserAuthorizations', type: :request do
     it 'regular user cant delete other user' do
       sign_in regular_user
       delete admins_user_path(other_user)
-      expect(response).to have_http_status '404'
+      expect(response).to have_http_status :not_found
     end
   end
 
@@ -27,7 +27,7 @@ RSpec.describe 'AdminUserAuthorizations', type: :request do
     it 'regular user cant edit myself by admins path' do
       sign_in regular_user
       put admins_user_path(regular_user)
-      expect(response).to have_http_status '404'
+      expect(response).to have_http_status :not_found
     end
   end
 
@@ -35,7 +35,7 @@ RSpec.describe 'AdminUserAuthorizations', type: :request do
     it 'regular user cant edit myspot by admins path' do
       sign_in regular_user
       put admins_spot_path(spot)
-      expect(response).to have_http_status '404'
+      expect(response).to have_http_status :not_found
     end
   end
 
@@ -43,7 +43,7 @@ RSpec.describe 'AdminUserAuthorizations', type: :request do
     it 'regular user cant delete myspot by admins pass' do
       sign_in regular_user
       delete admins_spot_path(spot)
-      expect(response).to have_http_status '404'
+      expect(response).to have_http_status :not_found
     end
   end
 end
