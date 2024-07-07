@@ -4,6 +4,10 @@
 require 'spec_helper'
 require 'factory_bot_rails'
 require 'selenium-webdriver'
+require 'capybara/rspec'
+
+# capybara setting
+Capybara.default_max_wait_time = 5
 
 # coverage checker
 require 'simplecov'
