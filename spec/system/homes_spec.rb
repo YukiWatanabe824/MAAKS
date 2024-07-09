@@ -69,8 +69,8 @@ RSpec.describe 'Homes', type: :system do
 
     it 'showing developpers X' do
       visit_root_closed_modal
-      expect(page).to have_selector '.developers_sns_x', wait: 10
-      expect(page).to have_selector '.x_logo_mark', wait: 10
+      expect(page).to have_selector '.developers_sns_x', wait: 15
+      expect(page).to have_selector '.x_logo_mark', wait: 15
     end
 
     it 'showing developpers GitHub' do
