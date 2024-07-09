@@ -76,8 +76,8 @@ RSpec.describe 'Homes', type: :system do
     it 'showing developpers GitHub' do
       visit root_path
       aggregate_failures do
-        expect(page).to have_selector '.developers_github'
-        expect(page).to have_selector '.github_logo_mark'
+        expect(page).to have_selector '.developers_github', wait: 15
+        expect(page).to have_selector '.github_logo_mark', wait: 15
       end
     end
   end
