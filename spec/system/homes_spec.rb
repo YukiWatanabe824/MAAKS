@@ -74,11 +74,9 @@ RSpec.describe 'Homes', type: :system do
     end
 
     it 'showing developpers GitHub' do
-      visit root_path
-      aggregate_failures do
-        expect(page).to have_selector '.developers_github', wait: 15
-        expect(page).to have_selector '.github_logo_mark', wait: 15
-      end
+      visit_root_closed_modal
+      expect(page).to have_selector '.developers_github', wait: 15
+      expect(page).to have_selector '.github_logo_mark', wait: 15
     end
   end
 end
