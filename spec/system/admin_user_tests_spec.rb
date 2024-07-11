@@ -3,10 +3,6 @@
 require 'rails_helper'
 
 RSpec.describe 'AdminUserTests', type: :system do
-  before do
-    driven_by(:selenium_chrome_headless)
-  end
-
   describe 'when user is admin' do
     context 'when spot is other users spot' do
       let(:make_by_standard_spot) { FactoryBot.create(:spot, :make_by_standard_user) }
