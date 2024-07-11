@@ -3,10 +3,6 @@
 require 'rails_helper'
 
 RSpec.describe 'Users', type: :system do
-  before do
-    driven_by(:selenium_chrome_headless)
-  end
-
   let(:user) { FactoryBot.create(:user, :admin_user) }
   let(:user_spot) { FactoryBot.create(:spot, :make_by_admin_user) }
 

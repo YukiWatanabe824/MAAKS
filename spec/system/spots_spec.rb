@@ -3,10 +3,6 @@
 require 'rails_helper'
 
 RSpec.describe 'Spots', type: :system do
-  before do
-    driven_by(:selenium_chrome_headless)
-  end
-
   describe 'when access for top page' do
     context 'when spot showing on the map' do
       let(:make_by_admin_spot) { FactoryBot.create(:spot, :make_by_admin_user) }
@@ -25,7 +21,7 @@ RSpec.describe 'Spots', type: :system do
 
         find('.mapboxgl-map').click(x: 50, y: 50)
         find('#new_spot_marker').right_click
-        expect(page).to have_selector '#spot_menu'
+        expect(page).to have_selector '#spot_menu', wait: 15
       end
 
       it 'showing spot accident date in the side menu when not logged in' do
@@ -66,7 +62,8 @@ RSpec.describe 'Spots', type: :system do
 
         find(".spot-#{spot.id}", visible: false).click(x: 50, y: 50)
         find('#new_spot_marker').right_click
-        click_on('スポットを作成する')
+
+        click_on 'スポットを作成する', exact: true
 
         choose('spot_accident_type_物損事故')
         fill_in('追加情報', with: 'test')
@@ -82,7 +79,7 @@ RSpec.describe 'Spots', type: :system do
         find(".spot-#{spot.id}", visible: false).click(x: 50, y: 50)
 
         find('#new_spot_marker').right_click
-        click_on('スポットを作成する')
+        click_on 'スポットを作成する', exact: true
       end
 
       let(:setup_edit_spot) do

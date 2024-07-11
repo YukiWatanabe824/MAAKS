@@ -4,8 +4,6 @@ require 'rails_helper'
 
 RSpec.describe 'OmniauthGoogles', type: :system do
   before do
-    driven_by(:selenium_chrome_headless)
-
     OmniAuth.config.test_mode = true
     Rails.application.env_config['devise.mapping'] = Devise.mappings[:user]
     Rails.application.env_config['omniauth.auth']  = google_oauth2_mock

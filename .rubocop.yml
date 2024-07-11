@@ -4,3 +4,23 @@ inherit_gem:
     - "config/rails.yml"
 require:
   - rubocop-rspec
+
+# RSpecまわりのMetrix制限の緩和
+# 1つのテストケースあたりの行数
+RSpec/ExampleLength:
+  Enabled: true
+  Max: 20 # default: 5
+  CountAsOne: ["array", "hash", "heredoc"]
+# 1つのテストケースあたりのアサーションの数
+RSpec/MultipleExpectations:
+  Enabled: true
+  Max: 5 # default: 1
+# letの定義回数の上限
+RSpec/MultipleMemoizedHelpers:
+  Enabled: true
+  Max: 8 # default: 5
+  AllowSubject: false # subjectも数に含める
+# ネストの深さ
+RSpec/NestedGroups:
+  Enabled: true
+  Max: 5 # default: 3
