@@ -3,10 +3,6 @@
 require 'rails_helper'
 
 RSpec.describe 'Homes', type: :system do
-  before do
-    driven_by(:selenium_chrome_headless)
-  end
-
   describe 'when visiting top page' do
     context 'when top page access' do
       it 'get page title' do
@@ -23,7 +19,6 @@ RSpec.describe 'Homes', type: :system do
         visit_root_closed_modal
         find_button('使い方').click
         expect(page).to have_content '安全にサイクリングをして、無事に帰ってくる。'
-        find('.close_modal_button').click
       end
 
       it 'modal of terms displayed' do

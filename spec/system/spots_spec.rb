@@ -3,10 +3,6 @@
 require 'rails_helper'
 
 RSpec.describe 'Spots', type: :system do
-  before do
-    driven_by(:selenium_chrome_headless)
-  end
-
   describe 'when access for top page' do
     context 'when spot showing on the map' do
       let(:make_by_admin_spot) { FactoryBot.create(:spot, :make_by_admin_user) }
