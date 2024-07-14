@@ -70,4 +70,11 @@ jobs:
         run: yarn run lint:prettier
 
       - name: Run tests
-        run: bin/rails test test/
+        run: bundle exec rspec
+
+      - name: Archive rspec result screenshots
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rspec result screenshots
+          path: tmp/capybara/

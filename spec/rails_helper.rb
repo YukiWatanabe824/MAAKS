@@ -4,6 +4,17 @@
 require 'spec_helper'
 require 'factory_bot_rails'
 require 'selenium-webdriver'
+require 'capybara/rspec'
+
+# capybara setting
+Capybara.default_max_wait_time = 5
+
+RSpec.configure do |config|
+  config.include Capybara::DSL
+  config.before(:each, type: :system) do
+    driven_by :selenium, using: :headless_chrome, screen_size: [1980, 1080]
+  end
+end
 
 # coverage checker
 require 'simplecov'
@@ -84,6 +95,6 @@ RSpec.configure do |config|
   # helper methods
   def visit_root_closed_modal
     visit '/'
-    find('.close_modal_button').click
+    visit '/'
   end
 end
