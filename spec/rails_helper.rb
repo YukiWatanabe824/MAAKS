@@ -7,8 +7,11 @@ require 'selenium-webdriver'
 require 'capybara/rspec'
 
 # capybara setting
-Capybara.default_max_wait_time = 5
+Capybara.configure do |config|
+  config.default_max_wait_time = 5
+end
 
+# system spec setting
 RSpec.configure do |config|
   config.include Capybara::DSL
   config.before(:each, type: :system) do

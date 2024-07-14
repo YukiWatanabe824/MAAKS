@@ -24,6 +24,7 @@ RSpec.describe 'Users', type: :system do
       let(:setup_icon_upload) do
         visit edit_user_registration_path(user)
         attach_file 'user_avatar', Rails.root.join('spec/files/user_icon.webp').to_s
+        sleep 1
         click_on('更新する')
       end
 
@@ -75,6 +76,7 @@ RSpec.describe 'Users', type: :system do
       it 'upload user_icon image file' do
         visit edit_user_registration_path(user)
         attach_file 'user_avatar', Rails.root.join('spec/files/user_icon.webp').to_s
+        sleep 1
         click_on('更新する')
         expect(page).to have_selector "img[src*='user_icon.webp']"
       end
