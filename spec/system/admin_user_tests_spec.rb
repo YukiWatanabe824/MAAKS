@@ -63,7 +63,7 @@ RSpec.describe 'AdminUserTests', type: :system do
       let(:edit_other_user_icon) do
         access_for_other_user_page
         visit edit_admins_user_path(not_admin_user)
-        attach_file 'user_avatar', Rails.root.join('test/fixtures/files/user_icon.webp').to_s
+        attach_file 'user_avatar', Rails.root.join('spec/fixtures/files/user_icon.webp').to_s
         click_on '更新する'
       end
 
